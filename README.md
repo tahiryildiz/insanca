@@ -6,7 +6,7 @@ ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka 
 
 ## Yapay zeka Türkçesi nasıl kokar?
 
-İnsanca metinde toplam 45 kalıp arıyor. Ben bunları altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın daha uzun önce/sonra örneğini [SKILL.md](SKILL.md) içinde bulabilirsin.
+İnsanca metinde toplam 46 kalıp arıyor. Ben bunları altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın daha uzun önce/sonra örneğini [SKILL.md](SKILL.md) içinde bulabilirsin.
 
 ### 1. Ritim kokusu
 
@@ -39,6 +39,7 @@ Bazı kelimeler artık resmen yapay zeka kelimesi olarak biliniyor: kapsamlı, k
 | Dolgu ifadeler | "Önemle belirtmek gerekir ki" | Sil, doğrudan söyle |
 | Aşırı kaçamak | "etkili olabileceği düşünülebilir" | "etkileyebilir" |
 | Gri kelime duvarı | Her kelime en güvenli seçim | Beklenmedik ama yerinde detay |
+| "Asıl" takıntısı ve iki nokta tanımları | "Asıl mesele şu: X" | Önce söyle, sonra adlandır |
 
 ### 3. Çeviri kokusu
 
@@ -195,7 +196,9 @@ Skill senin cümle ritmini, kelime seviyeni ve alışkanlıklarını çıkarıp 
 
 ## Kaynaklar
 
-Kalıpları dört ayrı damardan derledim:
+Kalıpları beş ayrı damardan derledim:
+
+- **Gerçek Türkçe düzyazı okuması** — 2012-2019 arası köşe yazıları, denemeler, bloglar ve Ekşi Sözlük'ün beğenilen entry'leri; skill'in "Gerçek Türkçe Böyle Akar" bölümü buradan çıktı. Korpus arayanlara [TurkishNLPGuide](https://github.com/nanelimon-organization/TurkishNLPGuide) ve [Bilkent Turkish Writings](https://github.com/selimfirat/bilkent-turkish-writings-dataset) iyi başlangıç
 
 - **Türkçe topluluk gözlemleri** — Ekşi Sözlük'ün yapay zeka entry'si ve ChatGPT yalakalığı başlıkları, Marketing Türkiye'nin şablon cümle derlemesi, TÜBİTAK Bilim Genç'in insan/AI metin karşılaştırması, Türkçe SEO ve içerik topluluklarının doğallaştırma pratikleri
 - **Dedektör tersine mühendisliği** — [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text), [DetectGPT](https://arxiv.org/abs/2301.11305), GPTZero klonları ve açık kaynak slop dedektörlerinin ([unslop](https://github.com/theclaymethod/unslop), [SLOP_Detector](https://github.com/SicariusSicariiStuff/SLOP_Detector), [antislop-sampler](https://github.com/sam-paech/antislop-sampler)) kaynak kodundaki ölçüm eşikleri ve regex listeleri
