@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.3.0
+version: 1.4.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -391,6 +391,20 @@ Kalıplardan kaçınmak işin yarısı; boşalan yere gerçek Türkçenin ritmin
 > Aracı ekibin parçası yapan şirketlerde iş değişiyor, yapay zeka orada senaryo kuruyor, risk tarıyor, darboğaz buluyor. Kimsenin işini devralmıyor bunları yaparken. Neyi üretmeye karar verebilen öne geçiyor artık; çalışanların kullanmadığı lisanslar da bu yüzden rafta duruyor.
 
 
+### 47. Yapı Nakli (Kalıbı Yeniden Giydirmek)
+
+**Sorun:** En sinsi tuzak düzeltmenin kendisinde. "Sadece X yapmıyor, Y yapıyor" cümlesini "X'le kalmıyor, Y'ye ortak oluyor" diye yazmak kalıbı kaldırmaz, kıyafetini değiştirir. Dün/bugün/yarın üçlemesini virgülle bağlamak üçlemeyi, iki noktayı silip "kazandıran beceri, X" diye yazmak katafor tanımı ortadan kaldırmaz. Dedektörlerin ölçtüğü ritim parmak izi cümle iskeletinde durur ve kelime değişince silinmez. Reçeteler:
+- **Çift kanatlı cümlede** ("X'le kalmıyor, Y") iki kanattan önemli olanı seç, yalnız onu söyle. Y soyut bir iddiaysa cümle olarak yazma, somut bir örneğin içine göm.
+- **Zaman üçlemesi** hangi noktalama ile yazılırsa yazılsın retorik figürdür; işe yarayan tek iddiaya indir.
+- **Tanım kurulumunda** etiketi cümlenin içine göm ("geriye bir tek, doğru karar vermek kalıyor") ya da iddiayı gerekçesiyle savun. Kurulum-vuruş çatısı yıkılmadan kalıp gitmez.
+
+**Önce (yeniden giydirilmiş, hala aynı iskelet):**
+> İşi hızlandırmakla kalmıyor yani, karara ortak oluyor. Eskiden bilgiye ulaşmak zordu, bugün dikkati toplamak zor, yarın doğru karar vermek zor olacak.
+
+**Sonra (iskeleti değişmiş):**
+> Bütçe toplantısına girmeden üç talep senaryosunu makineye kurdurup hangisinin stoku patlattığına bakabiliyorsun, elindeki şey artık toplantı masasındaki fazladan bir akıl. Herkesin elinde aynı araçlar olunca ortalama iş kimseyi ayırt etmiyor, geriye bir tek, hangi işe girişeceğine doğru karar vermek kalıyor.
+
+
 ## ÜSLUP KALIPLARI
 
 ### 22. Uzun Tire (—): Tamamen Kaldır
@@ -765,7 +779,7 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
    - Şapkalı harf kalmış mı (bkz. §32), uzun tire kalmış mı (bkz. §22)?
    - Somut detay ve yalın kuruluşlar tercih edilmiş mi, sicil doğru ve tutarlı mı?
    - **Mantık akışı görünür mü?** Yapay zeka metinlerinde cümleler tek tek düzgündür ama aralarındaki akıl yürütme köprüsü eksiktir; okur "buraya nasıl geldik?" diye sorar. Fikirler arasındaki bağı görünür kıl, ışınlanma varsa ara adımı yaz.
-3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kabaca kontrol et.
+3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kabaca kontrol et. İkinci bir soru daha sor: **"Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?"** Cümle iskeleti hala kurulum-vuruş, çift kanat veya üçlemeyse kelimeler değişmiş olsa da kalıp duruyordur (bkz. §47).
 4. Bunları gideren, içinde hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
 
 Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et.

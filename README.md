@@ -6,7 +6,7 @@ ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka 
 
 ## Yapay zeka Türkçesi nasıl kokar?
 
-İnsanca metinde toplam 46 kalıp arıyor. Ben bunları altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın daha uzun önce/sonra örneğini [SKILL.md](SKILL.md) içinde bulabilirsin.
+İnsanca metinde toplam 47 kalıp arıyor. Ben bunları altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın daha uzun önce/sonra örneğini [SKILL.md](SKILL.md) içinde bulabilirsin.
 
 ### 1. Ritim kokusu
 
@@ -40,6 +40,7 @@ Bazı kelimeler artık resmen yapay zeka kelimesi olarak biliniyor: kapsamlı, k
 | Aşırı kaçamak | "etkili olabileceği düşünülebilir" | "etkileyebilir" |
 | Gri kelime duvarı | Her kelime en güvenli seçim | Beklenmedik ama yerinde detay |
 | "Asıl" takıntısı ve iki nokta tanımları | "Asıl mesele şu: X" | Önce söyle, sonra adlandır |
+| Yapı nakli | "X'le kalmıyor, Y oluyor" (kalıp boyanmış) | Kıyafeti değil iskeleti değiştir |
 
 ### 3. Çeviri kokusu
 
