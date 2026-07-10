@@ -186,7 +186,7 @@ Yapay zeka kalıplarından kaçınmak işin yarısı. Steril, ruhsuz yazı da en
 
 ### 8. Yapay Zeka Kelime Dağarcığı ve Şablon Cümleler
 
-**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkan sunmak, önem arz etmek, potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji
+**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkan sunmak, önem arz etmek, potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji, oyun değiştirici / oyunu değiştiren / oyunun kurallarını yeniden yazan, ezber bozan, ...nın DNA'sı
 
 **Şablon cümleler:** "Bu durum, ...i beraberinde getiriyor", "Öne çıkan başlıklar arasında ... yer alıyor", "Bu çerçevede değerlendirildiğinde", "... giderek daha önemli hale geliyor", "Bu çalışmanın amacı, ... konusunu kapsamlı bir biçimde ele almaktır"
 
@@ -201,9 +201,9 @@ Yapay zeka kalıplarından kaçınmak işin yarısı. Steril, ruhsuz yazı da en
 
 ### 9. "Mesele X Değil, Y" ve "Sadece X Değil, Aynı Zamanda Y"
 
-**Dikkat edilecek ifadeler:** mesele ... değil, ...; asıl soru şu; bu sadece bir ... değil, aynı zamanda ...; ...den öte, bir ...; işin sırrı ...de değil, ...de
+**Dikkat edilecek ifadeler:** mesele ... değil, ...; asıl soru şu; bu sadece bir ... değil, aynı zamanda ...; bu yalnızca ... değildi, yıllar içinde ... olmasıydı; asıl hikaye bu değil; asıl hikaye, ...; X aracı değil, Y sistemi; ...den öte, bir ...; işin sırrı ...de değil, ...de; ... teknoloji tarafında olmayacak, ... tarafında olacak
 
-**Sorun:** Olumsuzlama üzerinden vurgu kalıbı ("X değil, Y") yapay zekanın en sevdiği retorik oyun. Sıradan bir iddiayı derin bir tespit gibi paketler. Cümle sonuna iliştirilen kesik olumsuzlamalar da aynı aileden: "..., tahmin yok", "..., sürpriz yok".
+**Sorun:** Olumsuzlama üzerinden vurgu kalıbı ("X değil, Y") yapay zekanın en sevdiği retorik oyun. Sıradan bir iddiayı derin bir tespit gibi paketler ve tek metinde defalarca tekrarlanır: başlıkta bir kez, ara başlıklarda birkaç kez, kapanışta bir kez daha. Geçmiş zaman kılığı ("bu yalnızca bir araç değildi, bir dönüşümün başlangıcıydı") ve kesik hali ("Tek başına yeterli değil. Kültür gerekiyor.") aynı ailedendir. Metindeki "değil" sayısını say; üçü geçiyorsa kalıp iskelet haline gelmiş demektir, cümleleri olumlu kuruluşla yeniden yaz.
 
 **Önce:**
 > Mesele daha çok içerik üretmek değil, doğru içeriği üretmek. Bu sadece bir pazarlama taktiği değil, aynı zamanda bir zihniyet değişimi. Başarı tesadüf değil, tercihtir.
