@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "insanca",
+  "description": "Türkçe metinlerdeki yapay zeka yazım izlerini temizler; metni doğal, akıcı, insan elinden çıkmış gibi okunan Türkçeye çevirir.",
+  "version": "1.0.0",
+  "author": {
+    "name": "tahiryildiz",
+    "url": "https://github.com/tahiryildiz"
+  },
+  "homepage": "https://github.com/tahiryildiz/insanca",
+  "repository": "https://github.com/tahiryildiz/insanca",
+  "license": "MIT",
+  "keywords": [
+    "turkish",
+    "türkçe",
+    "writing",
+    "editing",
+    "ai-detection",
+    "humanize",
+    "prose",
+    "style"
+  ]
+}

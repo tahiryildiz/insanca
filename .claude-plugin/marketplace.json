@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace-manifest.json",
+  "name": "insanca",
+  "owner": {
+    "name": "tahiryildiz",
+    "url": "https://github.com/tahiryildiz"
+  },
+  "description": "İnsanca skill'i, Claude Code eklentisi olarak kurulabilir.",
+  "plugins": [
+    {
+      "name": "insanca",
+      "source": "./",
+      "description": "Türkçe metinlerdeki yapay zeka yazım izlerini temizler; metni doğal, akıcı, insan elinden çıkmış gibi okunan Türkçeye çevirir.",
+      "license": "MIT",
+      "keywords": [
+        "turkish",
+        "türkçe",
+        "writing",
+        "editing",
+        "ai-detection",
+        "humanize",
+        "prose",
+        "style"
+      ]
+    }
+  ]
+}
