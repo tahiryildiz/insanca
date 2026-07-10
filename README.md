@@ -8,35 +8,117 @@ Tamamı düz Markdown olduğu için skill destekleyen her agent ortamında (Clau
 
 ## Yapay zeka Türkçesi nasıl kokar?
 
-İnsanca 41 kalıbı tarar. Hepsi önce/sonra örnekleriyle [SKILL.md](SKILL.md) içinde; burada koku koku özeti:
+İnsanca 45 kalıbı altı koku altında tarar. Hepsinin uzun önce/sonra örnekleri [SKILL.md](SKILL.md) içinde; aşağıdaki tablolar özet.
 
-**Ritim kokusu.** Türkçede bütün cümleler yüklemle bittiği için yapay zekanın tekdüzeliği bizde kafiyeye dönüşür: art arda beş cümle "-maktadır" ile biter, hepsi 15-20 kelimedir, paragraflar simetriktir. İnsan yazar bunu devrik cümleyle, soruyla, yarım bırakılmış bir düşünceyle kırar... Bir de tersi var: vurucu olsun diye üst üste dizilmiş kesik cümleler. Türkçede kısa cümleler çoğu zaman noktayla ayrılmaz, virgülle bağlanıp akışa katılır; İnsanca ikisini de düzeltir.
+### 1. Ritim kokusu
 
-**Kelime ve kalıp kokusu.** "Kapsamlı", "kilit rol", "değer katmak", "dönüşüm yolculuğu". Üçe bölünmüş her şey: üç sıfat, üç fayda, üç örnek. "Mesele X değil, Y" diye paketlenmiş sıradan iddialar. "Güven zamanla inşa edilir" gibi kimsenin itiraz edemeyeceği boş doğrular. İnsanca bunları somut, tartışılabilir cümlelere çevirir.
+Türkçede bütün cümleler yüklemle bittiği için yapay zekanın tekdüzeliği bizde kafiyeye dönüşür. İnsan yazar bunu devrik cümleyle, soruyla, virgülle bağlanmış kısa cümlelerle kırar; model kırmaz.
 
-**Çeviri kokusu.** Metin İngilizce düşünülüp Türkçeye çevrilmiş gibidir: her cümlede gereksiz "siz" ve "ben", İngilizce "a/an"den kalma "bir" bolluğu, "karmaşık bir goblen" gibi kimsenin kurmadığı metaforlar, "günün sonunda", "oyun değiştirici". Türkçe zamir düşüren bir dildir; İnsanca cümleyi Türkçe düşünülmüş haline geri kurar.
+| Kalıp | Önce | Sonra |
+|-------|------|-------|
+| "-maktadır" kafiyesi | "kurulmuştur... bulunmaktadır... vermektedir..." | "2020'de kuruldu, merkezi İstanbul'da." |
+| Metronomik ritim | Bütün cümleler 15-20 kelime | Kısa/uzun karışık; 3 kelimelik cümlenin yanında 30 kelimelik |
+| Kesik cümle yığını | "Kurallar yıkıldı. Ezberler bozuldu." | Kısa cümleleri virgülle bağla, vurgu için tek tük ayrık bırak |
+| Bağlaç yığını | "Ayrıca... Öte yandan... Dolayısıyla..." | Geçişi fikrin kendisiyle yap |
+| Paragraf sonu mini özeti | Her paragraf "Kısacası..." ile bitiyor | Paragrafı geçişle bitir |
+| Açılış tekrarı | Dört cümle üst üste "Uygulama..." ile başlıyor | Açılışları çeşitlendir |
 
-**Ton kokusu.** Her soruya "harika bir soru!" diye başlayan yağcılık, iş yazısının ortasında kimse sormadan beliren "yalnız değilsiniz" tesellisi, "dürüst olmak gerekirse..." diye kurulan sahte samimiyet, broşürden fırlamış "eşsiz deneyim"ler. Bir de sicil savrulması: "kanka" ile "-maktadır"ın aynı cümlede buluşması.
+### 2. Kelime ve kalıp kokusu
 
-**Biçim kokusu.** Uzun tire (Türkçede zaten neredeyse hiç kullanılmaz, bu yüzden kesin imzadır), kalın yazı enflasyonu, düz yazının ortasında gereksiz madde işaretleri, Her Kelimesi Büyük Başlıklar, emoji, şapkalı harf tutarsızlığı, kaldırılan tirenin yerine sızan noktalı virgül bolluğu.
+Damgalanmış kelimeler tek başına suç değil; kümelenince imza. Asıl mesele kelimenin altındaki boş kalıp.
 
-**Güven kokusu.** "Uzmanlara göre", "araştırmalar gösteriyor ki" diye adressiz otoriteler; "Ayşe Hanım cirosunu 90 günde 3'e katladı" gibi uydurma vakalar; var olmayan kitaba dipnot. İnsanca bunları ya gerçek kaynağa bağlatır ya sildirir; tahmini bilgi gibi sunmaz.
+| Kalıp | Önce | Sonra |
+|-------|------|-------|
+| AI kelime dağarcığı | "kapsamlı... kilit... değer katmak... yolculuk" | Somut, sade karşılıklar |
+| Önem şişirmesi | "kritik bir dönüm noktası olmuştur" | Ne olduğunu söyle, ne "ifade ettiğini" değil |
+| "Mesele X değil, Y" | "Bu sadece bir taktik değil, zihniyet değişimi" | İddiayı doğrudan söyle |
+| Üçleme kuralı | "ilham, bilgi ve networking" | Doğal sayıda öğe |
+| Yalancı aralıklar | "küçük alışkanlıklardan büyük hedeflere" | Konuları doğrudan listele |
+| Eşanlamlı döngüsü | "şirket... firma... kuruluş... marka" | Aynı kelimeyi tekrar etmekten korkma |
+| "-arak" sahte derinliği | "toprakla kurulan bağı gözler önüne sererek" | Kuyruğu kes ya da kaynaklı bilgiye çevir |
+| Boş doğrular | "Güven zamanla inşa edilir" | Tersi savunulabilir, somut iddia |
+| Aforizma formülleri | "Tasarım, güvenin dilidir" | Somut iddiayı yaz |
+| Dolgu ifadeler | "Önemle belirtmek gerekir ki" | Sil, doğrudan söyle |
+| Aşırı kaçamak | "etkili olabileceği düşünülebilir" | "etkileyebilir" |
+| Gri kelime duvarı | Her kelime en güvenli seçim, hiçbiri şaşırtmıyor | Beklenmedik ama yerinde detay, deyim, spesifiklik |
+
+### 3. Çeviri kokusu
+
+Metin İngilizce düşünülüp Türkçeye çevrilmiş gibi okunur. Türkçe zamir düşüren bir dildir; model düşürmez.
+
+| Kalıp | Önce | Sonra |
+|-------|------|-------|
+| Çeviri kokusu | "karmaşık bir goblen", her cümlede "siz", "bir" bolluğu | Türkçe düşünülmüş kurulum |
+| Anons cümleleri | "Gelin derinlemesine dalalım" | İçerikle başla |
+| Her Kelimesi Büyük Başlık | "Yükselişi Ve Geleceği" | "Yükselişi ve geleceği" |
+
+### 4. Ton kokusu
+
+Model ya herkesi memnun etmeye çalışır ya da kurum bülteni gibi konuşur; ikisinin arasını tutturamaz.
+
+| Kalıp | Önce | Sonra |
+|-------|------|-------|
+| Yağcı ton | "Harika bir soru! Kesinlikle haklısınız!" | Doğrudan cevap ver |
+| Terapist modu | "Yalnız değilsiniz, kendinizi suçlamayın" | Konuya gir |
+| Sahte samimi açılış | "Dürüst olmak gerekirse..." | Lafı dolandırmadan söyle |
+| Broşür dili | "eşsiz deneyim, büyüleyici doku" | Bilgi ver, pazarlama |
+| Sicil kayması | "Kanka bu araç olanak tanımaktadır" | Tek sicil seç, orada kal |
+| Retorik soru-cevap | "Peki bu ne demek? Cevap basit:" | Doğrudan anlat |
+| Sohbet/arayüz artıkları | "Umarım yardımcı olur!", "Regenerate response" | Tamamen kaldır |
+| Bürokratik dolgu | "kapsamında... doğrultusunda... noktasında" | Somut fiillerle sade cümle |
+| Edilgen anlatım | "ayrılması gerekmektedir" | Faili belli etken cümle |
+
+### 5. Biçim kokusu
+
+Metnin görünüşü de koku verir; uzun tire Türkçede zaten neredeyse hiç kullanılmadığı için tek başına imzadır.
+
+| Kalıp | Önce | Sonra |
+|-------|------|-------|
+| Uzun tire | "ücretsiz — şimdilik" | Nokta, virgül, iki nokta veya parantez |
+| Kalın vurgu bolluğu | "**OKR**, **KPI**, **Kanvas**" | Vurgu enflasyonunu bitir |
+| Gereksiz maddeleme | "**Performans:** Performans artırıldı" | Düz yazıya çevir |
+| Emoji | "🚀 Lansman: 💡 İçgörü:" | Kaldır |
+| Parantez açıklaması takıntısı | "temettü (kâr payı)" | Okurun bildiğini açıklama |
+| Noktalama ve şapka | Noktalı virgül bolluğu, "hâlâ/zekâ" | Şapkasız, TDK'ya uygun, tutarlı |
+
+### 6. Güven ve kurgu kokusu
+
+Metnin iskeletinde ve kaynaklarında saklanan teller; dedektörlerin "en güçlü tekil sinyal" dedikleri de burada.
+
+| Kalıp | Önce | Sonra |
+|-------|------|-------|
+| Belirsiz kaynak | "Uzmanlara göre kritik rol oynuyor" | "DSİ'nin 2023 raporuna göre..." |
+| Uydurma örnekler | "Ayşe Hanım cirosunu 90 günde 3'e katladı" | Gerçek, doğrulanabilir örnek |
+| Uydurma kaynak / bilgi sınırı | "kaynaklarda sınırlı bilgi... muhtemelen..." | Bilinmeyeni söyle ya da çıkar |
+| Şablon "zorluklar" bölümü | "Tüm bu zorluklara rağmen..." | Gerçek soruna dair somut veri |
+| Klişe girizgah | "Günümüzde... vazgeçilmez hale geldi" | İlk cümlede asıl bilgi |
+| Jenerik kapanış | "Sonuç olarak... parlak bir gelecek" | Somut plan veya bilgi |
+| Özet sandviçi | Giriş bölümleri sıralıyor, kapanış girişi tekrarlıyor | Sona yeni bir şey koy |
+| Kurgu klişeleri | "İçini bir huzursuzluk dalgası kapladı" | Duyguyu sahneyle göster |
+| Aşırı düzeltme kokusu | Zorlama kesik cümleler, sahte pürüzler | Bir iki pürüz yeter, ölçülü bırak |
+
+## Sayılarla da bakar
+
+İnsanların yapay zeka metnini "hissederek" ayırt etme isabeti yazı turadan farksız; dedektörler bu yüzden sayar. İnsanca'nın dedektör kalıpları (§42-45) ve Sayısal Denetim bölümü, açık kaynak dedektörlerin (GPTZero klonları, GLTR, DetectGPT, slop dedektörleri) kaynak kodundan tersine mühendislikle çıkarıldı. Skill nihai metinde şunları kontrol eder: cümle uzunluğu çeşitliliği, açılış kelimesi dağılımı, zarf-fiil kuyruğu payı, uzun tire ve noktalı virgül sayısı, üçleme yoğunluğu, ilk-son paragraf örtüşmesi.
+
+İki önemli not, yine dedektör araştırmasından:
+
+- **Kelime telleri eskir, yapısal teller kalır.** "Delve" damgalanınca modeller bıraktı; "kapsamlı" da aynı yoldan gidecek. Tekdüze ritim ve kafiyeli cümle sonları ise model neslinden bağımsız sürüyor. Türkçe araştırması da bunu doğruluyor: ince ayarlı BERT, Türkçe insan/AI metnini %97 isabetle ayırıyor ve sinyali kelimelerden değil ritim ve sicil düzleşmesinden alıyor.
+- **Aşırı düzeltme de bir imzadır.** Turnitin 2025'te humanizer araçlarının çıktısına özel tespit modülü duyurdu. İnsanca bu yüzden zorlama kesik cümlelere ve sahte pürüzlere kaçmaz; işi dedektör kandırmak değil, iyi Türkçe yazmak.
 
 ## Neyi bozmaz
 
-Temizlik kadar önemlisi, sağlam metni katletmemek. İnsanca şunları yanlış alarm saymaz: kusursuz dilbilgisi (editörden geçmiş olabilir), akademik metindeki "-maktadır" (orada doğru sicil odur), tek tük "kapsamlı" veya "ayrıca" (işaret kelime değil, kümelenmedir), kaynaksız iddia (internetin çoğu kaynaksızdır). Alıntılara, başlıklara ve özel adlara dokunmaz.
+Temizlik kadar önemlisi, sağlam metni katletmemek. İnsanca şunları yanlış alarm saymaz: kusursuz dilbilgisi (editörden geçmiş olabilir), akademik metindeki "-maktadır" (orada doğru sicil odur), tek tük "kapsamlı" veya "ayrıca" (işaret kelime değil, kümelenmedir), kaynaksız iddia (internetin çoğu kaynaksızdır). Teller eş ağırlıkta da değildir: "Bir yapay zeka modeli olarak" kesin kanıtken tek bir "kapsamlı" yumuşak bir sinyaldir. Alıntılara, başlıklara ve özel adlara dokunmaz.
 
-İnsan işaretlerini de korur: tuhaf ve spesifik detaylar, karışık duygular, ara sözler, devrik cümleler, noktalamaya sızmış duygu. Bunlar görünce skill metne daha az dokunur, daha çok değil.
+İnsan işaretlerini de korur: tuhaf ve spesifik detaylar, karışık duygular, ara sözler, devrik cümleler, noktalamaya sızmış duygu. Bunları görünce skill metne daha az dokunur, daha çok değil.
 
 ## Nasıl çalışır
 
 Tek geçişte yeniden yazıp bırakmaz; üç adımlık bir döngü uygular:
 
 1. **Taslak** — kalıpları temizleyip metni yeniden yazar.
-2. **Denetim** — kendi taslağına "bu metni hala bariz yapay zeka yapan ne?" diye sorar ve kalan telleri listeler.
+2. **Denetim** — kendi taslağına "bu metni hala bariz yapay zeka yapan ne?" diye sorar, kalan telleri listeler ve sayısal eşikleri kontrol eder.
 3. **Final** — o telleri de giderip nihai metni teslim eder.
-
-Kelime değiştirmekle yetinmemesinin bir nedeni var: kelime telleri eskir ("delve" damgalanınca modeller bırakmıştı, "kapsamlı" da aynı yoldan gidecek), yapısal teller kalır. Tekdüze ritim, kafiyeli cümle sonları ve cümleler arası mantık sıçramaları model neslinden bağımsız sürdüğü için İnsanca asıl oraya yüklenir.
 
 ## Kurulum
 
@@ -103,25 +185,26 @@ Skill; cümle ritminizi, kelime seviyenizi ve alışkanlıklarınızı çıkarı
 
 > Geçen hafta sonu iki günlüğüne Ayvalık'a kaçtık. Dönüşte arabada hesapladım, iki günün neredeyse yarısı yemek masasında geçmiş...
 >
-> Cumartesi sabahı Cunda'da kahvaltıyla başladık, o meşhur kalabalığa biz de karıştık. Ayvalık tostu beklemeye değiyor, sonrası çay üstüne çay zaten. Papalina yokmuş, mevsimi değilmiş; bunu öğrenmek için tezgahtaki adamla on dakika konuşmak gerekti ama o sohbetten bir de zeytinyağcı önerisi çıktı, iyi ki sormuşum.
+> Cumartesi sabahı Cunda'da kahvaltıyla başladık, o meşhur kalabalığa biz de karıştık. Ayvalık tostu beklemeye değiyor, sonrası çay üstüne çay zaten. Papalina yokmuş. Mevsimi değilmiş, bunu öğrenmek için tezgahtaki adamla on dakika konuşmak gerekti ama o sohbetten bir de zeytinyağcı önerisi çıktı, iyi ki sormuşum.
 >
 > Asıl güzel kısım planladığımız hiçbir şeyde değildi. Sahilden iki sokak içeri girince turist kalabalığı bitiyor, yerini boyası dökülmüş kapılar ve kapı önünde oturan teyzeler alıyor. Bir tanesiyle yarım saat konuştuk, evinin altmış yıllık hikayesini dinledik. Rotamıza yazdığım taş konakların hiçbiri aklımda o kadar yer etmedi.
 >
-> Pazar öğleden sonra Şeytan Sofrası'na çıktık. Gün batımı için erken gitmek lazımmış, biz bilmiyorduk; manzara güzel ama kalabalık ve otopark kargaşası keyfi törpülüyor. Bir dahakine oraya harcayacağım vakti Cunda'nın arka sokaklarına veririm.
+> Pazar öğleden sonra Şeytan Sofrası'na çıktık. Gün batımı için erken gitmek lazımmış, biz bilmiyorduk. Manzara güzel ama kalabalık ve otopark kargaşası keyfi törpülüyor, bir dahakine oraya harcayacağım vakti Cunda'nın arka sokaklarına veririm.
 >
 > Giderken tek valizle gitmiştik, dönüşte bagajda beş litre zeytinyağı ve iki kavanoz sakız reçeli vardı. Ayvalık böyle bir yer, insanı fark ettirmeden alışverişe ikna ediyor. Tekrar giderim, ama bu sefer pazartesiyi de izin alırım; iki gün bu ilçeye az.
 
 ## Kaynaklar
 
-Kalıplar üç damardan derlendi:
+Kalıplar dört damardan derlendi:
 
 - **Türkçe topluluk gözlemleri** — Ekşi Sözlük'ün yapay zeka entry'si ve ChatGPT yalakalığı başlıkları, Marketing Türkiye'nin şablon cümle derlemesi, TÜBİTAK Bilim Genç'in insan/AI metin karşılaştırması, Türkçe SEO ve içerik topluluklarının doğallaştırma pratikleri
+- **Dedektör tersine mühendisliği** — [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text), [DetectGPT](https://arxiv.org/abs/2301.11305), GPTZero klonları ve açık kaynak slop dedektörlerinin ([unslop](https://github.com/theclaymethod/unslop), [SLOP_Detector](https://github.com/SicariusSicariiStuff/SLOP_Detector), [antislop-sampler](https://github.com/sam-paech/antislop-sampler)) kaynak kodundaki ölçüm eşikleri ve regex listeleri
 - **[Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)** — WikiProject AI Cleanup'ın binlerce vakadan derlediği evrensel teller, Türkçeye uyarlandı
-- **Nicel araştırmalar** — [Kobak vd., excess vocabulary](https://arxiv.org/abs/2406.07016) ve [Juzek & Ward](https://arxiv.org/abs/2412.11385): kelime tellerinin RLHF kaynaklı olduğu ve bir yıl içinde eskidiği bulgusu, skill'in yapı odaklı yaklaşımının dayanağı
+- **Nicel araştırmalar** — [Kobak vd.](https://arxiv.org/abs/2406.07016), [Juzek & Ward](https://arxiv.org/abs/2412.11385) ve Türkçe BERT dedektör çalışması ([arXiv:2602.13504](https://arxiv.org/abs/2602.13504)): kelime telleri eskiyor, yapısal teller kalıyor
 
 ## English summary
 
-İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text. Beyond universal patterns, it targets signatures specific to Turkish: the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese from English (redundant pronouns, "bir" overuse, calqued metaphors), bureaucratic filler stacking, connector pileups, and Turkish-specific punctuation habits such as joining short sentences with commas instead of full stops. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
+İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text. Beyond universal patterns, it targets signatures specific to Turkish: the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese from English (redundant pronouns, "bir" overuse, calqued metaphors), bureaucratic filler stacking, and connector pileups. It also includes patterns reverse-engineered from open-source AI detectors (sentence-length burstiness, opener repetition, summary-sandwich document shape, participial closer share) with measurable thresholds, plus an overcorrection guard. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
 
 ## Lisans
 

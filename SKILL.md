@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.1.0
+version: 1.2.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -621,6 +621,69 @@ Nihai metni teslim etmeden önce `—` ve `–` için tara. Tek bir tane bile va
 > Kapıya yürürken anahtarları iki kez düşürdü. Zile basmadan önce ceketinin düğmesini ilikledi, sonra gerek yokmuş gibi geri açtı.
 
 
+## DEDEKTÖR KALIPLARI
+
+Bu bölümdeki kalıplar, açık kaynak yapay zeka dedektörlerinin (GPTZero klonları, GLTR, DetectGPT, slop dedektörleri) kaynak kodundan tersine mühendislikle çıkarıldı. Dedektörler kelimelere değil ölçülebilir yapıya bakar; bu kalıplar da o yüzden yapısaldır.
+
+### 42. Açılış Tekrarı
+
+**Sorun:** Dedektörler cümlelerin ve paragrafların ilk kelimelerinin dağılımını ölçer: ilk kelimelerin benzersizlik oranı düşükse, aynı açılış dört ve üzeri tekrarlanıyorsa veya art arda üç paragraf "Ancak / Ayrıca / Dahası" gibi bağlaçlarla açılıyorsa metin işaretlenir. "Her [isim] [fiil]..." kalıbıyla açılan paragraflar da ("Her marka bir hikaye anlatır... Her müşteri bir yolculuktadır...") aynı ailedendir. Cümle ve paragraf açılışlarını çeşitlendir.
+
+**Önce:**
+> Uygulama zaman kazandırıyor. Uygulama ayrıca maliyetleri düşürüyor. Uygulama ekip içi iletişimi de kolaylaştırıyor. Uygulama bu yönleriyle rakiplerinden ayrışıyor.
+
+**Sonra:**
+> Uygulama zaman kazandırıyor, maliyeti de düşürüyor. Ekip içi iletişim tarafı ise beklemediğimiz bir artı oldu; rakiplerde bu üçü bir arada yok.
+
+
+### 43. Özet Sandviçi ve Yol Haritalı Giriş
+
+**Sorun:** Belge biçimindeki en güçlü dedektör sinyallerinden biri: giriş paragrafı yazının bölümlerini önceden sıralar ("Bu yazıda önce X'i, ardından Y'yi ele alacağız"), kapanış paragrafı da girişin kelimelerini geri çağırıp aynı şeyi bir daha söyler. Dedektörler ilk ve son paragraf arasındaki kelime çifti örtüşmesini ölçer; insan yazısında bu örtüşme sıfıra yakındır. Girişte yol haritası verme, kapanışta girişi tekrarlama; sona yeni ve somut bir şey koy ya da metni son fikirle bitir.
+
+**Önce:**
+> Bu yazıda uzaktan çalışmanın avantajlarını, zorluklarını ve geleceğini ele alacağız. [...] Sonuç olarak, uzaktan çalışmanın avantajları, zorlukları ve geleceği hakkında söylenebilecek çok şey var.
+
+**Sonra:**
+> (Yol haritası cümlesi silinir, yazı doğrudan ilk somut tespitle açılır ve en son bulguyla biter.)
+
+
+### 44. Gri Kelime Duvarı
+
+**Sorun:** GLTR gibi dedektörler her kelimenin, dil modelinin o noktada tahmin edeceği "en olası" kelimelerden olup olmadığına bakar. Yapay zeka metninde neredeyse her kelime en güvenli seçimdir; metin boydan boya "gri"dir, hiçbir kelime şaşırtmaz. İnsan yazısında düşük olasılıklı seçimler vardır: beklenmedik ama yerinde bir fiil, bir deyim, yöresel bir ifade, modelin tahmin edemeyeceği kişisel bir detay. Yeniden yazarken her cümlenin "en tahmin edilebilir" halinden en az birkaç yerde sap; ama zorlama egzotik kelimeyle değil, gerçek spesifiklikle.
+
+**Önce:**
+> Toplantı verimli geçti. Önemli kararlar alındı ve sonraki adımlar belirlendi. Ekip motivasyonu yüksekti.
+
+**Sonra:**
+> Toplantı iki saat sürdü ama asıl iş son on dakikada bitti: Fiyat kararını erteleyip ambalajı öne çektik. Çıkışta kimse asansörü beklemedi, herkes merdivenden konuşa konuşa indi.
+
+
+### 45. Aşırı Düzeltme Kokusu
+
+**Sorun:** Doğallaştırmanın kendisi de bir imza bırakabilir. Zorlama kesik cümleler, her paragrafa serpiştirilmiş "X değil. Y." yumrukları, sahte pürüzler, yapmacık argo: bu "anti-slop sicili" yeni nesil dedektörlerin ayrıca eğitildiği bir hedef (Turnitin 2025'te humanizer araçlarının çıktısına özel tespit modülü duyurdu). İkinci tuzak, eş anlamlı değiştirmenin yeterli sanılması: kelimeleri değiştirip cümle yapısını korumak dedektörlerin ölçtüğü ritim parmak izini olduğu gibi bırakır. Doğallık ölçülü olandır; bir iki pürüz yeter, her cümle sürpriz olmak zorunda değil.
+
+**Önce (aşırı düzeltilmiş):**
+> Verim mi? Arttı. Hem de nasıl. Maliyet düştü, moral tavan. Kimse inanmıyordu. Yanıldılar. Hepsi.
+
+**Sonra:**
+> Verim gerçekten arttı, maliyet de düştü. İşin garibi, pilotun başında buna ekipten kimse ihtimal vermiyordu.
+
+
+## SAYISAL DENETİM
+
+Dedektörlerin ölçtüğü değerleri sen de kabaca ölç; his yanıltır, sayı yanıltmaz (insanlar yapay zeka metnini yazı tura isabetiyle ayırt edebiliyor). Nihai metinde şu eşikleri kontrol et:
+
+- **Cümle uzunluğu çeşitliliği:** Kelime sayıları birbirine yakın cümleler üst üste geliyorsa boz. Kaba hedef: her paragrafta bir tane 8 kelime ve altı, bir tane 20 kelime ve üstü cümle.
+- **Açılışlar:** Aynı kelimeyle başlayan cümle sayısını say; dörtte birden fazlası aynı kelimeyle açılıyorsa dağıt.
+- **Zarf-fiil kuyrukları:** "-arak/-erek sağlayarak/katkıda bulunarak" ile biten cümlelerin payı yüzde 15'i geçiyorsa kes (bkz. §3).
+- **Noktalama sayımı:** Uzun tire: 0 (bkz. §22). Noktalı virgül: metin başına bir iki taneden fazlaysa azalt. Şapkalı harf: 0 (bkz. §32).
+- **Üçleme yoğunluğu:** "X, Y ve Z" kalıbı bin kelimede iki üçten fazlaysa seyrelt (bkz. §10).
+- **İlk-son paragraf örtüşmesi:** Kapanış, girişin kelimelerini geri çağırıyorsa yeniden yaz (bkz. §43).
+- **Paragraf boyları:** Hepsi aynı yükseklikteyse birleştir veya böl (bkz. §14).
+
+Sayıları tutturmak için metni bozma; eşikler alarm zilidir, hedef değil. Eşik aşımı yoksa ve metin sesli okununca doğal akıyorsa bitmiştir.
+
+
 ## TESPİT REHBERİ
 
 ### Neyi İŞARETLEME (yanlış pozitifler)
@@ -639,6 +702,10 @@ Temiz yazan bir insan, yukarıdaki kalıpların birkaçına yapay zeka olmadan d
 - **Alıntı içindeki kalıplar.** Tırnak içindeki sözler, başlıklar, özel adlar ve kalıbın örnek olarak tartışıldığı yerlerdeki ifadeleri yeniden yazma.
 
 Şüphedeysen tek tek işaretlere değil **kümelenmeye** bak. Tek bir "kapsamlı" hiçbir şey ifade etmez; "kapsamlı" + üçleme + "-maktadır" kafiyesi + "Sonuç olarak" paragrafı bir arada geliyorsa itirafnamedir.
+
+**Teller eş ağırlıkta değildir.** Dedektör sözlükleri imzaları güven katsayısıyla tartar: "Bir yapay zeka modeli olarak" veya "Umarım yardımcı olur" gibi artıklar tek başına kesin kanıttır; "kapsamlı" veya tek bir üçleme yumuşak bir sinyaldir (aradaki güven farkı yaklaşık yirmi kat). Kesin imzayı gördüğünde tereddütsüz temizle; yumuşak sinyalde kümelenme bekle.
+
+**Bir uyarı daha:** Dedektörler sade, resmi, kusursuz insan yazısını da yanlışlıkla işaretler (yabancı dil öğrencilerinin sınav metinlerinde yanlış pozitif oranı yüzde 50'yi aşabiliyor). Bu skill'in işi dedektör kandırmak değil, iyi Türkçe yazmak; dedektör puanı düşük diye insan metnini "daha insansı" yapmaya kalkma.
 
 
 ### İnsan yazısının işaretleri (bunları koru)
@@ -665,8 +732,8 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
    - Şapkalı harf kalmış mı (bkz. §32), uzun tire kalmış mı (bkz. §22)?
    - Somut detay ve yalın kuruluşlar tercih edilmiş mi, sicil doğru ve tutarlı mı?
    - **Mantık akışı görünür mü?** Yapay zeka metinlerinde cümleler tek tek düzgündür ama aralarındaki akıl yürütme köprüsü eksiktir; okur "buraya nasıl geldik?" diye sorar. Fikirler arasındaki bağı görünür kıl, ışınlanma varsa ara adımı yaz.
-3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver.
-4. Bunları gideren, içinde hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret.
+3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kabaca kontrol et.
+4. Bunları gideren, içinde hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
 
 Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et.
 
@@ -703,11 +770,11 @@ Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikl
 **Nihai yeniden yazım:**
 > Geçen hafta sonu iki günlüğüne Ayvalık'a kaçtık. Dönüşte arabada hesapladım, iki günün neredeyse yarısı yemek masasında geçmiş...
 >
-> Cumartesi sabahı Cunda'da kahvaltıyla başladık, o meşhur kalabalığa biz de karıştık. Ayvalık tostu beklemeye değiyor, sonrası çay üstüne çay zaten. Papalina yokmuş, mevsimi değilmiş; bunu öğrenmek için tezgahtaki adamla on dakika konuşmak gerekti ama o sohbetten bir de zeytinyağcı önerisi çıktı, iyi ki sormuşum.
+> Cumartesi sabahı Cunda'da kahvaltıyla başladık, o meşhur kalabalığa biz de karıştık. Ayvalık tostu beklemeye değiyor, sonrası çay üstüne çay zaten. Papalina yokmuş. Mevsimi değilmiş, bunu öğrenmek için tezgahtaki adamla on dakika konuşmak gerekti ama o sohbetten bir de zeytinyağcı önerisi çıktı, iyi ki sormuşum.
 >
 > Asıl güzel kısım planladığımız hiçbir şeyde değildi. Sahilden iki sokak içeri girince turist kalabalığı bitiyor, yerini boyası dökülmüş kapılar ve kapı önünde oturan teyzeler alıyor. Bir tanesiyle yarım saat konuştuk, evinin altmış yıllık hikayesini dinledik. Rotamıza yazdığım taş konakların hiçbiri aklımda o kadar yer etmedi.
 >
-> Pazar öğleden sonra Şeytan Sofrası'na çıktık. Gün batımı için erken gitmek lazımmış, biz bilmiyorduk; manzara güzel ama kalabalık ve otopark kargaşası keyfi törpülüyor. Bir dahakine oraya harcayacağım vakti Cunda'nın arka sokaklarına veririm.
+> Pazar öğleden sonra Şeytan Sofrası'na çıktık. Gün batımı için erken gitmek lazımmış, biz bilmiyorduk. Manzara güzel ama kalabalık ve otopark kargaşası keyfi törpülüyor, bir dahakine oraya harcayacağım vakti Cunda'nın arka sokaklarına veririm.
 >
 > Giderken tek valizle gitmiştik, dönüşte bagajda beş litre zeytinyağı ve iki kavanoz sakız reçeli vardı. Ayvalık böyle bir yer, insanı fark ettirmeden alışverişe ikna ediyor. Tekrar giderim, ama bu sefer pazartesiyi de izin alırım; iki gün bu ilçeye az.
 
@@ -719,5 +786,7 @@ Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikl
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — WikiProject AI Cleanup'ın binlerce vakadan derlediği rehber
 - Türkçe topluluk gözlemleri: Ekşi Sözlük başlıkları (yapay zeka entry'leri, ChatGPT yalakalığı, AI ile makale yazımı), Marketing Türkiye'nin şablon cümle listesi, TÜBİTAK Bilim Genç'in insan/AI metin karşılaştırması, Türkçe SEO ve içerik topluluklarının doğallaştırma pratikleri
 - Nicel araştırmalar: Kobak vd. "excess vocabulary" (arXiv:2406.07016), Juzek & Ward "Why Does ChatGPT Delve So Much?" (arXiv:2412.11385) — kelime tellerinin RLHF kaynaklı olduğu ve zamanla eskidiği bulgusu
+- Dedektör tersine mühendisliği: GPTZero klonlarının perplexity/burstiness eşikleri, [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text)'nin token sıralaması yaklaşımı, [DetectGPT](https://arxiv.org/abs/2301.11305)'nin olasılık eğriliği bulgusu; açık kaynak slop dedektörlerinin ([unslop](https://github.com/theclaymethod/unslop), [SLOP_Detector](https://github.com/SicariusSicariiStuff/SLOP_Detector), [antislop-sampler](https://github.com/sam-paech/antislop-sampler)) regex listeleri ve ölçüm eşikleri — §42-45 ve Sayısal Denetim bölümünün kaynağı
+- Türkçe dedektör araştırması: Türkçe haber metinlerinde ince ayarlı BERT %97 F1 ile insan/AI ayrımı yapabiliyor (arXiv:2602.13504) — sinyal kelimelerde değil, ritim ve sicil düzleşmesinde; skill'in yapı odaklı yaklaşımının Türkçe kanıtı
 
 Wikipedia'dan temel içgörü: "Büyük dil modelleri bir sonraki kelimeyi istatistiksel olarak tahmin eder. Sonuç, en geniş durum yelpazesine uyan, istatistiksel olarak en olası metne yakınsar."
