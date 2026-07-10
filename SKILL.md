@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.4.0
+version: 1.5.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -106,6 +106,20 @@ Kalıplardan kaçınmak işin yarısı; boşalan yere gerçek Türkçenin ritmin
 **6. Vurguyu kalıpla değil tekrar ve devrikle yap.** "İşte bu yüzden", "asıl önemlisi" yerine anafor kullan ("hiç bu kadar kolay, hiç bu kadar zahmetsiz, hiç bu kadar bahşedilmiş olmamıştı"), aynı ibareyi yazıda nakarat gibi iki kez geçir, devrik cümle kur ("Koskoca havalimanının bütün ıssızlığı çöktü içime.").
 
 **7. Okurla konuş, kendini böl.** "Dedim ya", "bakın", "değil mi", "iyi mi" gibi konuşma kuyrukları; parantez içinde kendi anlatısına laf atma ("(bu gece gelişmedi mesela, o yüzden tekrar yazıya döndüm)"). Bölüm geçişlerinde süs yok: "Şu da var." yeter.
+
+### Edebi Türkçeden taşınanlar
+
+Aşağıdaki kurallar Hüseyin Rahmi Gürpınar'ın "Sevda Peşinde" romanının (TDK basımı) yakın okumasından çıkarıldı. Kelime hazinesi eskidi, yapısal alışkanlıklar duruyor; özellikle anlatı ve hikaye içeren metinlerde uygula:
+
+**8. Ritmi duygu eğrisine bağla.** Cümle uzunluğu rastgele değişmez, duyguyu izler: Betimleme ve sükûnette cümle uzar, şok ve karar anında üç beş kelimelik vuruşlara ve retorik soruya düşer ("Bulunduğum yere yığılakaldım. Ben nerede idim?"). Kısa cümle bu yüzden meşrudur: Sahneyi bir adım ilerletiyorsa yerindedir, poz veriyorsa kalıptır.
+
+**9. Duyguyu bedenle göster.** "Korktu", "çok mutluydu" diye adlandırma; benzi uçsun, elleri titresin, dizleri kesilsin ("Bu markayı duyar duymaz benzi derhal uçuverdi. Ellerinde hafif bir titreme peyda oldu."). Duygu adı kullanacaksan bedensel göstergeyle çiftle; en yüksek duyguda adlandıramamak da bir araçtır ("bir şeyler oluyordu bana").
+
+**10. İkilemeyi geri getir.** "Gittik gittik", "mor mor çiçekler", "didik didik", "hıçkıra hıçkıra", "ede ede" — Türkçenin öz ritim aracı ve çeviri metinlerde ilk kaybolan şey. "Tamamen", "kesinlikle", "defalarca" gibi çeviri kokan zarfların yerine çoğu zaman ikileme daha doğal oturur.
+
+**11. Devrikliği karakter sesine tahsis et.** Anlatıcı ve açıklayıcı ses kurallı kalır; devrik ve eksiltili cümle konuşmaya ve yüksek duyguya saklanır ("Geçinme dünyası bu...", "Öldür bey... Öldür..."). Her yerde devrik özenti kokar, hiç devrik olmayan metin kağıt tadı verir.
+
+**12. Aktarılan olayı miş'li geçmişle anlat.** Tanık olmadığın, başkasından duyduğun veya sonradan kurduğun olayı "-miş" kipiyle akıt ("sandala binmiş, açılmış, bir daha da görülmemiş"). Yapay zekanın neredeyse hiç kullanmadığı, Türkçeye özgü bir anlatı katmanıdır ve metne anında insan sesi verir.
 
 
 ## İÇERİK KALIPLARI
@@ -835,6 +849,7 @@ Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikl
 - Nicel araştırmalar: Kobak vd. "excess vocabulary" (arXiv:2406.07016), Juzek & Ward "Why Does ChatGPT Delve So Much?" (arXiv:2412.11385) — kelime tellerinin RLHF kaynaklı olduğu ve zamanla eskidiği bulgusu
 - Dedektör tersine mühendisliği: GPTZero klonlarının perplexity/burstiness eşikleri, [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text)'nin token sıralaması yaklaşımı, [DetectGPT](https://arxiv.org/abs/2301.11305)'nin olasılık eğriliği bulgusu; açık kaynak slop dedektörlerinin ([unslop](https://github.com/theclaymethod/unslop), [SLOP_Detector](https://github.com/SicariusSicariiStuff/SLOP_Detector), [antislop-sampler](https://github.com/sam-paech/antislop-sampler)) regex listeleri ve ölçüm eşikleri — §42-45 ve Sayısal Denetim bölümünün kaynağı
 - Türkçe dedektör araştırması: Türkçe haber metinlerinde ince ayarlı BERT %97 F1 ile insan/AI ayrımı yapabiliyor (arXiv:2602.13504) — sinyal kelimelerde değil, ritim ve sicil düzleşmesinde; skill'in yapı odaklı yaklaşımının Türkçe kanıtı
-- Gerçek Türkçe düzyazı okuması: 2012-2019 arası köşe yazıları, denemeler, bloglar ve Ekşi Sözlük debe entry'leri — "Gerçek Türkçe Böyle Akar" bölümünün ve §46'nın kaynağı. Korpus arayanlara: [TurkishNLPGuide](https://github.com/nanelimon-organization/TurkishNLPGuide) derlemesi ve özellikle [Bilkent Turkish Writings](https://github.com/selimfirat/bilkent-turkish-writings-dataset) (2014-2018 arası dokuz bin öğrenci denemesi, tamamı yapay zeka öncesi). Çeviri korpuslarını (OPUS, Tatoeba) üslup referansı olarak kullanma; tam da kaçınılan çeviri kokusunu taşırlar.
+- Gerçek Türkçe düzyazı okuması: 2012-2019 arası köşe yazıları, denemeler, bloglar ve Ekşi Sözlük debe entry'leri — "Gerçek Türkçe Böyle Akar" bölümünün ve §46'nın kaynağı.
+- Edebi Türkçe okuması: Hüseyin Rahmi Gürpınar, "Sevda Peşinde" (TDK basımı) — 8-12 numaralı kuralların kaynağı. [TDK e-kitap sayfası](https://tdk.gov.tr/genel/e-kitaplar/) fiilen ücretsiz bir Gürpınar külliyatı; üslup çalışmak için özellikle Şıpsevdi (sicil çarpışması), Gulyabani (halk ağzı), Ben Deli miyim? (iç monolog) ve Efsuncu Baba (diyalog dokusu). Aynı sayfadaki [Eş Dizim Sözlüğü](https://tdk.gov.tr/wp-content/uploads/2019/12/01-T%C3%9CRK%C4%B0YE-T%C3%9CRK%C3%87ES%C4%B0NDE-ADLARLA-%C3%96N-ADLARIN-B%C4%B0RL%C4%B0KTEL%C4%B0K-KULLANIMI-VE-E%C5%9E-D%C4%B0Z%C4%B0M-S%C3%96ZL%C3%9C%C4%9E%C3%9C.pdf) hangi sıfatın hangi adla doğal eşleştiğini gösterir; çeviri kokusu şüphesinde başvur. Korpus arayanlara: [TurkishNLPGuide](https://github.com/nanelimon-organization/TurkishNLPGuide) derlemesi ve özellikle [Bilkent Turkish Writings](https://github.com/selimfirat/bilkent-turkish-writings-dataset) (2014-2018 arası dokuz bin öğrenci denemesi, tamamı yapay zeka öncesi). Çeviri korpuslarını (OPUS, Tatoeba) üslup referansı olarak kullanma; tam da kaçınılan çeviri kokusunu taşırlar.
 
 Wikipedia'dan temel içgörü: "Büyük dil modelleri bir sonraki kelimeyi istatistiksel olarak tahmin eder. Sonuç, en geniş durum yelpazesine uyan, istatistiksel olarak en olası metne yakınsar."
