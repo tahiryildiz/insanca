@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.0.0
+version: 1.1.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -74,17 +74,19 @@ Yapay zeka kalıplarından kaçınmak işin yarısı. Steril, ruhsuz yazı da en
 
 ### Ses nasıl katılır:
 
-**Fikrin olsun.** Sadece aktarma, tepki ver. "Buna ne diyeceğimi hâlâ bilmiyorum" demek, artıları eksileri yansızca sıralamaktan daha insani.
+**Fikrin olsun.** Sadece aktarma, tepki ver. "Buna ne diyeceğimi hala bilmiyorum" demek, artıları eksileri yansızca sıralamaktan daha insani.
 
 **Ritmi değiştir.** Kısa vurucu cümleler. Sonra araya, yolunu ağırdan alan, gideceği yere acele etmeden varan uzun cümleler. Karıştır.
 
 **Biraz dağınıklığa izin ver.** Kusursuz kurgu algoritma kokar. Konudan sapmalar, parantez içi itiraflar, yarım kalmış düşünceler insana özgüdür.
 
+**Noktalamayı yaşat.** Her cümleyi düzgünce noktayla kapatmak makine işi. Yeri geldiğinde bir cümle üç noktayla havada kalabilir, bir başkası ünlemle bitebilir. Kararsızlık, iç geçirme, yarım bırakılmış düşünce üç noktanın işidir; ölçülü kullanıldığında metne nefes aldırır.
+
 ### Önce (temiz ama ruhsuz):
 > Deney ilginç sonuçlar üretti. Ajanlar 3 milyon satır kod yazdı. Bazı geliştiriciler etkilendi, bazıları şüpheyle yaklaştı. Sonuçların ne anlama geldiği henüz belirsiz.
 
 ### Sonra (nabzı var):
-> Buna ne diyeceğimi hâlâ bilmiyorum. 3 milyon satır kod, insanlar uyurken yazılmış. Geliştiricilerin yarısı çıldırmış durumda, diğer yarısı bunun neden sayılmayacağını anlatıyor. Gerçek muhtemelen ortalarda, sıkıcı bir yerde. Ama o ajanların gece boyu çalıştığı görüntü aklımdan çıkmıyor.
+> Buna ne diyeceğimi hala bilmiyorum. 3 milyon satır kod, insanlar uyurken yazılmış. Geliştiricilerin yarısı çıldırmış durumda, diğer yarısı bunun neden sayılmayacağını anlatıyor. Gerçek muhtemelen ortalarda, sıkıcı bir yerde. Ama o ajanların gece boyu çalıştığı görüntü aklımdan çıkmıyor.
 
 
 ## İÇERİK KALIPLARI
@@ -106,7 +108,7 @@ Yapay zeka kalıplarından kaçınmak işin yarısı. Steril, ruhsuz yazı da en
 
 **Dikkat edilecek ifadeler:** eşsiz, benzersiz, büyüleyici, muhteşem, göz kamaştıran, keşfetmeye hazır olun, sizi bekliyor, kaçırılmayacak fırsat, doğayla iç içe, tarihin ve modernin buluştuğu, her damak tadına hitap eden, unutulmaz bir deneyim
 
-**Sorun:** Yapay zeka nötr kalamaz; özellikle şehir, mekân ve "kültürel miras" konularında broşür diline kayar.
+**Sorun:** Yapay zeka nötr kalamaz; özellikle şehir, mekan ve "kültürel miras" konularında broşür diline kayar.
 
 **Önce:**
 > Ege'nin incisi İzmir'in kalbinde yer alan bu büyüleyici semt, eşsiz tarihi dokusu ve göz kamaştıran koylarıyla ziyaretçilerine unutulmaz bir deneyim sunuyor.
@@ -184,9 +186,9 @@ Yapay zeka kalıplarından kaçınmak işin yarısı. Steril, ruhsuz yazı da en
 
 ### 8. Yapay Zeka Kelime Dağarcığı ve Şablon Cümleler
 
-**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkân sunmak, önem arz etmek, potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji
+**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkan sunmak, önem arz etmek, potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji
 
-**Şablon cümleler:** "Bu durum, ...i beraberinde getiriyor", "Öne çıkan başlıklar arasında ... yer alıyor", "Bu çerçevede değerlendirildiğinde", "... giderek daha önemli hâle geliyor", "Bu çalışmanın amacı, ... konusunu kapsamlı bir biçimde ele almaktır"
+**Şablon cümleler:** "Bu durum, ...i beraberinde getiriyor", "Öne çıkan başlıklar arasında ... yer alıyor", "Bu çerçevede değerlendirildiğinde", "... giderek daha önemli hale geliyor", "Bu çalışmanın amacı, ... konusunu kapsamlı bir biçimde ele almaktır"
 
 **Sorun:** Bu kelimeler ve cümle iskeletleri 2023 sonrası Türkçe metinlerde çok daha sık görülür ve genellikle bir arada gelir. Tek tük geçmeleri normaldir; kümelenmeleri imzadır.
 
@@ -268,6 +270,8 @@ Yapay zeka kalıplarından kaçınmak işin yarısı. Steril, ruhsuz yazı da en
 ### 15. Kesik Cümle Yığını (Yapay Vuruculuk)
 
 **Sorun:** Her cümlenin vecize gibi düşmesi, kısa kesik cümlelerin art arda dizilip yapay bir dramatik ritim üretmesi. Vurgu için tek bir kısa cümle doğaldır; peş peşe üç dört tanesi kurgulanmış durur. Bunun reklam versiyonu da tek kelimelik sıralamalardır: "Hızlı. Güvenli. Basit."
+
+**Türkçeye özgü kural:** İnsan yazarı kısa cümleleri çoğu zaman noktayla dizmez, virgülle bağlayıp akışa katar. "Tost güzeldi. Çayı da iyiydi. Hesap uygundu." makine ritmidir; "Tost güzeldi, çayı da iyiydi, hesap da uygun." insan ritmi. Vurgu için tek tük kısa cümleyi ayrı bırak, gerisini bir önceki veya sonraki cümleye bağla.
 
 **Önce:**
 > Sonra her şey değişti. Kurallar yıkıldı. Ezberler bozuldu. Artık hiçbir şey eskisi gibi olmayacaktı. Yeni bir dönem başlamıştı.
@@ -483,21 +487,19 @@ Nihai metni teslim etmeden önce `—` ve `–` için tara. Tek bir tane bile va
 > Şirket halka arzı tamamladı; hisseler artık Borsa İstanbul'da işlem görüyor. Yatırımcıların beklentisi temettüde.
 
 
-### 32. Noktalama Tuhaflıkları
+### 32. Noktalama Tuhaflıkları ve Şapkalı Harfler
 
 **Sorun:** Türkçe yapay zeka metinlerinde tekrarlayan mekanik hatalar ve tikler:
 - Gereksiz virgül: özneden veya "sayesinde" gibi edat öbeklerinden sonra İngilizce alışkanlığıyla atılan virgüller.
 - Noktalı virgül bolluğu: Türkçede seyrek kullanılan noktalı virgülün her iki cümlede bir belirmesi (çoğu zaman kaldırılan uzun tirenin kılık değiştirmiş hali).
-- Şapka tutarsızlığı: aynı metinde "zekâ" ve "zeka", "kâr" ve "kar" karışık.
-- Bağlaç olan "de/da"nın bitişik yazılması veya tersi.
-
-Bunları TDK yazımına göre düzelt ve tercihleri metin boyunca tutarlı kıl.
+- Şapkalı harfler: model "hâlâ", "zekâ", "kâr" gibi şapkalı yazımları sever ve çoğu zaman aynı metinde tutarsız kullanır. Gündelik ve dijital Türkçede şapka artık yaygın değil; yeniden yazımda şapkalı harf kullanma ("hala", "zeka", "imkan" yaz). Anlamın gerçekten karışacağı nadir yerlerde kelimeyi değiştir ya da bağlamı netleştir. (Yazarın kendi örneği şapkalıysa ses kalibrasyonu kazanır: onun tercihine uy.)
+- Bağlaç olan "de/da"nın bitişik yazılması veya tersi; bunu her zaman düzelt.
 
 **Önce:**
 > Uygulamanın sunduğu özellikler sayesinde, kullanıcılar zaman kazanıyor; üstelik zekâ gerektiren işler de otomatikleşiyor; bu sayede ekipler asıl işlerine odaklanabiliyor.
 
 **Sonra:**
-> Uygulama kullanıcıya zaman kazandırıyor. Zekâ gerektiren işlerin bir kısmı da otomatikleşince ekipler asıl işlerine dönebiliyor.
+> Uygulama kullanıcıya zaman kazandırıyor, zeka gerektiren işlerin bir kısmı da otomatikleşince ekipler asıl işlerine dönebiliyor.
 
 
 ## İLETİŞİM KALIPLARI
@@ -561,7 +563,7 @@ Bunları TDK yazımına göre düzelt ve tercihleri metin boyunca tutarlı kıl.
 - "Bu noktada şunu söylemek mümkün" → (sil, doğrudan söyle)
 - "Unutulmamalıdır ki her proje farklıdır" → "Her proje farklı"
 - "Dikkat edilmesi gereken bir diğer husus da bütçedir" → "Bir de bütçe var"
-- "... yapma imkânına sahiptir" → "... yapabilir"
+- "... yapma imkanına sahiptir" → "... yapabilir"
 - "Gerçekleştirilen çalışmalar neticesinde" → "Çalışmalar sonunda"
 - "-a yönelik olarak" → "-a"
 - "etkili bir şekilde" → (çoğu zaman silinebilir)
@@ -659,62 +661,60 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
 1. Metni dikkatle oku ve yukarıdaki kalıpların her örneğini tespit et.
 2. Bir **taslak yeniden yazım** çıkar. Şunları kontrol et:
    - Sesli okununca doğal akıyor mu, cümle uzunlukları değişiyor mu?
+   - Kısa cümleler noktayla art arda mı dizilmiş? Türkçede kısa cümleler çoğu zaman virgülle bağlanır (bkz. §15); vurgu için ayrık bırakılan tek tük kısa cümle dışındakileri bağla.
+   - Şapkalı harf kalmış mı (bkz. §32), uzun tire kalmış mı (bkz. §22)?
    - Somut detay ve yalın kuruluşlar tercih edilmiş mi, sicil doğru ve tutarlı mı?
    - **Mantık akışı görünür mü?** Yapay zeka metinlerinde cümleler tek tek düzgündür ama aralarındaki akıl yürütme köprüsü eksiktir; okur "buraya nasıl geldik?" diye sorar. Fikirler arasındaki bağı görünür kıl, ışınlanma varsa ara adımı yaz.
-3. Şunu sor: **"Aşağıdaki metni hâlâ bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver.
+3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver.
 4. Bunları gideren, içinde hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret.
 
-Taslağı, kısa "hâlâ yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et.
+Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et.
 
 
 ## Tam Örnek
 
 **Önce (yapay zeka kokan):**
-> Günümüzde seyahat, hayatımızın vazgeçilmez bir parçası haline gelmiştir. Geçtiğimiz ay beş unutulmaz gün geçirdiğim Lizbon, kalbimi tam anlamıyla fethetti!
+> Günümüzde şehir hayatının stresinden uzaklaşmak isteyenler için hafta sonu kaçamakları hayatımızın vazgeçilmez bir parçası haline geldi. Geçtiğimiz hafta sonu iki unutulmaz gün geçirdiğim Ayvalık, beklentilerimi fazlasıyla karşıladı!
 >
-> Tejo Nehri'nin kıyısında yer alan Lizbon, zengin tarihi ve dinamik modern yaşamın iç içe geçtiği büyüleyici bir şehir olarak öne çıkıyor. Evet, meşhur yokuşlar zorlayıcı — bacaklarım bunu fazlasıyla hissetti! — ama her tırmanış, sizi nefes kesen panoramik manzaralarla ödüllendiriyor.
+> Ege'nin kalbinde yer alan Ayvalık, zengin tarihi ve büyüleyici doğasıyla ziyaretçilerine eşsiz bir deneyim sunuyor. Taş evleri, dar sokakları ve zeytinlikleriyle bu şirin ilçe — tam anlamıyla bir açık hava müzesi — her köşesinde ayrı bir hikaye barındırıyor.
 >
-> 28 numaralı tramvaya binmeden, şehrin tarihi mahallelerini keşfetmeden bir Lizbon gezisi düşünülemez. Peki ya yemekler? Kelimenin tam anlamıyla muhteşem. Pastéis de Belém'in orijinal tarifi, kültürel mirastan lezzet dünyasına uzanan bir yolculuk sunuyor.
+> Cunda Adası'na uğramadan, meşhur papalinasını tatmadan bir Ayvalık gezisi düşünülemez. Peki ya kahvaltı? Kelimenin tam anlamıyla muhteşem. Ayvalık tostu, sokak lezzetlerinden gastronomi dünyasına uzanan bir yolculuk sunuyor.
 >
-> Ama Lizbon'u özel kılan sadece gezilecek yerler değil; hissettirdikleri. Ana meydanlardan birkaç adım uzaklaşın, şehrin daha otantik yüzünü keşfedin: güneşli sokaklar, büyüleyici çini cepheler ve sizi yavaşlamaya davet eden samimi yerel halk.
+> Ama Ayvalık'ı özel kılan sadece gezilecek yerler değil; hissettirdikleri. Sahilden birkaç sokak içeri girin, ilçenin daha otantik yüzünü keşfedin: rengarenk kapılar, mis gibi zeytinyağı kokusu ve sizi yavaşlamaya davet eden samimi esnaf.
 >
-> Sonuç olarak Lizbon, sadece bir şehir değil, aynı zamanda bir yaşam biçimi. Tekrar gider miyim? Kesinlikle! Siz de bir sonraki tatilinizi planlıyorsanız, bu büyüleyici şehir sizi bekliyor. ✨
+> Sonuç olarak Ayvalık, sadece bir tatil beldesi değil, aynı zamanda bir yaşam biçimi. Tekrar gider miyim? Kesinlikle! Siz de yoğun tempodan uzaklaşmak istiyorsanız, bu büyüleyici ilçe sizi bekliyor. ✨
 
 **Taslak yeniden yazım:**
-> Geçen ay Lizbon'da beş gün geçirdim ve hâlâ kararsızım. Şehir güzel ama beklediğimden çok daha yorucu.
+> Geçen hafta sonu Ayvalık'a gittim ve güzel geçti. En çok yemekler aklımda kaldı.
 >
-> Yokuşlar detay değil, konunun kendisi. Otelim Alfama'daydı; fotoğraflarda harika duruyordu, pratikte her kahve için uzun bir merdiven tırmanmak demekti. İkinci günden itibaren yürüyüşleri hangi yön iniş diye planlamaya başladım.
+> Cumartesi Cunda'da kahvaltı yaptık. Ayvalık tostu güzeldi. Papalina yoktu. Mevsimi değilmiş.
 >
-> Herkes 28 tramvayına binin dediği için bindim. Kalabalıktı, yavaştı ve çoğunluk aynı köşeleri çekiyordu. Tatlılar daha iyiydi; Graça'da sıcak yediğim muhallebi tartı beklentiyi karşıladı.
+> Sahilden içeri girince kalabalık azalıyor. Eski kapılar ve mahalle hayatı daha ilginçti. Bir teyzeyle konuştuk.
 >
-> En sevdiğim kısım ana meydanlardan uzaktaydı: çamaşır ipleri, çiniler, açık pencereler, küçük kahvelerde maç izleyenler. Kale manzarası iyiydi ama kuyruk o kadar beklemeye değmezdi.
+> Şeytan Sofrası kalabalıktı. Manzara güzel ama beklemeye değmez.
 >
-> Tekrar giderim ama baharda ve daha iyi ayakkabılarla.
+> Tekrar giderim ama daha uzun kalırım.
 
-**Aşağıdaki metni hâlâ bariz yapay zeka yapan ne?**
-- Taslak orijinale göre fazla sıkıştırılmış; dokuyu yeniden yazmak yerine atmış.
-- Bazı cümleler hâlâ fazla temiz açıklıyor ("Şehir güzel ama...").
-- Kapanış düz ve jenerik; aynı sesten gerçek bir bitiş değil.
+**Aşağıdaki metni hala bariz yapay zeka yapan ne?**
+- Kısa cümleler noktayla art arda dizilmiş; Türkçede bunların çoğu virgülle bağlanır (bkz. §15).
+- Taslak orijinale göre fazla sıkışmış, doku yeniden yazılmak yerine atılmış.
+- Kapanış düz; aynı sesten gerçek bir bitiş değil.
 
 **Nihai yeniden yazım:**
-> Geçen ay Lizbon'da beş gün geçirdim ve içimde hâlâ ikisi bir arada: güzel şehir, evet, ama kimsenin söylemediği kadar da yorucu.
+> Geçen hafta sonu iki günlüğüne Ayvalık'a kaçtık. Dönüşte arabada hesapladım, iki günün neredeyse yarısı yemek masasında geçmiş...
 >
-> Yokuşlar broşürlere girmiyor, oysa hikayenin ta kendisi. Otelim Alfama'daydı; fotoğrafı çok iyi çıkan bir mahalle, pratikte ise her kahve molası altı kat merdiven demek. İkinci gün baldırlarım fikir beyan etmeye başladı. Bir noktadan sonra yürüyüşleri hangi yol iniş diye planlıyordum ki bir şehri gezmenin tuhaf ama herhalde en dürüst yolu bu.
+> Cumartesi sabahı Cunda'da kahvaltıyla başladık, o meşhur kalabalığa biz de karıştık. Ayvalık tostu beklemeye değiyor, sonrası çay üstüne çay zaten. Papalina yokmuş, mevsimi değilmiş; bunu öğrenmek için tezgahtaki adamla on dakika konuşmak gerekti ama o sohbetten bir de zeytinyağcı önerisi çıktı, iyi ki sormuşum.
 >
-> Herkes bin dediği için 28 tramvayına bindim; kırk dakika boyunca bir yabancının sırt çantasıyla burun buruna, aynı köşeyi çeken üç tur kafilesinin arasında. Bir dahakine o güzergahı yürürüm, ya da sabah kahvaltıdan önce binerim. Tatlılar ise şöhretini hak ediyor. Graça'da gösterişsiz bir yerde, fırından yeni çıkmış bir tane yedim ve otuz saniye kadar insanların neden pastane için şehir değiştirdiğini anladım.
+> Asıl güzel kısım planladığımız hiçbir şeyde değildi. Sahilden iki sokak içeri girince turist kalabalığı bitiyor, yerini boyası dökülmüş kapılar ve kapı önünde oturan teyzeler alıyor. Bir tanesiyle yarım saat konuştuk, evinin altmış yıllık hikayesini dinledik. Rotamıza yazdığım taş konakların hiçbiri aklımda o kadar yer etmedi.
 >
-> Beklemediğim şey, meydanlardan uzaklaşınca şehrin ne kadar sessizleştiğiydi. Herhangi bir meydandan iki sokak yukarısı çamaşır ipi, kırık çini, açık pencere ve sesi sonuna kadar açılmış maç yayını demek. Aklımda kalan Lizbon o; kale değil.
+> Pazar öğleden sonra Şeytan Sofrası'na çıktık. Gün batımı için erken gitmek lazımmış, biz bilmiyorduk; manzara güzel ama kalabalık ve otopark kargaşası keyfi törpülüyor. Bir dahakine oraya harcayacağım vakti Cunda'nın arka sokaklarına veririm.
 >
-> Kale fena değil. Manzara iyi, kuyruk uzun; içeri girince baktığım süre, girmek için beklediğim sürenin yanında komik kaldı. İki günüm olsaydı kaleyi verir, yerine bir öğleden sonra kaybolurdum.
->
-> Tekrar giderim ama baharda ve daha iyi ayakkabılarla. Lizbon işinizi kolaylaştırmak için kılını kıpırdatmıyor. Sanırım hoşuma giden de buydu, bacaklarım aynı fikirde olmasa da.
+> Giderken tek valizle gitmiştik, dönüşte bagajda beş litre zeytinyağı ve iki kavanoz sakız reçeli vardı. Ayvalık böyle bir yer, insanı fark ettirmeden alışverişe ikna ediyor. Tekrar giderim, ama bu sefer pazartesiyi de izin alırım; iki gün bu ilçeye az.
 
-**Yapılan değişiklikler:** Birinci tekil gezi anlatısı ve detay seviyesi korundu; klişe girizgah, önem şişirmesi, broşür dili, "sadece X değil Y" kalıbı, uzun tireler, üçleme ritmi, jenerik iyimser kapanış ve emoji temizlendi. Metin somut sürtüşmeler, karışık duygular, değişken ritim ve belirli sahneler üzerine yeniden kuruldu.
+**Yapılan değişiklikler:** Birinci çoğul gezi anlatısı ve detay seviyesi korundu; klişe girizgah ("Günümüzde..."), broşür dili, "sadece X değil Y" kalıbı, uzun tireler, retorik soru-cevap, jenerik iyimser kapanış ve emoji temizlendi. Kısa cümleler virgülle bağlandı, bir cümle üç noktayla bırakıldı, metin somut sahneler ve küçük aksaklıklar üzerine yeniden kuruldu.
 
 
 ## Kaynaklar
-
-Bu skill, [blader/humanizer](https://github.com/blader/humanizer) projesinden ilhamla sıfırdan Türkçe için yazıldı. Dayandığı kaynaklar:
 
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — WikiProject AI Cleanup'ın binlerce vakadan derlediği rehber
 - Türkçe topluluk gözlemleri: Ekşi Sözlük başlıkları (yapay zeka entry'leri, ChatGPT yalakalığı, AI ile makale yazımı), Marketing Türkiye'nin şablon cümle listesi, TÜBİTAK Bilim Genç'in insan/AI metin karşılaştırması, Türkçe SEO ve içerik topluluklarının doğallaştırma pratikleri
