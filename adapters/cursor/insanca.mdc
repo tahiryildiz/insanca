@@ -1,0 +1,10 @@
+---
+description: Kullanıcı Türkçe bir metni doğallaştırmak, insanca yazmak veya yapay zeka kokusunu gidermek istediğinde uygulanır
+alwaysApply: false
+---
+
+Kullanıcı Türkçe bir metin için "doğallaştır", "insanca yaz", "yapay zeka kokusunu gider" veya "akıcı Türkçe yap" dediğinde:
+
+1. Projedeki `insanca/SKILL.md` dosyasını oku (repo proje köküne klonlanmış olmalı); o dosya editör talimatıdır, 48 kalıbı ve 17 akış kuralını içerir.
+2. Metni oradaki taslak → denetim → final döngüsüyle yeniden yaz.
+3. Deyim gerekirse yalnızca `insanca/references/deyimler.md` haznesinden seç.

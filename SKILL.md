@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.9.0
+version: 1.10.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni

@@ -171,6 +171,10 @@ Elle kurmak istersen repoyu ortamının skill dizinine klonlaman yeterli:
 git clone https://github.com/tahiryildiz/insanca.git ~/.claude/skills/insanca
 ```
 
+### Codex, Gemini CLI, Cursor ve diğerleri
+
+İnsanca sadece Claude Code'a bağlı değil; çalışan dosya düz Markdown olduğu için dosya okuyabilen her araçta kullanılır. Codex CLI (`/prompts:insanca`), Gemini CLI (`/insanca`), Cursor (kural dosyası) ve AGENTS.md destekleyen araçlar için hazır adaptör dosyaları [adapters/](adapters/) klasöründe, adım adım kurulum ise [INSTALL.md](INSTALL.md) dosyasında.
+
 ## Kullanım
 
 ```
