@@ -2,6 +2,8 @@
 
 İnsanca'nın çalışan tek dosyası `SKILL.md`; düz Markdown olduğu için dosya okuyabilen her yapay zeka aracında kullanılabilir. Aşağıda araç araç kurulum var. Ortak ilk adım çoğunda aynı: Repoyu bir yere klonla.
 
+**En kısa yol:** Ajan tabanlı araçlarda (Claude Code, Codex, Gemini CLI...) adımları elle uygulamana gerek yok; ajana şunu demen yetiyor: "Şu skill'i kur: https://github.com/tahiryildiz/insanca". Ajan bu dosyayı okuyup kendi aracına uygun kurulumu kendisi yapıyor. Codex'te bu yolla test edildi.
+
 ## Claude Code
 
 Skill dizinine klonlaman yeterli, `/insanca` komutu kendiliğinden gelir:
@@ -70,3 +72,5 @@ Aracın dosya okuma yeteneği yoksa bile çözüm basit: `SKILL.md` içeriğini 
 ## Kurulumu doğrulama
 
 Hangi araçta olursa olsun şu mini testi yap: "Şu cümleyi doğallaştır: Günümüzde yapay zeka, hayatımızın her alanında kritik bir rol oynamaktadır." Doğru kurulmuşsa araç, klişe girizgahı ve önem şişirmesini teşhis edip somut bir cümle önermeli; cümleyi övüp geçiyorsa talimat dosyası okunmamış demektir.
+
+Test durumu: Claude Code'da mini test geçti (beş kalıp teşhis edildi, somut alternatifler önerildi); Codex'te ajanla kurulum sorunsuz tamamlandı.
