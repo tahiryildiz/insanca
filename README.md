@@ -197,17 +197,17 @@ Ses eşleştirmesi için kendi yazımdan bir örnek:
 
 Skill senin cümle ritmini, kelime seviyeni ve alışkanlıklarını çıkarıp yeniden yazımı onlarla kuruyor.
 
-## Örnek
+## Örnekler
+
+Üç ayrı türden örnek: gündelik hayat, iş ve genel kültür. Üçüncüsü önemli bir şeyi de gösteriyor; ansiklopedik metinde skill kişilik enjekte etmiyor, sicil bilgilendirici kalıyor, sadece kalıplar gidiyor.
+
+### 1. Gündelik hayat: tatil yazısı
 
 **Önce:**
 
 > Günümüzde şehir hayatının stresinden uzaklaşmak isteyenler için hafta sonu kaçamakları hayatımızın vazgeçilmez bir parçası haline geldi. Geçtiğimiz hafta sonu iki unutulmaz gün geçirdiğim Ayvalık, beklentilerimi fazlasıyla karşıladı!
 >
 > Ege'nin kalbinde yer alan Ayvalık, zengin tarihi ve büyüleyici doğasıyla ziyaretçilerine eşsiz bir deneyim sunuyor. Taş evleri, dar sokakları ve zeytinlikleriyle bu şirin ilçe — tam anlamıyla bir açık hava müzesi — her köşesinde ayrı bir hikaye barındırıyor.
->
-> Cunda Adası'na uğramadan, meşhur papalinasını tatmadan bir Ayvalık gezisi düşünülemez. Peki ya kahvaltı? Kelimenin tam anlamıyla muhteşem. Ayvalık tostu, sokak lezzetlerinden gastronomi dünyasına uzanan bir yolculuk sunuyor.
->
-> Ama Ayvalık'ı özel kılan sadece gezilecek yerler değil; hissettirdikleri. Sahilden birkaç sokak içeri girin, ilçenin daha otantik yüzünü keşfedin: rengarenk kapılar, mis gibi zeytinyağı kokusu ve sizi yavaşlamaya davet eden samimi esnaf.
 >
 > Sonuç olarak Ayvalık, sadece bir tatil beldesi değil, aynı zamanda bir yaşam biçimi. Tekrar gider miyim? Kesinlikle! Siz de yoğun tempodan uzaklaşmak istiyorsanız, bu büyüleyici ilçe sizi bekliyor. ✨
 
@@ -217,11 +217,49 @@ Skill senin cümle ritmini, kelime seviyeni ve alışkanlıklarını çıkarıp 
 >
 > Cumartesi sabahı Cunda'da kahvaltıyla başladık, o meşhur kalabalığa biz de karıştık. Ayvalık tostu beklemeye değiyor, sonrası çay üstüne çay zaten. Papalina yokmuş. Mevsimi değilmiş, bunu öğrenmek için tezgahtaki adamla on dakika konuşmak gerekti ama o sohbetten bir de zeytinyağcı önerisi çıktı, iyi ki sormuşum.
 >
-> Asıl güzel kısım planladığımız hiçbir şeyde değildi. Sahilden iki sokak içeri girince turist kalabalığı bitiyor, yerini boyası dökülmüş kapılar ve kapı önünde oturan teyzeler alıyor. Bir tanesiyle yarım saat konuştuk, evinin altmış yıllık hikayesini dinledik. Rotamıza yazdığım taş konakların hiçbiri aklımda o kadar yer etmedi.
->
-> Pazar öğleden sonra Şeytan Sofrası'na çıktık. Gün batımı için erken gitmek lazımmış, biz bilmiyorduk. Manzara güzel ama kalabalık ve otopark kargaşası keyfi törpülüyor, bir dahakine oraya harcayacağım vakti Cunda'nın arka sokaklarına veririm.
->
 > Giderken tek valizle gitmiştik, dönüşte bagajda beş litre zeytinyağı ve iki kavanoz sakız reçeli vardı. Ayvalık böyle bir yer, insanı fark ettirmeden alışverişe ikna ediyor. Tekrar giderim, ama bu sefer pazartesiyi de izin alırım; iki gün bu ilçeye az.
+
+Ne değişti: Klişe girizgah ("Günümüzde..."), broşür dili, uzun tireler, "sadece X değil Y" kapanışı ve emoji gitti; yerine somut sahneler, virgülle akan cümleler ve gerçek bir gezi sesi geldi.
+
+### 2. İş: trend raporu özeti
+
+**Önce:**
+
+> 2026 e-ticaret gündemine baktığımda gördüğüm tablo oldukça net: Önümüzdeki dönemde rekabeti belirleyecek unsur, markaların ne kadar çok kampanya yaptığı değil; müşterinin satın alma yolculuğundaki sürtünmeyi ne kadar azalttığı olacak.
+>
+> 1) Teslimat ve iade artık operasyonel bir konu değil, doğrudan ciro konusu. Sepet terkinde fiyat kadar teslimat maliyeti, teslimat hızı, iade kolaylığı ve süreç şeffaflığı belirleyici hale gelmiş durumda. Kısacası müşteri satın alma kararını sadece ürünle vermiyor; teslimat deneyimini de satın alıyor.
+>
+> Kısacası yeni dönemde asıl rekabet, ürünü satmakta değil; müşterinin satın alma kararını mümkün olduğunca kolay, hızlı ve güvenli hale getirmekte yaşanacak.
+
+**Sonra:**
+
+> 2026 e-ticaret trend raporlarından birini okudum bu hafta, beş başlıkta notlarımı paylaşayım. Okurken aklımda hep aynı soru vardı, sepeti dolduran müşteri neden ödeme sayfasında vazgeçiyor? Raporun neredeyse her bölümü dönüp dolaşıp oraya çıkıyor, müşteriyi kaybettiren şey çoğu zaman satın almanın zahmeti çıkıyor.
+>
+> 1) Teslimat ve iade doğrudan ciro kalemi olmuş. Sepet terki verilerinde fiyatın yanına dört kalem daha eklenmiş: teslimat maliyeti, teslimat hızı, iadenin kolaylığı, sürecin şeffaflığı. Müşteri ürünle birlikte teslimat deneyimini de satın alıyor, rapor da bu başlığı operasyon bölümünden çıkarıp gelir bölümüne taşımış zaten.
+>
+> İndirim savaşına girmeden büyümek isteyenlere rapor aslında tek bir yol tarif ediyor, müşterinin yolundaki taşları tek tek ayıklamak. Teslimatı, iadeyi, ödemeyi ve kanal geçişlerini pürüzsüzleştiren markalar 2026'da ayrışacak gibi görünüyor.
+
+Ne değişti: Orijinalin iskeleti "X değil, Y" kalıbıydı (tam metinde 12 kez) ve 10 noktalı virgülün neredeyse hepsi bu kalıbın ekseniydi; ikisi de sıfırlandı. "Kısacası" özet mühürleri gitti, metin soruyla açılıp yeni bir gözlemle kapanıyor.
+
+### 3. Genel kültür: ansiklopedik metin
+
+**Önce:**
+
+> Göbeklitepe, insanlık tarihinin en önemli keşiflerinden biri olarak kabul edilmektedir. Şanlıurfa'nın kalbinde yer alan bu eşsiz arkeolojik alan, yaklaşık 12.000 yıllık geçmişiyle tarihin akışını değiştiren bir dönüm noktası olmuştur.
+>
+> Alanda gerçekleştirilen kazılar, T biçimindeki dikilitaşları gün yüzüne çıkarmıştır. Bu dikilitaşlar; üzerlerindeki tilki, yılan ve yaban domuzu kabartmalarıyla dönemin inanç dünyasına ışık tutmakta, dönemin sanat anlayışını gözler önüne sermekte ve araştırmacılara paha biçilmez bilgiler sunmaktadır. Uzmanlar, alanın dini bir merkez olarak kullanıldığını düşünmektedir.
+>
+> Göbeklitepe sadece bir arkeolojik alan değil, aynı zamanda insanlığın ortak mirasıdır. Sonuç olarak Göbeklitepe, tarihe meraklı herkesin mutlaka görmesi gereken büyüleyici bir destinasyon olarak ziyaretçilerini beklemektedir.
+
+**Sonra:**
+
+> Göbeklitepe, Şanlıurfa'nın yaklaşık 15 kilometre kuzeydoğusunda, 12.000 yıllık bir tapınak alanı. Bilinen en eski anıtsal yapılar arasında olduğu için ders kitaplarındaki "önce tarım, sonra tapınak" sıralamasını tartışmaya açtı, çünkü burayı inşa edenler henüz yerleşik düzene geçmemiş avcı toplayıcılardı.
+>
+> Kazılarda ortaya çıkan T biçimli dikilitaşların boyu 5,5 metreyi buluyor. Üzerlerinde tilki, yılan ve yaban domuzu kabartmaları var, bir kısmında da gövdeye kazınmış kol ve el motifleri; bu yüzden taşların stilize insan figürleri olduğu düşünülüyor. Alanın dini merkez olduğu görüşü ağırlıkta ama kesinleşmiş değil, kazılar sürüyor ve alanın büyük bölümü hala toprak altında.
+>
+> UNESCO, Göbeklitepe'yi 2018'de Dünya Mirası Listesi'ne aldı. Ziyaret bugün kazı alanının üzerine kurulan çelik örtünün altındaki yürüyüş yolundan yapılıyor.
+
+Ne değişti: "-maktadır" kafiyesi, önem şişirmesi ("dönüm noktası"), "-arak/-ıp ışık tutmakta... gözler önüne sermekte" kuyrukları, belirsiz "uzmanlar" ve turizm broşürü kapanışı gitti. Sicil bozulmadı; metin hala ansiklopedik, birinci tekil yok, sadece bilgi netleşti ve kapanışa yeni somut bilgi geldi.
 
 ## Kaynaklar
 
