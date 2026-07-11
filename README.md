@@ -103,7 +103,7 @@ Bu son grup en sinsi olanı, çünkü teller tek tek cümlelerde değil metnin i
 
 ## Gerçek Türkçe böyle akar
 
-Kalıpları temizlemek yetmiyor, boşalan yere bir şey koymak gerekiyor. Skill'in ikinci yarısı bu yüzden var: Gerçek Türkçe düzyazıdan çıkarılmış 16 akış kuralı. Kaynaklar sahici; 2012-2019 arası köşe yazıları, denemeler, bloglar, Ekşi Sözlük'ün beğenilen entry'leri, Hüseyin Rahmi Gürpınar romanı ve Türk kompozisyon geleneği. Birkaçı:
+Kalıpları temizlemek yetmiyor, boşalan yere bir şey koymak gerekiyor. Skill'in ikinci yarısı bu yüzden var: Gerçek Türkçe düzyazıdan çıkarılmış 17 akış kuralı. Kaynaklar sahici; 2012-2019 arası köşe yazıları, denemeler, bloglar, Ekşi Sözlük'ün beğenilen entry'leri, Hüseyin Rahmi Gürpınar romanı ve Türk kompozisyon geleneği. Birkaçı:
 
 - **Fiilleri virgülle zincirle.** Gerçek köşe yazarı tek cümlede on fiil dizer: "başvurdu, izin istedi, şehre gitti, kabirleri buldu, inceledi, rapor yazdı, gönderdi." Kısa cümleleri noktayla dizmek makine ritmi, virgülle akıtmak insan ritmi.
 - **Bağlacı gezdir.** "Çünkü" ve "ama" hep cümle başında oturmaz: "Onların da bir kısmı kayda düştü çünkü."
@@ -234,7 +234,7 @@ Kalıpları ve kuralları beş ayrı damardan derledim:
 
 ## English summary
 
-İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text and rebuilds the prose with the rhythm of real Turkish. It detects 47 patterns, including Turkish-specific signatures English guides miss (the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese, bureaucratic filler stacking, cataphoric colon definitions) and patterns reverse-engineered from open-source AI detectors, with measurable thresholds and an overcorrection guard. It then applies 16 flow rules distilled from close reading of real pre-AI Turkish prose: comma-chained verbs, mobile connectives, reduplication, emotion shown through the body, and a curated idiom reference sourced from Ömer Asım Aksoy's foundational work. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
+İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text and rebuilds the prose with the rhythm of real Turkish. It detects 47 patterns, including Turkish-specific signatures English guides miss (the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese, bureaucratic filler stacking, cataphoric colon definitions) and patterns reverse-engineered from open-source AI detectors, with measurable thresholds and an overcorrection guard. It then applies 17 flow rules distilled from close reading of real pre-AI Turkish prose: comma-chained verbs, mobile connectives, reduplication, reference tracking through Turkish pro-drop, emotion shown through the body, and a curated idiom reference sourced from Ömer Asım Aksoy's foundational work. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
 
 ## Lisans
 
