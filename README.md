@@ -1,12 +1,16 @@
 # İnsanca
 
-ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka yazmış" dedin, değil mi? "Günümüzde..." diye açılıyor, her cümle "-maktadır" ile bitiyor, her şey "kapsamlı" ve "yenilikçi", son paragraf da "Sonuç olarak..." diye başlayıp kimseye bir şey söylemeyen iyimser bir cümleyle kapanıyor.
+Yapay zeka Türkçesi kokan metni insan Türkçesine çevirir.
+
+ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka yazmış" dedin, değil mi? "Günümüzde..." diye açılıyor, her cümle "-maktadır" ile bitiyor, her iddia "mesele X değil, Y" kalıbına sarılmış, son paragraf da "Sonuç olarak..." diye başlayıp kimseye bir şey söylemeyen iyimser bir cümleyle kapanıyor.
 
 İnsanca bu sorunu çözmek için var. Bir agent skill'i olarak metni alıyor, yapay zeka kokusunu tek tek teşhis ediyor ve gerçek bir insanın kaleminden çıkmış gibi okunana kadar yeniden yazıyor. Tamamı düz Markdown olduğu için skill destekleyen her ortamda (Claude Code, OpenCode, Codex vb.) çalışıyor.
 
+İki parçadan oluşuyor: **47 kalıp** yapay zeka izini yakalıyor, **16 akış kuralı** da boşalan yere gerçek Türkçenin ritmini koyuyor. Çünkü kalıp temizlemek işin yarısı; "kapsamlı"yı silip yerine steril bir cümle bırakırsan metin yine kağıt tadı verir.
+
 ## Yapay zeka Türkçesi nasıl kokar?
 
-İnsanca metinde toplam 47 kalıp arıyor. Ben bunları altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın daha uzun önce/sonra örneğini [SKILL.md](SKILL.md) içinde bulabilirsin.
+47 kalıbı altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın uzun önce/sonra örneği [SKILL.md](SKILL.md) içinde.
 
 ### 1. Ritim kokusu
 
@@ -70,7 +74,7 @@ Yapay zekanın ton ayarı bir türlü tutmaz. Ya fazla över, ya kurum bülteni 
 
 ### 5. Biçim kokusu
 
-Bazen metnin görünüşü bile yetiyor. Uzun tire mesela: Türkçede zaten neredeyse hiç kullanılmadığı için tek başına güçlü bir işaret.
+Bazen metnin görünüşü bile yetiyor. Uzun tire mesela: Türkçede zaten neredeyse hiç kullanılmadığı için tek başına güçlü bir işaret. Onu silip yerine noktalı virgül koymak da çözüm sayılmıyor; alan testlerinde 10 noktalı virgüllü bir metin gördük, hepsi göçmüş tireydi.
 
 | Kalıp | Önce | Sonra |
 |-------|------|-------|
@@ -97,30 +101,53 @@ Bu son grup en sinsi olanı, çünkü teller tek tek cümlelerde değil metnin i
 | Kurgu klişeleri | "İçini bir huzursuzluk dalgası kapladı" | Duyguyu sahneyle göster |
 | Aşırı düzeltme kokusu | Zorlama kesik cümleler, sahte pürüzler | Ölçülü bırak, bir iki pürüz yeter |
 
+## Gerçek Türkçe böyle akar
+
+Kalıpları temizlemek yetmiyor, boşalan yere bir şey koymak gerekiyor. Skill'in ikinci yarısı bu yüzden var: Gerçek Türkçe düzyazıdan çıkarılmış 16 akış kuralı. Kaynaklar sahici; 2012-2019 arası köşe yazıları, denemeler, bloglar, Ekşi Sözlük'ün beğenilen entry'leri, Hüseyin Rahmi Gürpınar romanı ve Türk kompozisyon geleneği. Birkaçı:
+
+- **Fiilleri virgülle zincirle.** Gerçek köşe yazarı tek cümlede on fiil dizer: "başvurdu, izin istedi, şehre gitti, kabirleri buldu, inceledi, rapor yazdı, gönderdi." Kısa cümleleri noktayla dizmek makine ritmi, virgülle akıtmak insan ritmi.
+- **Bağlacı gezdir.** "Çünkü" ve "ama" hep cümle başında oturmaz: "Onların da bir kısmı kayda düştü çünkü."
+- **Etiketi vuruştan sonra koy.** Yapay zeka "Asıl soru şu: X" diye anons eder; insan önce söyler, sonra adlandırır: "...değiştirecek mi? Asıl soru budur."
+- **Ritmi duygu eğrisine bağla.** Sükûnette cümle uzar, şok anında üç kelimeye düşer. Kısa cümle sahneyi ilerletiyorsa yerindedir, poz veriyorsa kalıptır.
+- **Duyguyu bedenle göster.** "Korktu" değil; benzi uçsun, elleri titresin.
+- **İkilemeyi geri getir.** "Gittik gittik", "mor mor", "hıçkıra hıçkıra": Türkçenin öz ritim aracı ve çeviri metinlerde ilk kaybolan şey.
+- **Deyimi tuz gibi kullan.** 150-250 kelimede en fazla bir deyim, kalıp dokunulmaz, çekim serbest. Tema tema düzenlenmiş güvenli hazne [references/deyimler.md](references/deyimler.md) dosyasında: Ömer Asım Aksoy kaynaklı 115 deyim, 48 atasözü, yanlış bilinen şekiller ve anlam tuzakları.
+
+Tamamı (miş'li geçmişle aktarım, devrikliğin karakter sesine tahsisi, duruluk ölçüsü, kapanış çeşitliliği...) [SKILL.md](SKILL.md) içinde.
+
 ## Sayılarla da bakar
 
-İşin ilginç tarafı şu: İnsanlar bir metnin yapay zeka yazması olup olmadığını hissederek pek bilemiyor. Araştırmalarda isabet oranı yazı tura seviyesinde çıkıyor. Dedektörler bu yüzden hissetmek yerine sayıyor.
-
-Ben de aynısını yaptım: GPTZero klonları, [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text), [DetectGPT](https://arxiv.org/abs/2301.11305) ve açık kaynak slop dedektörlerinin kaynak kodlarına bakıp ölçtükleri şeyleri skill'e taşıdım. İnsanca nihai metinde cümle uzunluğu çeşitliliğini, açılış kelimesi dağılımını, zarf-fiil kuyruğu payını, uzun tire ve noktalı virgül sayısını, üçleme yoğunluğunu ve ilk-son paragraf örtüşmesini kontrol ediyor.
+İnsanlar bir metnin yapay zeka yazması olup olmadığını hissederek pek bilemiyor; araştırmalarda isabet oranı yazı tura seviyesinde çıkıyor. Dedektörler bu yüzden hissetmek yerine sayıyor. Ben de aynısını yaptım: GPTZero klonları, [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text), [DetectGPT](https://arxiv.org/abs/2301.11305) ve açık kaynak slop dedektörlerinin kaynak kodlarına bakıp ölçtükleri şeyleri skill'e taşıdım. İnsanca nihai metinde cümle uzunluğu çeşitliliğini, açılış kelimesi dağılımını, zarf-fiil kuyruğu payını, uzun tire ve noktalı virgül sayısını, üçleme yoğunluğunu, iki nokta ve "asıl" sayımını, ilk-son paragraf örtüşmesini kontrol ediyor.
 
 Bu araştırmadan iki önemli ders çıktı:
 
 - **Kelime telleri eskiyor, yapısal teller kalıyor.** "Delve" kelimesi damgalanınca modeller kullanmayı bıraktı; "kapsamlı" da muhtemelen aynı yoldan gidecek. Ama tekdüze ritim model nesli değişse de duruyor. Türkçe araştırması da bunu doğruluyor: İnce ayarlı BERT, Türkçe insan/AI metnini yüzde 97 isabetle ayırıyor ve sinyali kelimelerden değil ritimden alıyor.
 - **Aşırı düzeltme de bir imza.** Turnitin 2025'te humanizer araçlarının çıktısına özel tespit modülü duyurdu. İnsanca bu yüzden zorlama kesik cümlelere ve sahte pürüzlere kaçmıyor. Zaten amaç dedektör kandırmak değil, iyi Türkçe yazmak.
 
+## Alan testlerinden
+
+Skill gerçek yapay zeka metinleri üzerinde geliştirildi, her turda kullanıcı eleştirisiyle sıkılaştı. İki örnek ölçüm:
+
+| Metin | "X değil, Y" | Noktalı virgül | Ort. cümle | Kafiye payı |
+|-------|--------------|----------------|------------|-------------|
+| Kurumsal yapay zeka makalesi | 13 → 0 | 0 → 0 | 7,6 → 16,8 kelime | %22 → %14 |
+| E-ticaret trend yazısı | 12 → 0 | 10 → 0 | 15,7 → 14,5 kelime | %19 → %12 |
+
+İlk metin kesik cümle yığınıydı (31 tek satırlık paragraf), ikincisi orta boy metronomdu; ikisinin de iskeleti "X değil, Y" kalıbıydı. Testlerden çıkan en önemli ders skill'in kendisine de girdi: Kelimeleri değiştirip cümle iskeletini korumak kalıbı kaldırmıyor (yapı nakli kalıbı buradan doğdu) ve doğallaştırıcının kendi tikleri de birer kalıp; "asıl" düşkünlüğünü ve her metni soruyla bitirme alışkanlığını bu testler yakaladı.
+
 ## Neyi bozmaz
 
-Temizlik kadar önemli bir konu daha var: Sağlam metni katletmemek. Kusursuz dilbilgisi tek başına şüphe sebebi değil, editörden geçmiş olabilir. Akademik metindeki "-maktadır" da öyle, orada doğru üslup zaten o. Tek tük "kapsamlı" veya "ayrıca" görmek bir şey kanıtlamaz; işaret olan, bunların hep birlikte gelmesi. Teller eş ağırlıkta da değil: "Bir yapay zeka modeli olarak" ifadesi kesin kanıtken tek bir "kapsamlı" zayıf bir sinyal. Alıntılara, başlıklara ve özel adlara ise hiç dokunmuyor.
+Temizlik kadar önemli bir konu daha var: Sağlam metni katletmemek. Kusursuz dilbilgisi tek başına şüphe sebebi değil, editörden geçmiş olabilir. Akademik metindeki "-maktadır" da öyle, orada doğru üslup zaten o. Tek tük "kapsamlı" veya "ayrıca" görmek bir şey kanıtlamaz; işaret olan, bunların hep birlikte gelmesi. Teller eş ağırlıkta da değil: "Bir yapay zeka modeli olarak" ifadesi kesin kanıtken tek bir "kapsamlı" zayıf bir sinyal.
 
-İnsan işaretlerini de koruyor: Tuhaf ve spesifik detaylar, karışık duygular, ara sözler, devrik cümleler, noktalamaya sızmış duygu... Bunları görünce skill metne daha az dokunuyor, daha çok değil.
+Özne-yüklem uyumsuzluğu, mantık yanlışı gibi anlatım bozuklukları ise insan işidir; yapay zeka bu hataları nadiren yapar. İnsanca bunları yapay zeka teli saymaz, dil bilgisi hatası olarak ayrıca düzeltir. Alıntılara, başlıklara ve özel adlara hiç dokunmaz. İnsan işaretlerini de korur: Tuhaf ve spesifik detaylar, karışık duygular, ara sözler, devrik cümleler, noktalamaya sızmış duygu... Bunları görünce skill metne daha az dokunur, daha çok değil.
 
 ## Nasıl çalışır
 
 Tek geçişte yazıp bırakmıyor, üç adımlık bir döngü uyguluyor:
 
 1. **Taslak** — kalıpları temizleyip metni yeniden yazar.
-2. **Denetim** — kendi taslağına "bu metni hala bariz yapay zeka yapan ne?" diye sorar, kalan telleri listeler ve sayısal eşikleri kontrol eder.
-3. **Final** — o telleri de giderip nihai metni teslim eder.
+2. **Denetim** — kendi taslağına iki soru sorar: "Bu metni hala bariz yapay zeka yapan ne?" ve "Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?" Sayısal eşikleri de burada kontrol eder.
+3. **Final** — kalan telleri giderip nihai metni teslim eder.
 
 ## Kurulum
 
@@ -137,7 +164,7 @@ Claude Code eklentisi olarak:
 /plugin install insanca@insanca
 ```
 
-Elle kurmak istersen çalışan tek dosya `SKILL.md`; repoyu ortamının skill dizinine klonlaman yeterli:
+Elle kurmak istersen repoyu ortamının skill dizinine klonlaman yeterli:
 
 ```bash
 git clone https://github.com/tahiryildiz/insanca.git ~/.claude/skills/insanca
@@ -197,18 +224,17 @@ Skill senin cümle ritmini, kelime seviyeni ve alışkanlıklarını çıkarıp 
 
 ## Kaynaklar
 
-Kalıpları beş ayrı damardan derledim:
+Kalıpları ve kuralları beş ayrı damardan derledim:
 
-- **Gerçek Türkçe düzyazı okuması** — 2012-2019 arası köşe yazıları, denemeler, bloglar ve Ekşi Sözlük'ün beğenilen entry'leri; skill'in "Gerçek Türkçe Böyle Akar" bölümü buradan çıktı. Edebi damar için [TDK'nin ücretsiz e-kitapları](https://tdk.gov.tr/genel/e-kitaplar/) okundu (Hüseyin Rahmi Gürpınar külliyatı; ritim, ikileme ve devrik kuralları "Sevda Peşinde"den). Korpus arayanlara [TurkishNLPGuide](https://github.com/nanelimon-organization/TurkishNLPGuide) ve [Bilkent Turkish Writings](https://github.com/selimfirat/bilkent-turkish-writings-dataset) iyi başlangıç
-
-- **Türkçe topluluk gözlemleri** — Ekşi Sözlük'ün yapay zeka entry'si ve ChatGPT yalakalığı başlıkları, Marketing Türkiye'nin şablon cümle derlemesi, TÜBİTAK Bilim Genç'in insan/AI metin karşılaştırması, Türkçe SEO ve içerik topluluklarının doğallaştırma pratikleri
-- **Dedektör tersine mühendisliği** — [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text), [DetectGPT](https://arxiv.org/abs/2301.11305), GPTZero klonları ve açık kaynak slop dedektörlerinin ([unslop](https://github.com/theclaymethod/unslop), [SLOP_Detector](https://github.com/SicariusSicariiStuff/SLOP_Detector), [antislop-sampler](https://github.com/sam-paech/antislop-sampler)) kaynak kodundaki ölçüm eşikleri ve regex listeleri
-- **[Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)** — WikiProject AI Cleanup'ın binlerce vakadan derlediği evrensel teller, Türkçeye uyarlandı
+- **Gerçek Türkçe düzyazı okuması** — 2012-2019 arası köşe yazıları (Özdil, Ahmet Hakan, Yıldırım Türker, Gülse Birsel), denemeler (Birikim, 5Harfliler), bloglar ve Ekşi Sözlük'ün beğenilen entry'leri; edebi damar için [TDK'nin ücretsiz e-kitapları](https://tdk.gov.tr/genel/e-kitaplar/) (Hüseyin Rahmi Gürpınar külliyatı, ritim ve ikileme kuralları "Sevda Peşinde"den), sade öğretici anlatım için [turkdili.gen.tr](https://turkdili.gen.tr) ve anlatım bozuklukları envanteri
+- **Deyim ve atasözü haznesi** — Ömer Asım Aksoy'un kurucu çalışması (TDAY Belleten 1962, TDK) ve MEB derlemesi; [references/deyimler.md](references/deyimler.md) dosyasında
+- **Dedektör tersine mühendisliği** — [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text), [DetectGPT](https://arxiv.org/abs/2301.11305), GPTZero klonları ve açık kaynak slop dedektörlerinin ([unslop](https://github.com/theclaymethod/unslop), [SLOP_Detector](https://github.com/SicariusSicariiStuff/SLOP_Detector), [antislop-sampler](https://github.com/sam-paech/antislop-sampler)) kaynak kodundaki ölçüm eşikleri
+- **Türkçe topluluk gözlemleri** — Ekşi Sözlük'ün yapay zeka entry'si ve ChatGPT yalakalığı başlıkları, Marketing Türkiye'nin şablon cümle derlemesi, TÜBİTAK Bilim Genç'in insan/AI metin karşılaştırması
 - **Nicel araştırmalar** — [Kobak vd.](https://arxiv.org/abs/2406.07016), [Juzek & Ward](https://arxiv.org/abs/2412.11385) ve Türkçe BERT dedektör çalışması ([arXiv:2602.13504](https://arxiv.org/abs/2602.13504)): Kelime telleri eskiyor, yapısal teller kalıyor
 
 ## English summary
 
-İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text. Beyond universal patterns, it targets signatures specific to Turkish: the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese from English (redundant pronouns, "bir" overuse, calqued metaphors), bureaucratic filler stacking, and connector pileups. It also includes patterns reverse-engineered from open-source AI detectors (sentence-length burstiness, opener repetition, summary-sandwich document shape, participial closer share) with measurable thresholds, plus an overcorrection guard. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
+İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text and rebuilds the prose with the rhythm of real Turkish. It detects 47 patterns, including Turkish-specific signatures English guides miss (the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese, bureaucratic filler stacking, cataphoric colon definitions) and patterns reverse-engineered from open-source AI detectors, with measurable thresholds and an overcorrection guard. It then applies 16 flow rules distilled from close reading of real pre-AI Turkish prose: comma-chained verbs, mobile connectives, reduplication, emotion shown through the body, and a curated idiom reference sourced from Ömer Asım Aksoy's foundational work. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
 
 ## Lisans
 
