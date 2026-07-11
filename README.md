@@ -6,7 +6,7 @@ ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka 
 
 İnsanca bu sorunu çözmek için var. Bir agent skill'i olarak metni alıyor, yapay zeka kokusunu tek tek teşhis ediyor ve gerçek bir insanın kaleminden çıkmış gibi okunana kadar yeniden yazıyor. Tamamı düz Markdown olduğu için skill destekleyen her ortamda (Claude Code, OpenCode, Codex vb.) çalışıyor.
 
-İki parçadan oluşuyor: **47 kalıp** yapay zeka izini yakalıyor, **16 akış kuralı** da boşalan yere gerçek Türkçenin ritmini koyuyor. Çünkü kalıp temizlemek işin yarısı; "kapsamlı"yı silip yerine steril bir cümle bırakırsan metin yine kağıt tadı verir.
+İki parçadan oluşuyor: **47 kalıp** yapay zeka izini yakalıyor, **17 akış kuralı** da boşalan yere gerçek Türkçenin ritmini koyuyor. Çünkü kalıp temizlemek işin yarısı; "kapsamlı"yı silip yerine steril bir cümle bırakırsan metin yine kağıt tadı verir.
 
 ## Yapay zeka Türkçesi nasıl kokar?
 

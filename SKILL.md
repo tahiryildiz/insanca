@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.7.0
+version: 1.8.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -132,6 +132,8 @@ Aşağıdaki kurallar Hüseyin Rahmi Gürpınar'ın "Sevda Peşinde" romanının
 **15. Öğüt verirken kısa emir + tek cümle gerekçe.** "-meli/-malı" yığını kurma; "Susun. Güzel konuşmanın birinci kuralı budur." gibi kur. Bu, kısa cümlenin bir başka meşru kullanımıdır: Emir kipi kısalığı hak eder.
 
 **16. Deyimi tuz gibi kullan.** Yerinde bir deyim metne anında insan sesi verir ("uzun uğraşlara rağmen sonuç alınamadı" yerine "havanda su dövdük") ama tuz gibidir, çorbanın kendisi olamaz: Kabaca 150-250 kelimede en fazla bir deyim, asla iki deyim yan yana. Kalıp dokunulmaz, çekim serbesttir ("göz yumdum" olur, "ayıkla bulgurun taşını" olmaz). Yalnızca gerçek deyimleri kullan; model iki deyimi melezleyip sahte kalıp üretebilir. Sicile uy: Argo kökenli deyim kurumsal metinde sırıtır, ağır atasözü sosyal medyada yapmacık kaçar. Tema tema düzenlenmiş güvenli hazne, yanlış bilinen şekiller ve anlam tuzakları için bu skill'in yanındaki `references/deyimler.md` dosyasını oku.
+
+**17. Gönderim merdiveni.** Konuyu metne bir kez tam adıyla tanıt, sonra daha az belirgin gönderime bırak: ad öbeği → adıl → gizli özne (Türkçe adıl düşüren dildir, çoğu zaman özne hiç yazılmaz). Yapay zeka bunun tersini yapar; aynı ad öbeğini her cümlede yeniden kurar ("Şirket şunu yaptı. Şirket ayrıca... Bu şirketin...") ve dilbilim araştırmasının gösterdiği gibi konu eklemlenmemiş bağımsız birimlere bölünüp metnin tutarlılığı düşer. Özneyi bir kez tanıttıktan sonra yükü fiil çekimi taşısın; ad öbeğini ancak konu gerçekten değişince yeniden kur. (Bu kural, §42 açılış tekrarının dilbilimsel temelidir.) Bağlaç seçiminde de derlem gerçeğine uy: Türkçenin bütün sıklık derlemlerinde "ama" ilk 25 kelimenin içinde, "öte yandan" ve "bununla birlikte" ise hiçbirinin ilk 50'sinde yok; resmi sicil gerektirmiyorsa "ama"dan şaşma.
 
 
 ## İÇERİK KALIPLARI
@@ -867,6 +869,7 @@ Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikl
 - Gerçek Türkçe düzyazı okuması: 2012-2019 arası köşe yazıları, denemeler, bloglar ve Ekşi Sözlük debe entry'leri — "Gerçek Türkçe Böyle Akar" bölümünün ve §46'nın kaynağı.
 - Sade öğretici anlatım ve anlatım bozuklukları: [turkdili.gen.tr](https://turkdili.gen.tr) (Doç. Dr. Ahmet Kayasandık'ın Türk Dili ders sitesi) — 13-15 numaralı kuralların ve insan hatası tipolojisinin kaynağı. Özellikle [anlatım bozuklukları envanteri](https://turkdili.gen.tr/anlat-m-bozukluklar-.html) (200+ örnek: duruluk, tekrarlama, mantık yanlışı) hem fazlalık temizliği hem yanlış pozitif ayrımı için başvuru. Dikkat: Sitenin yazım ve noktalama sayfaları 2005 TDK kılavuzuna dayanır; yazım sorularında güncel TDK kaynağıyla çapraz kontrol et.
 - Deyim ve atasözü haznesi: Ömer Asım Aksoy, "Atasözleri, Deyimler" (TDAY Belleten 1962, TDK) ve MEB atasözleri derlemesi — 16 numaralı kuralın ve `references/deyimler.md` dosyasının kaynağı
+- Dilbilim ve derlem kanıtı: TDK "Türkçenin Eğitimi-Öğretiminde Kuramsal ve Uygulamalı Çalışmalar 12" (2022) — 17 numaralı kuralın kaynağı: gönderim/belirginlik hiyerarşisi (Esmer; Givon 1983 çerçevesi) ve Türkçe sıklık derlemlerinde bağlaç dağılımı (ODTÜ Derlemi, Göz 2003, TS Corpus). Not: İnsan hatasının ek/yazım düzeyinde, yapay zeka izinin söylem düzeyinde toplandığına dair karşılaştırma verisi de buradan; örneklemi yabancı öğrenici olduğu için destekleyici kanıt sayılır, tek başına dayanak değil.
 - Edebi Türkçe okuması: Hüseyin Rahmi Gürpınar, "Sevda Peşinde" (TDK basımı) — 8-12 numaralı kuralların kaynağı. [TDK e-kitap sayfası](https://tdk.gov.tr/genel/e-kitaplar/) fiilen ücretsiz bir Gürpınar külliyatı; üslup çalışmak için özellikle Şıpsevdi (sicil çarpışması), Gulyabani (halk ağzı), Ben Deli miyim? (iç monolog) ve Efsuncu Baba (diyalog dokusu). Aynı sayfadaki [Eş Dizim Sözlüğü](https://tdk.gov.tr/wp-content/uploads/2019/12/01-T%C3%9CRK%C4%B0YE-T%C3%9CRK%C3%87ES%C4%B0NDE-ADLARLA-%C3%96N-ADLARIN-B%C4%B0RL%C4%B0KTEL%C4%B0K-KULLANIMI-VE-E%C5%9E-D%C4%B0Z%C4%B0M-S%C3%96ZL%C3%9C%C4%9E%C3%9C.pdf) hangi sıfatın hangi adla doğal eşleştiğini gösterir; çeviri kokusu şüphesinde başvur. Korpus arayanlara: [TurkishNLPGuide](https://github.com/nanelimon-organization/TurkishNLPGuide) derlemesi ve özellikle [Bilkent Turkish Writings](https://github.com/selimfirat/bilkent-turkish-writings-dataset) (2014-2018 arası dokuz bin öğrenci denemesi, tamamı yapay zeka öncesi). Çeviri korpuslarını (OPUS, Tatoeba) üslup referansı olarak kullanma; tam da kaçınılan çeviri kokusunu taşırlar.
 
 Wikipedia'dan temel içgörü: "Büyük dil modelleri bir sonraki kelimeyi istatistiksel olarak tahmin eder. Sonuç, en geniş durum yelpazesine uyan, istatistiksel olarak en olası metne yakınsar."
