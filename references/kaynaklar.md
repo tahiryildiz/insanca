@@ -43,7 +43,7 @@
 | [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) | **işlendi** + **sırada** | Temel kaynak (v1.0); 2026 ekleri v1.9'da işlendi (koşaç kaçışı, üç aşamalı ret); sayfa canlı, dönemsel tekrar taranmalı |
 | [WikiProject AI Cleanup/Guide](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup/Guide) | bakılabilir | Regex avlama desenleri ("..., -ing its" ≈ Türkçe zarf-fiil+vurgulamak zinciri) |
 | [slop-forensics + EQ-Bench Slop Score](https://eqbench.com/slop-score.html) | **sırada** | Model başına slop profili; "hangi modelden çıkmış" ipucu özelliği için tek veri kaynağı; %60 kelime + %25 not-x-but-y + %15 trigram ağırlık şeması |
-| [DAMAGE: humanizer artefaktları (arXiv 2501.03437)](https://arxiv.org/html/2501.03437v1) | **işlendi** (v1.9) | 19 humanizer aracının hata taksonomisi §45'e girdi |
+| [DAMAGE: doğallaştırma aracı artefaktları (arXiv 2501.03437)](https://arxiv.org/html/2501.03437v1) | **işlendi** (v1.9) | 19 doğallaştırma aracının hata taksonomisi §45'e girdi |
 | [tropes.fyi](https://tropes.fyi/) | **işlendi** (v1.9) | "Serves as" ve "Ne X. Ne Y. Sadece Z." kalıpları |
 | [stop-slop](https://github.com/hardikpandya/stop-slop) | bakılabilir | Puanlama rubriği fikri, girizgah kalıpları |
 | [skill-deslop](https://github.com/stephenturner/skill-deslop) | bakılabilir | Akademik bağlam istisnası mantığı (bizde kısmen var) |

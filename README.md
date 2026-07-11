@@ -123,7 +123,7 @@ Tamamı (miş'li geçmişle aktarım, devrikliğin karakter sesine tahsisi, duru
 Bu araştırmadan iki önemli ders çıktı:
 
 - **Kelime telleri eskiyor, yapısal teller kalıyor.** "Delve" kelimesi damgalanınca modeller kullanmayı bıraktı; "kapsamlı" da muhtemelen aynı yoldan gidecek. Ama tekdüze ritim model nesli değişse de duruyor. Türkçe araştırması da bunu doğruluyor: İnce ayarlı BERT, Türkçe insan/AI metnini yüzde 97 isabetle ayırıyor ve sinyali kelimelerden değil ritimden alıyor.
-- **Aşırı düzeltme de bir imza.** Turnitin 2025'te humanizer araçlarının çıktısına özel tespit modülü duyurdu. İnsanca bu yüzden zorlama kesik cümlelere ve sahte pürüzlere kaçmıyor. Zaten amaç dedektör kandırmak değil, iyi Türkçe yazmak.
+- **Aşırı düzeltme de bir imza.** Turnitin 2025'te piyasadaki doğallaştırma araçlarının çıktısına özel tespit modülü duyurdu. İnsanca bu yüzden zorlama kesik cümlelere ve sahte pürüzlere kaçmıyor. Zaten amaç dedektör kandırmak değil, iyi Türkçe yazmak.
 
 ## Alan testlerinden
 
