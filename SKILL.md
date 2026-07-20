@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.10.0
+version: 1.11.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -117,7 +117,7 @@ Aşağıdaki kurallar Hüseyin Rahmi Gürpınar'ın "Sevda Peşinde" romanının
 
 **10. İkilemeyi geri getir.** "Gittik gittik", "mor mor çiçekler", "didik didik", "hıçkıra hıçkıra", "ede ede" — Türkçenin öz ritim aracı ve çeviri metinlerde ilk kaybolan şey. "Tamamen", "kesinlikle", "defalarca" gibi çeviri kokan zarfların yerine çoğu zaman ikileme daha doğal oturur.
 
-**11. Devrikliği karakter sesine tahsis et.** Anlatıcı ve açıklayıcı ses kurallı kalır; devrik ve eksiltili cümle konuşmaya ve yüksek duyguya saklanır ("Geçinme dünyası bu...", "Öldür bey... Öldür..."). Her yerde devrik özenti kokar, hiç devrik olmayan metin kağıt tadı verir.
+**11. Devrikliği karakter sesine tahsis et.** Anlatıcı ve açıklayıcı ses kurallı kalır; devrik ve eksiltili cümle konuşmaya ve yüksek duyguya saklanır ("Geçinme dünyası bu...", "Öldür bey... Öldür..."). Her yerde devrik özenti kokar, hiç devrik olmayan metin kağıt tadı verir. (Bu kural vurgu devriği içindir; bilinen öğenin yüklem arkasına sarkması ayrı bir mekanizmadır ve anlatıcı sesinde de serbesttir, bkz. kural 18.)
 
 **12. Aktarılan olayı miş'li geçmişle anlat.** Tanık olmadığın, başkasından duyduğun veya sonradan kurduğun olayı "-miş" kipiyle akıt ("sandala binmiş, açılmış, bir daha da görülmemiş"). Yapay zekanın neredeyse hiç kullanmadığı, Türkçeye özgü bir anlatı katmanıdır ve metne anında insan sesi verir.
 
@@ -134,6 +134,26 @@ Aşağıdaki kurallar Hüseyin Rahmi Gürpınar'ın "Sevda Peşinde" romanının
 **16. Deyimi tuz gibi kullan.** Yerinde bir deyim metne anında insan sesi verir ("uzun uğraşlara rağmen sonuç alınamadı" yerine "havanda su dövdük") ama tuz gibidir, çorbanın kendisi olamaz: Kabaca 150-250 kelimede en fazla bir deyim, asla iki deyim yan yana. Kalıp dokunulmaz, çekim serbesttir ("göz yumdum" olur, "ayıkla bulgurun taşını" olmaz). Yalnızca gerçek deyimleri kullan; model iki deyimi melezleyip sahte kalıp üretebilir. Sicile uy: Argo kökenli deyim kurumsal metinde sırıtır, ağır atasözü sosyal medyada yapmacık kaçar. Tema tema düzenlenmiş güvenli hazne, yanlış bilinen şekiller ve anlam tuzakları için bu skill'in yanındaki `references/deyimler.md` dosyasını oku.
 
 **17. Gönderim merdiveni.** Konuyu metne bir kez tam adıyla tanıt, sonra daha az belirgin gönderime bırak: ad öbeği → adıl → gizli özne (Türkçe adıl düşüren dildir, çoğu zaman özne hiç yazılmaz). Yapay zeka bunun tersini yapar; aynı ad öbeğini her cümlede yeniden kurar ("Şirket şunu yaptı. Şirket ayrıca... Bu şirketin...") ve dilbilim araştırmasının gösterdiği gibi konu eklemlenmemiş bağımsız birimlere bölünüp metnin tutarlılığı düşer. Özneyi bir kez tanıttıktan sonra yükü fiil çekimi taşısın; ad öbeğini ancak konu gerçekten değişince yeniden kur. (Bu kural, §42 açılış tekrarının dilbilimsel temelidir.) Bağlaç seçiminde de derlem gerçeğine uy: Türkçenin bütün sıklık derlemlerinde "ama" ilk 25 kelimenin içinde, "öte yandan" ve "bununla birlikte" ise hiçbirinin ilk 50'sinde yok; resmi sicil gerektirmiyorsa "ama"dan şaşma.
+
+### Anlatı ve diyalog Türkçesi
+
+Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler Türk edebiyatından bir roman (modern edebi anlatı) ve Amerikan edebiyatından klasik bir romanın usta işi çevirisi (çeviri Türkçesi, yoğun diyalog dokusu). İki korpus, Gürpınar'dan çıkarılan 8-12 numaralı kuralların bugünkü anlatı Türkçesinde de aynen yaşadığını bağımsız olarak doğruladı; aşağıdakiler o kuralların kapsamadığı katmanlar. Doğal yatakları anlatı, anı, röportaj ve hikayeli metin; 23 her türde geçerlidir, 24-25 diyaloğa özgüdür.
+
+**18. Bilinen öğeyi yüklemden sonraya at.** Türkçe düzyazının bilgi akışı kuralı: Yeni bilgi yüklemden önce gelir, bilinen/verili öğe yüklemin arkasına sarkabilir ("Öfkeli bir homurtu yükseldi kalabalıktan.", "katlanarak çoğaldı suretleri, çoğalarak iç içe geçti benzerlikleri"). Bu bir duygu aracı değil ritim ve akış aracıdır; kural 11'deki vurgu devriğinden farklı olarak yansız anlatıcı sesinde de serbesttir. Yapay zeka cümleyi yüzde yüz yüklemle bitirir; §13'teki cümle sonu kafiyesinin yapısal kaynağı budur ve kuyruk, kelime değiştirmeden o kafiyeyi kırar.
+
+**19. Geçmişi üç katmanla doku.** Anlatı paragrafı tek kipte akmaz: "-mişti" önceki durumu kurar, "-iyordu" fonu ve algıyı taşır, "-di" olay çizgisini ilerletir ("Akşam olmuştu sonunda. Dışarda sokak ışıkları yanmıştı; neon yanıp sönüyordu... ayaklarını yere indirip uyuşmuş bacaklarını ovuşturdu."). Kural 12'deki miş'li aktarımdan farklıdır: Orada tanık olunmayan olay, burada tanık olunan sahnenin ön/arka plan katmanlaması. Yapay zeka anlatısı her şeyi tekdüze "-di" zincirine düzler.
+
+**20. Tezlik ve sürerlik fiillerini geri getir.** "-ivermek" (ansızın: "yatışıvermişti"), "-akalmak" (donup kalma: "kalakaldı"), "-ıp durmak / fiil+durdu" (süreklilik: "bakıp duruyordu", "konuştu durdu sabaha kadar"). İngilizcede yapısal karşılığı olmayan, bu yüzden çeviri ve yapay zeka metinlerinde ilk kaybolan Türkçe görünüş katmanı; kural 10'daki ikilemenin fiil kardeşi.
+
+**21. İç sesi etiketsiz ver.** Karakterin akıl yürütmesi "diye düşündü" etiketi olmadan, anlatıcı cümlesi kılığında ve karakterin kelime dağarcığıyla verilir: "Meryem'in hoşuna gitmişti bu açıklama: likör içkiden sayılmazdı." / "Nasıl olsa yenilerini getiriyordu herifi." ("herifi" karakterin sicilidir, anlatıcının değil). Yapay zeka bakış açılarını steril ayırır ve her düşünceyi etiketler; sicil sızması güçlü bir insan imzasıdır.
+
+**22. Kişiye tavırla gönder.** Anlatı ve portrede kişiye gönderim nötr ad tekrarı veya eşanlamlı rotasyonuyla (§12) değil, hüküm ve mini hikaye taşıyan lakap ya da niteleme katarıyla yapılır: "Hijyen Tijen", "kahvaltısını rakıya ekmek doğrayarak yaptığı söylenen kulağı delik, ağzı bozuk bir gazeteci". Kural 17'deki merdivene üçüncü insan yolu: Her gönderim yeni bilgi ve tavır ekler. Teknik ve kurumsal metinde kullanma.
+
+**23. Sayma işini insan gibi yap.** İnsan listesi ikiden birini yapar: Ya taşar (üçü çok geçen, bakışımsız, yaşanmışlık yüklü zincir) ya da örnekleyip kesilir ("anatomi kitabı, tahta sandalye, plastik kova... ne bulursa"); kapalı ve simetrik üçlü sıralama (§10) makine işidir. Yaklaşıklık da sayı ikilisiyle verilir: "üç beş kelime", "sekiz on kişi", "on altı, on sekiz saat". "Yaklaşık 8-10 kişi" yazma; hem kalıp hem §22'lik tire taşıyor.
+
+**24. Diyalog etiketini çeşitle.** Usta işi diyalog tek atıf formülüne oturmaz, üç aracı dönüşümlü kullanır: Eylem cümlesi + iki nokta ("Sam yere tükürdü: '...'"), gezen "dedi" (addan önce, addan sonra, alıntının ortasında; yerine göre "diye sordu", "diye seslendi") ve hızlı atışmalarda beş on satır etiketsiz yaylım. Her satırın «"...," dedi X.» ile bitmesi diyaloğun §13 kafiyesidir.
+
+**25. Konuşmayı parçacık ve seslenmeyle canlandır.** Gerçek konuşma Türkçesi tavır parçacıklarıyla doludur: "bari", "hele", "falan", "ki" ("gitmedin ki"), sona atılan gerekçe "de"si ("Bir daha dönmemek üzere gitmem gerekiyor. Bir mektup geldi de."), cümle sonuna kayan kesinlik zarfı ("bırakırlardı herhalde"). Teklif çoğu zaman olumsuz ya da geçmiş soruyla yapılır ("İçeri gelip bir şey içmez miydiniz?"; yapay zekanın düz "ister misiniz?"i değil). İlişkiyi kodlayan hitaplar da buraya girer ("evlat", "ahbap", "yavrum") ama sicile bağlıdır; kurumsal metne taşıma. Yapay zeka diyaloğu bunların hepsinden arınmıştır ve tam da bu yüzden konuşma değil yazı gibi okunur.
 
 
 ## İÇERİK KALIPLARI
@@ -887,6 +907,7 @@ Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikl
 - Deyim ve atasözü haznesi: Ömer Asım Aksoy, "Atasözleri, Deyimler" (TDAY Belleten 1962, TDK) ve MEB atasözleri derlemesi — 16 numaralı kuralın ve `references/deyimler.md` dosyasının kaynağı
 - Dilbilim ve derlem kanıtı: TDK "Türkçenin Eğitimi-Öğretiminde Kuramsal ve Uygulamalı Çalışmalar 12" (2022) — 17 numaralı kuralın kaynağı: gönderim/belirginlik hiyerarşisi (Esmer; Givon 1983 çerçevesi) ve Türkçe sıklık derlemlerinde bağlaç dağılımı (ODTÜ Derlemi, Göz 2003, TS Corpus). Not: İnsan hatasının ek/yazım düzeyinde, yapay zeka izinin söylem düzeyinde toplandığına dair karşılaştırma verisi de buradan; örneklemi yabancı öğrenici olduğu için destekleyici kanıt sayılır, tek başına dayanak değil.
 - Edebi Türkçe okuması: Hüseyin Rahmi Gürpınar, "Sevda Peşinde" (TDK basımı) — 8-12 numaralı kuralların kaynağı. [TDK e-kitap sayfası](https://tdk.gov.tr/genel/e-kitaplar/) fiilen ücretsiz bir Gürpınar külliyatı; üslup çalışmak için özellikle Şıpsevdi (sicil çarpışması), Gulyabani (halk ağzı), Ben Deli miyim? (iç monolog) ve Efsuncu Baba (diyalog dokusu). Aynı sayfadaki [Eş Dizim Sözlüğü](https://tdk.gov.tr/wp-content/uploads/2019/12/01-T%C3%9CRK%C4%B0YE-T%C3%9CRK%C3%87ES%C4%B0NDE-ADLARLA-%C3%96N-ADLARIN-B%C4%B0RL%C4%B0KTEL%C4%B0K-KULLANIMI-VE-E%C5%9E-D%C4%B0Z%C4%B0M-S%C3%96ZL%C3%9C%C4%9E%C3%9C.pdf) hangi sıfatın hangi adla doğal eşleştiğini gösterir; çeviri kokusu şüphesinde başvur. Korpus arayanlara: [TurkishNLPGuide](https://github.com/nanelimon-organization/TurkishNLPGuide) derlemesi ve özellikle [Bilkent Turkish Writings](https://github.com/selimfirat/bilkent-turkish-writings-dataset) (2014-2018 arası dokuz bin öğrenci denemesi, tamamı yapay zeka öncesi). Çeviri korpuslarını (OPUS, Tatoeba) üslup referansı olarak kullanma; tam da kaçınılan çeviri kokusunu taşırlar.
+- Modern anlatı ve diyalog okuması: 2000'ler Türk edebiyatından bir roman ile Amerikan edebiyatından klasik bir romanın çevirisi — 18-25 numaralı kuralların kaynağı. İki korpus, Gürpınar'dan çıkarılan 8-12 numaralı kuralların (ikileme, duyguyu bedenle gösterme, miş'li aktarım, cümle sonu bağlaç) modern edebi Türkçede ve usta işi çeviride aynen yaşadığını bağımsız olarak doğruladı. Çeviri korpusu ayrıca §16 için pozitif kanıt: İyi insan çevirisi, örneklenen hiçbir bölümde tek bir kalıp çeviri metaforu ("goblen" ailesi) taşımıyor; çeviri kokusu çevirinin değil kötü çevirinin imzası.
 
 Kapsamlı kaynak envanteri (işlenmiş, sırada bekleyen ve elenen kaynaklar): bu skill'in yanındaki `references/kaynaklar.md` dosyası.
 

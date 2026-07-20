@@ -60,6 +60,8 @@
 | Kaynak | Durum | Katkı |
 |---|---|---|
 | Gürpınar, Sevda Peşinde (TDK) | **işlendi** (v1.5) | Kurallar 8-12 |
+| Modern Türk romanı (2002) | **işlendi** (v1.11) | Kurallar 18, 21-23 (kuyruklu cümle, etiketsiz iç ses, tavırlı adlandırma, insan listesi); Gürpınar kurallarının modern doğrulaması. Elenenler: kiazm (kalıplaşma riski), "hani şu ... var ya" (dar), baş-son aynası (kitap ölçekli) |
+| Klasik Amerikan romanı çevirisi | **işlendi** (v1.11) | Kurallar 18-20, 24-25 (artlama, zaman dokuması, tezlik/sürerlik fiilleri, diyalog etiketi, konuşma parçacıkları); §16 için pozitif kanıt (usta çeviride sıfır kalıp metafor) |
 | Gürpınar, Gulyabani / Şıpsevdi / Ben Deli miyim? (TDK e-kitap) | **sırada** | Halk ağzı, sicil çarpışması, iç monolog katmanları |
 | [TDK Eş Dizim Sözlüğü](https://tdk.gov.tr/wp-content/uploads/2019/12/01-T%C3%9CRK%C4%B0YE-T%C3%9CRK%C3%87ES%C4%B0NDE-ADLARLA-%C3%96N-ADLARIN-B%C4%B0RL%C4%B0KTEL%C4%B0K-KULLANIMI-VE-E%C5%9E-D%C4%B0Z%C4%B0M-S%C3%96ZL%C3%9C%C4%9E%C3%9C.pdf) | bakılabilir | Sıfat-ad eşdizim doğrulama (çeviri kokusu şüphesinde) |
 | Aksoy, Atasözleri-Deyimler (1962) + MEB derlemesi | **işlendi** (v1.7) | references/deyimler.md |
