@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.11.0
+version: 1.12.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -10,7 +10,7 @@ description: |
   metronomik cümle ritmi, "mesele X değil Y" kalıbı, üçleme kuralı, çeviri
   kokusu, kesik cümle yığını, bürokratik dolgu, boş doğrular, uydurma
   örnekler, terapist tonu, jenerik girizgah ve kapanışlar, uzun tire,
-  yağcılık, belirsiz kaynak gösterme.
+  yağcılık, belirsiz kaynak gösterme, sahte şiirsellik ve "belki de" vecizesi.
 license: MIT
 compatibility: any-agent
 allowed-tools:
@@ -253,9 +253,9 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 
 ### 8. Yapay Zeka Kelime Dağarcığı ve Şablon Cümleler
 
-**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkan sunmak, önem arz etmek, potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji, oyun değiştirici / oyunu değiştiren / oyunun kurallarını yeniden yazan, ezber bozan, ...nın DNA'sı
+**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkan sunmak, önem arz etmek, gerçekleştirmek ("yapmak/düzenlemek" dururken: "etkinlik gerçekleştirildi"), potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji, oyun değiştirici / oyunu değiştiren / oyunun kurallarını yeniden yazan, ezber bozan, ...nın DNA'sı
 
-**Şablon cümleler:** "Bu durum, ...i beraberinde getiriyor", "Öne çıkan başlıklar arasında ... yer alıyor", "Bu çerçevede değerlendirildiğinde", "... giderek daha önemli hale geliyor", "Bu çalışmanın amacı, ... konusunu kapsamlı bir biçimde ele almaktır"
+**Şablon cümleler:** "Bu durum, ...i beraberinde getiriyor", "Öne çıkan başlıklar arasında ... yer alıyor", "Bu çerçevede değerlendirildiğinde", "... giderek daha önemli hale geliyor", "Bu çalışmanın amacı, ... konusunu kapsamlı bir biçimde ele almaktır", "İşte tam da bu yüzden ..." (vurgu anonsu; bkz. Gerçek Türkçe kural 6: vurguyu kalıpla değil tekrar ve devrikle yap)
 
 **Sorun:** Bu kelimeler ve cümle iskeletleri 2023 sonrası Türkçe metinlerde çok daha sık görülür ve genellikle bir arada gelir. Tek tük geçmeleri normaldir; kümelenmeleri imzadır.
 
@@ -349,7 +349,7 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 
 ### 16. Çeviri Kokusu
 
-**Dikkat edilecek ifadeler:** hadi başlayalım, işte bu kadar, bu harika çünkü..., kendinize şu soruyu sorun, unutmayın:, daha fazlası için, işte size..., bir düşünün, ve evet, doğru duydunuz, karmaşık bir goblen, ...'in dinamik dünyasında, günün sonunda, oyun değiştirici, konfor alanından çık, bir sonraki seviyeye taşı
+**Dikkat edilecek ifadeler:** hadi başlayalım, işte bu kadar, bu harika çünkü..., kendinize şu soruyu sorun, unutmayın:, daha fazlası için, işte size..., bir düşünün, ve evet, doğru duydunuz, karmaşık bir goblen, ...'in dinamik dünyasında, günün sonunda, çünkü günün sonunda, oyun değiştirici, konfor alanından çık, bir sonraki seviyeye taşı
 
 **Sorun:** Metin İngilizce düşünülüp Türkçeye çevrilmiş gibi okunur. Belirtileri:
 - **Gereksiz zamirler.** Türkçe zamir düşüren bir dildir; "Siz de kendi hikayenizi siz yazabilirsiniz" değil, "Kendi hikayeni kendin yazarsın." Her cümlede "siz", "ben", "o" varsa çeviri kokar.
@@ -572,7 +572,7 @@ Nihai metni teslim etmeden önce `—` ve `–` için tara. Tek bir tane bile va
 
 ### 30. Jenerik Kapanışlar ve Özet Takıntısı
 
-**Dikkat edilecek ifadeler:** Sonuç olarak, Özetle, Uzun lafın kısası, Velhasıl kelam, Kısacası (son paragraf başında); gelecek parlak görünüyor, heyecan verici gelişmeler bizi bekliyor, doğru adımlarla başarı kaçınılmaz, unutmayın ki..., siz de bu dönüşümün bir parçası olun
+**Dikkat edilecek ifadeler:** Sonuç olarak, Özetle, Uzun lafın kısası, Velhasıl kelam, Kısacası (son paragraf başında); gelecek parlak görünüyor, heyecan verici gelişmeler bizi bekliyor, doğru adımlarla başarı kaçınılmaz, unutmayın ki..., siz de bu dönüşümün bir parçası olun; "Peki siz ...?" / "Peki ya siz?" sorusuyla bitirme (etkileşim tuzağı kapanışı); "Belki de ..." ile açılan spekülatif-şiirsel son cümle ("Belki de asıl mesele hiç ... olmamıştı.")
 
 **Sorun:** İki bileşen var: (a) son paragrafın kalıp bir özet işaretiyle açılması, (b) metnin zaten söylediklerinin sonda bir kez daha özetlenmesi ve somut hiçbir şey söylemeyen iyimser bir cümleyle kapanması. Kısa ve orta boy metinler özet paragrafı gerektirmez. İyi bir kapanış ya yeni ve somut bir bilgi verir ya da hiç olmaz.
 
@@ -689,14 +689,16 @@ Nihai metni teslim etmeden önce `—` ve `–` için tara. Tek bir tane bile va
 > Politika sonuçları etkileyebilir.
 
 
-### 39. Aforizma Formülleri
+### 39. Aforizma Formülleri ve Sahte Şiirsellik
 
-**Dikkat edilecek ifadeler:** X, Y'nin dilidir; X bir araç değil, bir yaşam biçimidir; başarının anahtarı; X'in gücü; her şey X ile başlar; X'siz Y olmaz
+**Dikkat edilecek ifadeler:** X, Y'nin dilidir; X bir araç değil, bir yaşam biçimidir; başarının anahtarı; X'in gücü; her şey X ile başlar; X'siz Y olmaz; bazen en büyük X, en derin Y'de saklıdır; bazı kapılar kapanır, bazılarıysa hiç beklemediğiniz anda açılır; belki de asıl X ...dır (spekülatif vecize açılışı olarak "belki de")
 
 **Sorun:** Sıradan bir iddia, duvara asılacak vecizeye çevrilir; kulağa derin gelir ama netlik katmaz. Aynı aileden bir tel de "neredeyse oturan" metaforlardır: hızlı okumada zekice duran ama üstüne düşününce eşleşmeyen benzetmeler ("strateji, gitar akordu gibidir: ..."). Formülün işaret ettiği somut iddiayı yaz; benzetme kuruyorsan uçlarına kadar çalıştığından emin ol.
 
+İkinci katman, konunun gereksiz şiirselleşmesi: Düz bilgi metninin ortasına "bazen en büyük cevaplar, en derin sessizliklerde saklıdır" gibi, hiçbir somut iddia taşımayan ama duygu yüklü genellemeler serpilir. İmzası çifte üstünlük derecesidir ("en büyük ... en derin ...") ve karşıtlık simetrisidir ("bazı kapılar kapanır, bazıları açılır"). "Belki de" burada tetikleyici görevi görür: Model spekülatif derinlik havası için cümleyi "Belki de..." ile açar, özellikle kapanışlarda (bkz. §30). Gündelik "belki de" kullanımı ("belki de yarın gelirim") tamamen normaldir; işaret, "belki de"nin arkasından vecize gelmesidir.
+
 **Önce:**
-> Tasarım, güvenin dilidir. Sadelik bir tercih değil, bir yaşam biçimidir. Her şey empatiyle başlar.
+> Tasarım, güvenin dilidir. Sadelik bir tercih değil, bir yaşam biçimidir. Her şey empatiyle başlar. Belki de en iyi arayüzler, en az fark edilenlerdir.
 
 **Sonra:**
 > Düzenli ve tutarlı arayüzler kullanıcıya "burası çalışıyor" hissi verir; ödeme sayfasında bu his dönüşümü doğrudan etkiler.
@@ -811,6 +813,7 @@ Temiz yazan bir insan, yukarıdaki kalıpların birkaçına yapay zeka olmadan d
 - **Yaygın bağlaçlar tek başına.** Bir "ayrıca" veya "ancak" işaret değildir; her cümle başında bağlaç varsa işarettir.
 - **Tek bir kısa vurucu cümle.** İnsanlar vurgu için kesik cümle kullanır. Yalnızca art arda birkaç kesik cümle tonu şişiriyorsa işaretle.
 - **Tek tük retorik soru veya "dürüst olmak gerekirse".** Gündelik yazıda olağandır; işaret, kalıplaşmış tekrar ve teatral duraklamadır.
+- **Sıradan "belki de".** İhtimal bildiren gündelik kullanım ("belki de haklısın") insan Türkçesinin doğal parçası; işaret, "belki de"nin vecize taşıması ve kapanışta spekülatif derinlik pozu vermesidir (bkz. §39, §30).
 - **Kaynaksız iddialar.** İnternetin çoğu kaynaksızdır; alıntı yokluğu tek başına bir şey kanıtlamaz.
 - **Alıntı içindeki kalıplar.** Tırnak içindeki sözler, başlıklar, özel adlar ve kalıbın örnek olarak tartışıldığı yerlerdeki ifadeleri yeniden yazma.
 - **İnsan hatası tipolojisi.** Özne-yüklem uyumsuzluğu, mantık yanlışı ("80 bin civarında göz taramasından geçirilmiş hastamız var"), öge eksikliği, sıra yanlışlığı gibi anlatım bozuklukları insan işidir; yapay zeka bu hataları nadiren yapar. Bunları gördüğünde yapay zeka teli olarak değil, dil bilgisi hatası olarak ayrıca ve nazikçe düzelt.
