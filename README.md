@@ -1,5 +1,7 @@
 # İnsanca
 
+![İnsanca: yapay zeka metinlerini daha doğal, akıcı ve insanca hale getirir](assets/banner.webp)
+
 Yapay zeka Türkçesi kokan metni insan Türkçesine çevirir.
 
 ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka yazmış" dedin, değil mi? "Günümüzde..." diye açılıyor, her cümle "-maktadır" ile bitiyor, her iddia "mesele X değil, Y" kalıbına sarılmış, son paragraf da "Sonuç olarak..." diye başlayıp kimseye bir şey söylemeyen iyimser bir cümleyle kapanıyor.
