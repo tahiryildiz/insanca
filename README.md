@@ -12,7 +12,7 @@ ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka 
 
 ## Yapay zeka Türkçesi nasıl kokar?
 
-55 kalıbı altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın uzun önce/sonra örneği [SKILL.md](SKILL.md) içinde.
+55 kalıbı altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; kalıp dizini [SKILL.md](SKILL.md) içinde, her kalıbın uzun önce/sonra örneği [references/kaliplar/](references/kaliplar/) klasöründe.
 
 ### 1. Ritim kokusu
 
@@ -123,7 +123,7 @@ Kalıpları temizlemek yetmiyor, boşalan yere bir şey koymak gerekiyor. Skill'
 - **İkilemeyi geri getir.** "Gittik gittik", "mor mor", "hıçkıra hıçkıra": Türkçenin öz ritim aracı ve çeviri metinlerde ilk kaybolan şey.
 - **Deyimi tuz gibi kullan.** 150-250 kelimede en fazla bir deyim, kalıp dokunulmaz, çekim serbest. Tema tema düzenlenmiş güvenli hazne [references/deyimler.md](references/deyimler.md) dosyasında: Ömer Asım Aksoy kaynaklı 115 deyim, 48 atasözü, yanlış bilinen şekiller ve anlam tuzakları.
 
-Tamamı (miş'li geçmişle aktarım, devrikliğin karakter sesine tahsisi, duruluk ölçüsü, kapanış çeşitliliği...) [SKILL.md](SKILL.md) içinde.
+Tamamı (miş'li geçmişle aktarım, devrikliğin karakter sesine tahsisi, duruluk ölçüsü, kapanış çeşitliliği...) [references/akis-kurallari.md](references/akis-kurallari.md) içinde.
 
 ## Sayılarla da bakar
 

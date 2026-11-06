@@ -1,6 +1,6 @@
 # Kurulum Rehberi
 
-İnsanca'nın çalışan tek dosyası `SKILL.md`; düz Markdown olduğu için dosya okuyabilen her yapay zeka aracında kullanılabilir. Aşağıda araç araç kurulum var. Ortak ilk adım çoğunda aynı: Repoyu bir yere klonla.
+İnsanca'nın giriş dosyası `SKILL.md`; ayrıntıları gerektikçe `references/` klasöründen okutur. Hepsi düz Markdown olduğu için dosya okuyabilen her yapay zeka aracında kullanılabilir. Aşağıda araç araç kurulum var. Ortak ilk adım çoğunda aynı: Repoyu bir yere klonla.
 
 **En kısa yol:** Ajan tabanlı araçlarda (Claude Code, Codex, Gemini CLI...) adımları elle uygulamana gerek yok; ajana şunu demen yetiyor: "Şu skill'i kur: https://github.com/tahiryildiz/insanca". Ajan bu dosyayı okuyup kendi aracına uygun kurulumu kendisi yapıyor. Codex'te bu yolla test edildi.
 
@@ -67,7 +67,7 @@ OpenCode kullanıcıları skills CLI ile de kurabilir: `npx skills add tahiryild
 
 ## Başka herhangi bir araç veya sohbet arayüzü
 
-Aracın dosya okuma yeteneği yoksa bile çözüm basit: `SKILL.md` içeriğini sistem talimatı ya da ilk mesaj olarak yapıştır, ardından "şu metni doğallaştır" de. ChatGPT/Claude/Gemini web arayüzlerinde özel talimat (custom instructions / Gem / Project) alanına da aynı içerik konabilir; dosya büyük geliyorsa yalnızca kalıp bölümlerini alıp `references/deyimler.md`yi ayrıca eklemek de çalışır.
+Aracın dosya okuma yeteneği yoksa bile çözüm basit: `SKILL.md` içeriğini sistem talimatı ya da ilk mesaj olarak yapıştır, ardından "şu metni doğallaştır" de. ChatGPT/Claude/Gemini web arayüzlerinde özel talimat (custom instructions / Gem / Project) alanına da aynı içerik konabilir; dosya okuyamayan araçlarda `SKILL.md` ile birlikte `references/kaliplar/` ve `references/akis-kurallari.md` dosyalarını da ekle; alan dar geliyorsa yalnızca `SKILL.md` de çalışır ama önce/sonra örnekleri olmadan.
 
 ## Kurulumu doğrulama
 
