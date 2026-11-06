@@ -8,11 +8,11 @@ ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka 
 
 İnsanca bu sorunu çözmek için var. Bir agent skill'i olarak metni alıyor, yapay zeka kokusunu tek tek teşhis ediyor ve gerçek bir insanın kaleminden çıkmış gibi okunana kadar yeniden yazıyor. Tamamı düz Markdown olduğu için skill destekleyen her ortamda (Claude Code, OpenCode, Codex vb.) çalışıyor.
 
-İki parçadan oluşuyor: **48 kalıp** yapay zeka izini yakalıyor, **17 akış kuralı** da boşalan yere gerçek Türkçenin ritmini koyuyor. Çünkü kalıp temizlemek işin yarısı; "kapsamlı"yı silip yerine steril bir cümle bırakırsan metin yine kağıt tadı verir.
+İki parçadan oluşuyor: **55 kalıp** yapay zeka izini yakalıyor, **17 akış kuralı** da boşalan yere gerçek Türkçenin ritmini koyuyor. Çünkü kalıp temizlemek işin yarısı; "kapsamlı"yı silip yerine steril bir cümle bırakırsan metin yine kağıt tadı verir.
 
 ## Yapay zeka Türkçesi nasıl kokar?
 
-48 kalıbı altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın uzun önce/sonra örneği [SKILL.md](SKILL.md) içinde.
+55 kalıbı altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; her kalıbın uzun önce/sonra örneği [SKILL.md](SKILL.md) içinde.
 
 ### 1. Ritim kokusu
 
@@ -58,6 +58,13 @@ Bu gruptaki metinler sanki önce İngilizce yazılmış da sonra Türkçeye çev
 | Çeviri kokusu | "karmaşık bir goblen", her cümlede "siz" | Türkçe düşünülmüş kurulum |
 | Anons cümleleri | "Gelin derinlemesine dalalım" | İçerikle başla |
 | Her Kelimesi Büyük Başlık | "Yükselişi Ve Geleceği" | "Yükselişi ve geleceği" |
+| Sağa dallanan cümle | "Öyle bir altyapı kurduk ki..." | "...çökmeyen bir altyapı kurduk" |
+| Refleks "ve" | "Veriyi çektik ve sonra temizledik" | "Veriyi çekip temizledik" |
+| Kof yardımcı fiil | "yüksek hıza sahiptir", "test gerçekleştirdi" | "çok hızlı", "test etti" |
+| Ad tamlaması zinciri | "modül performans iyileştirme çalışması sonuç raporu" | Sıfat-fiil ya da hal ekiyle aç |
+| Kip kayması | "Redis veriyi bellekte tutuyor", log'dan okunan olay "-di"yle | "tutar", "olmuş, kapanmış" |
+| Teknik terim ve ek | "uç nokta", "cache'dan", server/sunucu karışık | "endpoint", "cache'ten", tek terim |
+| Ürün ve arayüz kalıbı | "Başlamaya hazır mısınız?", "WhatsApp'ta gönder" | "Hemen başlayın", "WhatsApp'tan gönder" |
 
 ### 4. Ton kokusu
 
@@ -279,7 +286,7 @@ Kalıpları ve kuralları beş ayrı damardan derledim:
 
 ## English summary
 
-İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text and rebuilds the prose with the rhythm of real Turkish. It detects 48 patterns, including Turkish-specific signatures English guides miss (the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese, bureaucratic filler stacking, cataphoric colon definitions) and patterns reverse-engineered from open-source AI detectors, with measurable thresholds and an overcorrection guard. It then applies 17 flow rules distilled from close reading of real pre-AI Turkish prose: comma-chained verbs, mobile connectives, reduplication, reference tracking through Turkish pro-drop, emotion shown through the body, and a curated idiom reference sourced from Ömer Asım Aksoy's foundational work. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
+İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text and rebuilds the prose with the rhythm of real Turkish. It detects 55 patterns, including Turkish-specific signatures English guides miss (the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese, bureaucratic filler stacking, cataphoric colon definitions) and patterns reverse-engineered from open-source AI detectors, with measurable thresholds and an overcorrection guard. It then applies 17 flow rules distilled from close reading of real pre-AI Turkish prose: comma-chained verbs, mobile connectives, reduplication, reference tracking through Turkish pro-drop, emotion shown through the body, and a curated idiom reference sourced from Ömer Asım Aksoy's foundational work. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
 
 ## Lisans
 

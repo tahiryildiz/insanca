@@ -46,6 +46,8 @@
 | [DAMAGE: doğallaştırma aracı artefaktları (arXiv 2501.03437)](https://arxiv.org/html/2501.03437v1) | **işlendi** (v1.9) | 19 doğallaştırma aracının hata taksonomisi §45'e girdi |
 | [tropes.fyi](https://tropes.fyi/) | **işlendi** (v1.9) | "Serves as" ve "Ne X. Ne Y. Sadece Z." kalıpları |
 | [stop-slop](https://github.com/hardikpandya/stop-slop) | bakılabilir | Puanlama rubriği fikri, girizgah kalıpları |
+| [yucezerey/turkish-anti-ai-skill](https://github.com/yucezerey/turkish-anti-ai-skill) | **işlendi** (v1.13) | MIT. §49-§55, olgu kilidi, sicil tablosu, silme testi, ikame tiki, references/yazim-ve-terim.md. Elenenler: "ama öncesi virgül yasağı" (TDK'de yok), "öte yandan / bununla birlikte tek görülmede sil" (§19'un yoğunluk yaklaşımı daha doğru), kaynaksız oran ve kota sayıları |
+| [Tezmakale AI Dedektör (KLX 2.0)](https://tezmakale.com/ai-detector/) | **işlendi** (v1.13) | Sayfa, kod ve canlı yanıt incelemesi: kıvrık tırnak işareti, akademik kalibrasyon (aynı uzunluktaki insan metinlerine göre yüzdelik), ücretsiz katmanda ilk ~255 kelimelik puanlama penceresi |
 | [skill-deslop](https://github.com/stephenturner/skill-deslop) | bakılabilir | Akademik bağlam istisnası mantığı (bizde kısmen var) |
 | [Scientific American: model imza farkları](https://www.scientificamerican.com/article/chatgpt-and-gemini-ai-have-uniquely-different-writing-styles/) | bakılabilir | Hakemli kanıt: ChatGPT resmi, Gemini konuşkan; model tahmini tablosu için |
 | [Adversarial Paraphrasing (arXiv 2506.07001)](https://arxiv.org/abs/2506.07001) | bakılabilir | "Kalıp silme değil insan dağılımına taşıma" felsefesinin akademik dayanağı |

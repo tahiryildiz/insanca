@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.12.0
+version: 1.13.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -10,7 +10,9 @@ description: |
   metronomik cümle ritmi, "mesele X değil Y" kalıbı, üçleme kuralı, çeviri
   kokusu, kesik cümle yığını, bürokratik dolgu, boş doğrular, uydurma
   örnekler, terapist tonu, jenerik girizgah ve kapanışlar, uzun tire,
-  yağcılık, belirsiz kaynak gösterme, sahte şiirsellik ve "belki de" vecizesi.
+  yağcılık, belirsiz kaynak gösterme, sahte şiirsellik, "belki de" vecizesi,
+  sağa dallanan cümle, kof yardımcı fiiller, teknik terim ve ek uyumu,
+  ürün ve arayüz metnindeki çeviri kalıpları.
 license: MIT
 compatibility: any-agent
 allowed-tools:
@@ -33,9 +35,12 @@ Doğallaştırılacak bir metin verildiğinde:
 1. **Kalıpları tespit et** — Aşağıdaki kalıpların hepsini tara.
 2. **Silme, yeniden yaz** — Yapay zeka kalıplarını doğal alternatiflerle değiştir; orijinalin kapsadığı her şeyi kapsa. Orijinal beş paragrafsa yeniden yazım da beş paragraf olsun.
 3. **Anlamı koru** — Ana mesaj değişmesin.
-4. **Sese uy** — Hedef tona (resmi, samimi, teknik) uygun yaz. Kişilik katmayı yalnızca içerik ve yazarın sesi gerektiriyorsa yap (bkz. KİŞİLİK VE RUH).
+4. **Sese uy** — Hedef tona (resmi, samimi, teknik) uygun yaz. Kişilik katmayı yalnızca içerik ve yazarın sesi gerektiriyorsa yap (bkz. KİŞİLİK VE RUH ve Sicil Ayarı).
+5. **Olgu kilidi** — Kaynakta olmayan sayı, tarih, ad, kurum, alıntı, anekdot, niyet ya da neden-sonuç bağı ekleme. "İnsan gibi görünmek" uydurmayı haklı çıkarmaz. Somutluk gerekiyorsa kullanıcıya sor ya da köşeli parantezle yer tutucu bırak ("[kaynak adı]") ve teslimde bunu açıkça söyle. Belirsiz kaynağı (§4) silmek de yer tutucuya çevirmek de meşru; yerine kurum uydurmak değil.
 
 Taslak → denetim → final döngüsü ve teslim edilecek çıktı aşağıda Süreç ve Çıktı bölümünde tanımlı.
+
+**Çalışma biçimi.** Varsayılan iş yeniden yazmaktır. Kullanıcı yalnızca tespit isterse ("kontrol et", "yapay zeka izi var mı?") metni yeniden yazma; bulduğun telleri alıntılayarak ve kesin imza ile yumuşak sinyali ayırarak (bkz. Tespit Rehberi) listele. Sıfırdan yazı istenirse aynı kuralları ilk cümleden uygula, taslağı yine Süreç ve Çıktı'daki denetimden geçir.
 
 **Temel ilke:** Kelime telleri bir yıl içinde eskir ("delve" nasıl damgalanıp terk edildiyse "kapsamlı" da damgalanır ve terk edilir); yapısal teller kalıcıdır. Bu yüzden tek tek kelimeleri değiştirmekle yetinme; ritmi, kurguyu ve mantık akışını da onar. Uzun tireyi noktalı virgülle değiştirip aynı iki vuruşlu cümle kalıbını korumak teli gizlemez, taşır.
 
@@ -55,6 +60,21 @@ Kullanıcı kendi yazısından bir örnek verirse, yeniden yazmadan önce onu in
 2. **Yeniden yazımda o sesi taklit et.** Kalıpları temizlemekle kalma, yerine örnekteki dokunuşları koy. Yazar kısa cümle kuruyorsa uzun cümle üretme. "Şey", "falan" diyorsa "unsur", "bileşen" diye yükseltme.
 
 3. **Örnek verilmediyse** varsayılan davranışa dön (aşağıdaki KİŞİLİK VE RUH bölümündeki doğal, değişken, fikirli ses).
+
+
+## Sicil Ayarı
+
+Ses örneği yoksa metnin sicilini belirle ve doz ayarını ona göre yap. Örnek varsa örnek bu tabloyu ezer.
+
+| Sicil | -maktadır / -dır | Devrik cümle | Söylem parçacığı (işte, zaten, hani) | Açılış |
+|---|---|---|---|---|
+| Blog, deneme, sosyal medya | Hiç | Serbest ama ölçülü | Serbest, silme testine tabi | Sahne, gözlem ya da doğrudan iddia |
+| Kurumsal, ürün, iş yazışması | Yalnız resmi tanımda | Yok | Az ("ise", "özellikle") | Ana mesaj ilk cümlede |
+| Teknik doküman | Hiç; genel kural geniş zamanla (§53) | Yok | Çok az | Problem ya da verilen karar |
+| Akademik, resmi, hukuki | Doğal sicil, ama her cümlede değil; geniş zamanla nöbetleşe | Yok | Yalnız "ise", "nitekim", "dolayısıyla" | Araştırma sorusu ya da olgusal çerçeve |
+| Anlatı, anı, hikaye | Hiç | Ritme ve sese göre (kural 11, 18) | Serbest | Atmosfer, ayrıntı, iç ses |
+
+Akademik metni blog sesine çevirmek de hatadır (bkz. §21): Orada "-maktadır"ın varlığı değil, her cümleyi aynı ekle bitirmek sorundur.
 
 
 ## KİŞİLİK VE RUH
@@ -158,6 +178,8 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 
 ## İÇERİK KALIPLARI
 
+Bu ve sonraki bölümlerdeki "Sonra" örnekleri kalıbın nasıl kırılacağını gösterir. İçlerindeki rakam, kurum ve sahneler yazarın elinde olduğu varsayılan bilgilerdir; gerçek işte kaynakta yoksa uydurma (bkz. Görevin, madde 5).
+
 ### 1. Önem, Miras ve "Daha Büyük Resim" Şişirmesi
 
 **Dikkat edilecek ifadeler:** dönüm noktası, kilit rol oynamak, önemli bir rol oynamaktadır, önemli bir yere sahiptir, kritik bir öneme sahip, büyük önem taşımak/arz etmek, çığır açan, devrim niteliğinde, adından söz ettiren, ...nın önemini vurgulamak, daha geniş bir dönüşümün parçası, bu dönüşüm sektörler üzerinde belirleyici bir etki yaratıyor, kalıcı bir iz bırakmak, köklü bir geçmişe sahip, ...na zemin hazırlamak, ...nın habercisi
@@ -253,7 +275,7 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 
 ### 8. Yapay Zeka Kelime Dağarcığı ve Şablon Cümleler
 
-**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkan sunmak, önem arz etmek, gerçekleştirmek ("yapmak/düzenlemek" dururken: "etkinlik gerçekleştirildi"), potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji, oyun değiştirici / oyunu değiştiren / oyunun kurallarını yeniden yazan, ezber bozan, ...nın DNA'sı
+**Sık görülen kelimeler:** kapsamlı, bütüncül, kritik, kilit, dinamik, yenilikçi, dönüştürücü, etkileyici, benzersiz, hayati, vazgeçilmez, vurgulamak, altını çizmek, ışık tutmak, ele almak, hayata geçirmek, olanak tanımak, imkan sunmak, önem arz etmek, gerçekleştirmek ("yapmak/düzenlemek" dururken: "etkinlik gerçekleştirildi"), potansiyelini ortaya çıkarmak, güçlendirmek, zenginleştirmek, fark yaratmak, değer katmak, katkı sağlamak, deneyim (her şey "deneyim" oluyor), yolculuk (mecazi: "dönüşüm yolculuğu"), dokunuş ("modern bir dokunuş"), ekosistem (mecazi), vizyon, sinerji, oyun değiştirici / oyunu değiştiren / oyunun kurallarını yeniden yazan, ezber bozan, ...nın DNA'sı, adeta, yadsınamaz / inkar edilemez, geniş bir yelpaze, zengin bir doku / mozaik, ...nın kanıtıdır / nişanesidir / en büyük göstergesidir, kusursuz / pürüzsüz bir şekilde, zahmetsizce, titizlikle (hazırlanmış), kilometre taşı, ...nın kalbinde yer alan, paradigma değişimi, proaktif, holistik
 
 **Şablon cümleler:** "Bu durum, ...i beraberinde getiriyor", "Öne çıkan başlıklar arasında ... yer alıyor", "Bu çerçevede değerlendirildiğinde", "... giderek daha önemli hale geliyor", "Bu çalışmanın amacı, ... konusunu kapsamlı bir biçimde ele almaktır", "İşte tam da bu yüzden ..." (vurgu anonsu; bkz. Gerçek Türkçe kural 6: vurguyu kalıpla değil tekrar ve devrikle yap)
 
@@ -354,6 +376,8 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 **Sorun:** Metin İngilizce düşünülüp Türkçeye çevrilmiş gibi okunur. Belirtileri:
 - **Gereksiz zamirler.** Türkçe zamir düşüren bir dildir; "Siz de kendi hikayenizi siz yazabilirsiniz" değil, "Kendi hikayeni kendin yazarsın." Her cümlede "siz", "ben", "o" varsa çeviri kokar.
 - **"Bir" bolluğu.** İngilizce "a/an"in kalıntısı: "harika bir deneyim sunan bir platform" yerine "iyi çalışan bir platform" ya da hiç "bir"siz kurulum.
+- **Gereksiz "kendi".** İngilizce "own" kalıntısı: "Her servis kendi veritabanına bağlanır ve onun kendi ayarlarını okur." İyelik eki aitliği zaten taşır; karşıtlık yoksa "kendi"yi at: "Her servis kendi veritabanına bağlanıp ayarlarını okur."
+- **İsmin arkasına eklenen yan cümle.** "Bir sistem kurduk, bu sistem..." ve "öyle bir X ki..." kuruluşları; bkz. §49.
 - **Birebir metafor çevirileri.** "Karmaşık bir goblen" (a complex tapestry — Türkçede kimse goblen metaforu kurmaz), "...'in dinamik/sürekli değişen dünyasında" (in the dynamic world of X), "günün sonunda" (at the end of the day), "bu bir oyun değiştirici" (game changer).
 
 **Önce:**
@@ -365,9 +389,9 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 
 ### 17. Bürokratik Dolgu Ekleri
 
-**Dikkat edilecek ifadeler:** kapsamında, çerçevesinde, doğrultusunda, bağlamında, noktasında, sürecinde, ...na yönelik, ...ne ilişkin (üst üste geldiğinde)
+**Dikkat edilecek ifadeler:** kapsamında, çerçevesinde, doğrultusunda, bağlamında, noktasında, sürecinde, ...na yönelik, ...ne ilişkin (üst üste geldiğinde); işaret sıfatı yerine söz konusu, bahsi geçen, mezkur
 
-**Sorun:** Bu ekler tek başına normaldir; yapay zeka bunları üst üste yığar ve metin resmi yazışma tonuna kayar.
+**Sorun:** Bu ekler tek başına normaldir; yapay zeka bunları üst üste yığar ve metin resmi yazışma tonuna kayar. "Söz konusu algoritma" demek için çoğu zaman "bu algoritma" yeter; ya da adı tekrar et.
 
 **Önce:**
 > Dijitalleşme sürecinde, müşteri memnuniyeti noktasında, kurumsal hedeflerimiz doğrultusunda ve sürdürülebilirlik çerçevesinde önemli adımlar atılması kapsamında çalışmalar yürütülmektedir.
@@ -381,6 +405,8 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 **Dikkat edilecek ifadeler:** yapılması gerekmektedir, olduğu söylenebilir, düşünülmektedir, göz ardı edilmemelidir, değerlendirilmektedir, öngörülmektedir (öznesiz kullanıldığında)
 
 **Sorun:** Fail gizlenir: kim yapacak, kim söylüyor, kim düşünüyor belli olmaz. Etken çatı cümleyi hem netleştirir hem kısaltır.
+
+Fail belli olduğu halde edilgen kurmak da aynı ailedendir: "Modül güvenlik ekibimiz tarafından test edilmiş ve onaylanmıştır" İngilizce "was tested by" kalıbının kopyasıdır. Yapanı söylüyorsan etken kur: "Güvenlik ekibimiz modülü test edip onayladı." Fail bilinmiyorsa uydurma (bkz. olgu kilidi); edilgeni sadeleştirmekle yetin.
 
 **Önce:**
 > Projenin zamanında tamamlanabilmesi için ek kaynak ayrılması gerekmektedir. Mevcut planın gerçekçi olmadığı değerlendirilmektedir.
@@ -464,6 +490,91 @@ Aşağıdaki kurallar iki korpusun yakın okumasından çıkarıldı: 2000'ler T
 
 **Sonra:**
 > Galeri, derneğin sergi alanı. Binada dört ayrı salon var.
+
+
+### 49. Sağa Dallanan Cümle ve "Öyle Bir X ki"
+
+**Dikkat edilecek ifadeler:** "..., bu sistem / bu araç / bu yöntem ...", "öyle bir ... ki ...", "göstermektedir ki", "kim açtı, kim düzenledi gör"
+
+**Sorun:** İngilizce niteleyiciyi ismin arkasına koyar ("a system that scans..."). Model bu iskeleti Türkçeye iki yoldan taşır: Cümleyi bölüp ismi zamirle tekrarlar ya da "ki" ile ilgi cümlesi kurar. Türkçe sola dallanır; niteleyici sıfat-fiille (-an, -dık, -acak) ismin önüne geçer. Soru zamirli yan cümle de ad-fiile döner: "kimin açıp düzenlediğini gör". Konuşmadaki şaşkınlık ki'si meşrudur ("öyle yorulmuşum ki..."); işaret, ki'nin ilgi cümlesi kurmak için kullanılmasıdır.
+
+**Önce:**
+> Öyle bir altyapı kurduk ki yoğun trafikte bile çökmüyor. Bir de raporlama aracı geliştirdik, bu araç her sabah satışları özetliyor.
+
+**Sonra:**
+> Yoğun trafikte bile çökmeyen bir altyapı kurduk. Her sabah satışları özetleyen bir raporlama aracımız da var.
+
+
+### 50. Refleks "ve" (Ulaç Yerine Bağlaç)
+
+**Dikkat edilecek ifadeler:** "...dı ve sonra ...", "...dı ve bu sayede ...", "...dı ve buna bağlı olarak ...", "...dı ve bu durum ..."
+
+**Sorun:** İngilizce eylemleri "and, and then, when, as" ile bağlar; model her geçişi "ve" ile yapar. Türkçe aynı ilişkiyi ulaçla kurar: ardışıklık -ıp, tetikleme -ınca, orantı -dıkça, yöntem -arak, eşzamanlılık -ken, yokluk -madan. Sınırı var: Ulaç iki olay arasında zaman ya da neden bağı kurar. Kaynakta böyle bir bağ yoksa uydurma, iki ayrı cümle bırak (bkz. olgu kilidi). §3'teki "-arak" kuyruğuyla karıştırma: Orada sorun anlam katmayan süs öbeği, burada sorun ulacın yerine geçen bağlaç.
+
+**Önce:**
+> Veriyi çektik ve sonra temizledik. Trafik arttı ve buna bağlı olarak hata oranı da yükseldi. Önbellek doldu ve istekler yavaşladı.
+
+**Sonra:**
+> Veriyi çekip temizledik. Trafik arttıkça hata oranı da yükseldi, önbellek dolunca da istekler yavaşladı.
+
+
+### 51. Kof Yardımcı Fiiller
+
+**Dikkat edilecek ifadeler:** gerçekleştirmek, sağlamak (her bağlamda), katkıda bulunmak, yardımcı olmak, sahip olmak, ev sahipliği yapmak, rol oynamak, ...de bulunmak (açıklamada bulunmak, bilgilendirmede bulunmak), "olarak" edatı ("ilk adım olarak")
+
+**Sorun:** Tek fiille söylenecek eylem isim + yardımcı fiil öbeğine şişirilir. "Sahip olmak" İngilizce "have", "ev sahipliği yapmak" "host", "rol oynamak" "play a role" kalıbıdır. §48'deki koşaç kaçışının fiil kardeşi. Önce somut fiili ara: hızlandırır, destekler, -lı / var, barındırır, belirler, açıkladı, bildirdi, ilk adımda.
+
+**Önce:**
+> Yeni sürüm yüksek bir hıza sahip olup sayfa yüklenme sürelerinde ciddi bir iyileşme sağlamaktadır. Ekip, lansman öncesinde kapsamlı testler gerçekleştirmiş ve müşterilere bilgilendirmede bulunmuştur. İlk adım olarak eski API kapatılacaktır.
+
+**Sonra:**
+> Yeni sürüm çok daha hızlı, sayfalar belirgin biçimde daha çabuk yükleniyor. Ekip lansmandan önce kapsamlı test yaptı, müşterileri de bilgilendirdi. İlk adımda eski API kapanacak.
+
+
+### 52. Ad Tamlaması Zinciri
+
+**Sorun:** İngilizce isim yığını ("customer segmentation module performance report") Türkçeye eklerle üst üste dizilir; okur zincirin hangi halkasında olduğunu kaybeder. Üç adı aşan zinciri sıfat-fiil ya da hal ekiyle aç.
+
+**Önce:**
+> Müşteri segmentasyon modülü performans iyileştirme çalışması sonuç raporu hazırlandı.
+
+**Sonra:**
+> Müşteri segmentasyon modülünde yaptığımız performans çalışmasının sonuçları rapor halinde hazır.
+
+
+### 53. Kip Seçimi: Genel Kural ve Sonradan Öğrenilen Olay
+
+**Sorun:** İki ayrı kayma. (a) Bir sistemin, kuralın ya da değişmez işleyişin tanımı "-yor"la yapılır; Türkçe genel doğruyu geniş zamanla söyler ("Redis veriyi bellekte tutuyor" değil, tanım cümlesinde "tutar"). (b) Görülmeyen, log'dan, rapordan ya da sonradan öğrenilen olay "-di"yle düz anlatılır; Türkçe bunu "-miş"le verir. Kural 12 ve 19'un açıklayıcı ve teknik metindeki karşılığı.
+
+**Önce:**
+> Redis veriyi bellekte tutuyor ve diske arada bir yazıyor. Gece 03.00'te bellek sızıntısı oldu ve servis kapandı. Sabah log'lara bakınca fark ettik.
+
+**Sonra:**
+> Redis veriyi bellekte tutar, diske arada bir yazar. Gece 03.00'te bellek sızıntısı olmuş, servis de kapanmış. Sabah log'lara bakınca fark ettik.
+
+
+### 54. Teknik Terim: Zorla Çeviri, Tutarsızlık ve Yanlış Ek
+
+**Sorun:** Üç tel. (a) Sektörün İngilizce kullandığı terim zorla Türkçeleştirilir ("uç nokta", "göç betiği", "çekme isteği"); okur terimi tanımaz. (b) Aynı metinde iki karşılık dolaşır: bir cümlede "server", sonrakinde "sunucu". Birini seç, sonuna kadar koru. (c) Ek yazılışa göre getirilir ("cache'ı", "SQL'da"); Türkçe eki okunuşa göre alır ("cache'i", "SQL'de"). Tersi de sicil kaydırır: yerleşik Türkçesi olan kelimeyi (geliştirici, kullanıcı, veritabanı) İngilizce bırakmak. Öz Türkçecilik de tuzaktır; yaşayan "performans", "strateji", "sistem" kelimelerini zorlama karşılıklarla değiştirme. Terim kümeleri ve ek tablosu: `references/yazim-ve-terim.md`.
+
+**Önce:**
+> Yeni uç noktaya gelen istekler önce cache'dan okunuyor. Server yanıt veremezse sunucu log'larına bakılıyor ve göç betiği tekrar çalıştırılıyor.
+
+**Sonra:**
+> Yeni endpoint'e gelen istekler önce cache'ten okunuyor. Sunucu yanıt veremezse log'lara bakılıp migration script'i yeniden çalıştırılıyor.
+
+
+### 55. Ürün ve Arayüz Metninde Çeviri Kalıpları
+
+**Dikkat edilecek ifadeler:** Başlamaya hazır mısınız?, ... bir üst seviyeye taşıyın, ekibinizi güçlendirin, zamandan ve paradan tasarruf edin, ihtiyaçlarınıza göre özel olarak tasarlanmış, hepsi bir arada çözüm, tek durak noktası, kredi kartı gerekmemektedir, WhatsApp'ta gönder, X üzerinde paylaş
+
+**Sorun:** SaaS, uygulama mağazası ve web sitesi metinleri İngilizce şablondan birebir çevrilir. Buton ve başlık metninde tel daha çok batar, çünkü okur aynı ekranı her gün görür. Hal ekine de bak: Türkçede bir şey WhatsApp'"tan" gönderilir, X'"te" paylaşılır. Daha fazla eşleme: `references/yazim-ve-terim.md`.
+
+**Önce:**
+> Ekibinizin verimliliğini bir üst seviyeye taşımaya hazır mısınız? İhtiyaçlarınıza göre özel olarak tasarlanmış hepsi bir arada çözümümüzle zamandan ve paradan tasarruf edin. Raporu WhatsApp'ta gönderin.
+
+**Sonra:**
+> Ekibinizin işini hızlandırın. Gereken her şey tek yerde ve işinize göre ayarlanıyor, zaman da para da kazanırsınız. Raporu WhatsApp'tan gönderin.
 
 
 ## ÜSLUP KALIPLARI
@@ -603,6 +714,10 @@ Nihai metni teslim etmeden önce `—` ve `–` için tara. Tek bir tane bile va
 - Noktalı virgül bolluğu: Türkçede seyrek kullanılan noktalı virgülün her iki cümlede bir belirmesi (çoğu zaman kaldırılan uzun tirenin kılık değiştirmiş hali).
 - Şapkalı harfler: model "hâlâ", "zekâ", "kâr" gibi şapkalı yazımları sever ve çoğu zaman aynı metinde tutarsız kullanır. Gündelik ve dijital Türkçede şapka artık yaygın değil; yeniden yazımda şapkalı harf kullanma ("hala", "zeka", "imkan" yaz). Anlamın gerçekten karışacağı nadir yerlerde kelimeyi değiştir ya da bağlamı netleştir. (Yazarın kendi örneği şapkalıysa ses kalibrasyonu kazanır: onun tercihine uy.)
 - Bağlaç olan "de/da"nın bitişik yazılması veya tersi; bunu her zaman düzelt.
+- Kıvrık tırnak (“ ” ‘ ’): İngilizce tipografi kalıntısı; Türkçe dedektör rehberleri de ayrı bir işaret olarak sayıyor. Düz tırnak kullan ve metin boyunca tutarlı ol.
+- Rakam ve saat: Ondalık virgülle (%42,5), binlik noktayla (10.000), yüzde işareti önde (%25), saat noktayla (14.30) yazılır. Arayüz, log ve kod metnindeki 14:30'a dokunma.
+- Bağlaç virgülü: "ve, veya, ya da" ile "hem... hem", "ne... ne" öncesine virgül konmaz; zarf-fiilden sonra da genelde gerekmez ("Veriyi çekip, işledik" değil, "Veriyi çekip işledik"). "Ama/fakat" öncesindeki virgül TDK'de yasak değildir; ona dokunma.
+- Sık bitişik/ayrı yazım hataları (birçok, herhangi bir, her şey, art arda, iş birliği, fark etmek / kaydetmek, ki) ve yabancı terime gelen ekler için `references/yazim-ve-terim.md`.
 
 **Önce:**
 > Uygulamanın sunduğu özellikler sayesinde, kullanıcılar zaman kazanıyor; üstelik zekâ gerektiren işler de otomatikleşiyor; bu sayede ekipler asıl işlerine odaklanabiliyor.
@@ -771,7 +886,7 @@ Bu bölümdeki kalıplar, açık kaynak yapay zeka dedektörlerinin (GPTZero klo
 
 ### 45. Aşırı Düzeltme Kokusu
 
-**Sorun:** Doğallaştırmanın kendisi de bir imza bırakabilir. Zorlama kesik cümleler, her paragrafa serpiştirilmiş "X değil. Y." yumrukları, sahte pürüzler, yapmacık argo: bu "anti-slop sicili" yeni nesil dedektörlerin ayrıca eğitildiği bir hedef (Turnitin 2025'te piyasadaki doğallaştırma araçlarının çıktısına özel tespit modülü duyurdu). İkinci tuzak, eş anlamlı değiştirmenin yeterli sanılması: kelimeleri değiştirip cümle yapısını korumak dedektörlerin ölçtüğü ritim parmak izini olduğu gibi bırakır. Piyasadaki doğallaştırma araçlarının bilinen artefaktları da bu kalıba girer; 19 aracı inceleyen DAMAGE çalışmasının (arXiv:2501.03437) taksonomisiyle: bağlama oturmayan tuhaf eşanlamlı ikamesi, metnin seviyesinin aniden düşmesi (akademik paragrafın ilkokul diline inmesi), araç artıkları ve bozulan dil bilgisi. En iyi araçlarda bile akıcılık kazanma oranı yüzde 26'da kalıyor. Doğallık ölçülü olandır; bir iki pürüz yeter, her cümle sürpriz olmak zorunda değil.
+**Sorun:** Doğallaştırmanın kendisi de bir imza bırakabilir. Zorlama kesik cümleler, her paragrafa serpiştirilmiş "X değil. Y." yumrukları, sahte pürüzler, yapmacık argo: bu "anti-slop sicili" yeni nesil dedektörlerin ayrıca eğitildiği bir hedef (Turnitin 2025'te piyasadaki doğallaştırma araçlarının çıktısına özel tespit modülü duyurdu). İkinci tuzak, eş anlamlı değiştirmenin yeterli sanılması: kelimeleri değiştirip cümle yapısını korumak dedektörlerin ölçtüğü ritim parmak izini olduğu gibi bırakır. Piyasadaki doğallaştırma araçlarının bilinen artefaktları da bu kalıba girer; 19 aracı inceleyen DAMAGE çalışmasının (arXiv:2501.03437) taksonomisiyle: bağlama oturmayan tuhaf eşanlamlı ikamesi, metnin seviyesinin aniden düşmesi (akademik paragrafın ilkokul diline inmesi), araç artıkları ve bozulan dil bilgisi. En iyi araçlarda bile akıcılık kazanma oranı yüzde 26'da kalıyor. Üçüncü tuzak ikame tikidir: "kritik bir rol oynuyor", "kusursuz bir şekilde" gibi öbekleri silerken her cümleye refleksle "doğrudan", "aslında", "ciddi ölçüde", "gerçekten" sokmak. Model yeni bir dolgu kelimesine kilitlenir; çoğu zaman en doğal çözüm zarfı tamamen atıp fiili yalnız bırakmaktır. Doğallık ölçülü olandır; bir iki pürüz yeter, her cümle sürpriz olmak zorunda değil.
 
 **Önce (aşırı düzeltilmiş):**
 > Verim mi? Arttı. Hem de nasıl. Maliyet düştü, moral tavan. Kimse inanmıyordu. Yanıldılar. Hepsi.
@@ -784,7 +899,8 @@ Bu bölümdeki kalıplar, açık kaynak yapay zeka dedektörlerinin (GPTZero klo
 
 Dedektörlerin ölçtüğü değerleri sen de kabaca ölç; his yanıltır, sayı yanıltmaz (insanlar yapay zeka metnini yazı tura isabetiyle ayırt edebiliyor). Nihai metinde şu eşikleri kontrol et:
 
-- **Cümle uzunluğu çeşitliliği:** Kelime sayıları birbirine yakın cümleler üst üste geliyorsa boz. Kaba hedef: her paragrafta bir tane 8 kelime ve altı, bir tane 20 kelime ve üstü cümle.
+- **Cümle uzunluğu çeşitliliği:** Kelime sayıları birbirine yakın cümleler üst üste geliyorsa boz. Kaba hedef: her paragrafta bir tane 8 kelime ve altı, bir tane 20 kelime ve üstü cümle. Sayıyla ölçmek için değişim katsayısına bak: cümlelerin kelime sayılarının standart sapması bölü ortalaması. Kabaca 0,35'in altı metronomdur, 0,40 ve üstü insan aralığına girer. Üç ve daha fazla cümleli metinde hesapla; elle yapılacak kadar basit (cümle boylarını yaz, ortalamayı al, sapmayı kabaca tahmin et).
+- **"-maktadır" yoğunluğu:** Blog, kurumsal ve teknik metinde hiç kalmasın. Akademik ve resmi metinde var olabilir ama her cümlede değil; kabaca 100 kelimede bir ikiyi geçiyorsa geniş zamanla nöbetleştir (bkz. Sicil Ayarı).
 - **Açılışlar:** Aynı kelimeyle başlayan cümle sayısını say; dörtte birden fazlası aynı kelimeyle açılıyorsa dağıt.
 - **Zarf-fiil kuyrukları:** "-arak/-erek sağlayarak/katkıda bulunarak" ile biten cümlelerin payı yüzde 15'i geçiyorsa kes (bkz. §3).
 - **Noktalama sayımı:** Uzun tire: 0 (bkz. §22). Noktalı virgül: metin başına bir iki taneden fazlaysa azalt. Şapkalı harf: 0 (bkz. §32).
@@ -822,7 +938,7 @@ Temiz yazan bir insan, yukarıdaki kalıpların birkaçına yapay zeka olmadan d
 
 **Teller eş ağırlıkta değildir.** Dedektör sözlükleri imzaları güven katsayısıyla tartar: "Bir yapay zeka modeli olarak" veya "Umarım yardımcı olur" gibi artıklar tek başına kesin kanıttır; "kapsamlı" veya tek bir üçleme yumuşak bir sinyaldir (aradaki güven farkı yaklaşık yirmi kat). Kesin imzayı gördüğünde tereddütsüz temizle; yumuşak sinyalde kümelenme bekle.
 
-**Bir uyarı daha:** Dedektörler sade, resmi, kusursuz insan yazısını da yanlışlıkla işaretler (yabancı dil öğrencilerinin sınav metinlerinde yanlış pozitif oranı yüzde 50'yi aşabiliyor). Bu skill'in işi dedektör kandırmak değil, iyi Türkçe yazmak; dedektör puanı düşük diye insan metnini "daha insansı" yapmaya kalkma.
+**Bir uyarı daha:** Dedektörler sade, resmi, kusursuz insan yazısını da yanlışlıkla işaretler (yabancı dil öğrencilerinin sınav metinlerinde yanlış pozitif oranı yüzde 50'yi aşabiliyor). Bu skill'in işi dedektör kandırmak değil, iyi Türkçe yazmak; dedektör puanı düşük diye insan metnini "daha insansı" yapmaya kalkma. Dedektör puanları ayrıca belli bir metin türüne göre ayarlıdır: Türkçe akademik dedektörler metni aynı uzunluktaki insan yazısı akademik metinlerle kıyaslar ve ücretsiz katmanda yalnız ilk birkaç yüz kelimeye bakabilir. Bir blog yazısının ya da ürün metninin o ölçekteki puanı pek bir şey söylemez.
 
 
 ### İnsan yazısının işaretleri (bunları koru)
@@ -849,10 +965,11 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
    - Şapkalı harf kalmış mı (bkz. §32), uzun tire kalmış mı (bkz. §22)?
    - Somut detay ve yalın kuruluşlar tercih edilmiş mi, sicil doğru ve tutarlı mı?
    - **Mantık akışı görünür mü?** Yapay zeka metinlerinde cümleler tek tek düzgündür ama aralarındaki akıl yürütme köprüsü eksiktir; okur "buraya nasıl geldik?" diye sorar. Fikirler arasındaki bağı görünür kıl, ışınlanma varsa ara adımı yaz.
-3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kabaca kontrol et. İkinci bir soru daha sor: **"Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?"** Cümle iskeleti hala kurulum-vuruş, çift kanat veya üçlemeyse kelimeler değişmiş olsa da kalıp duruyordur (bkz. §47).
-4. Bunları gideren, içinde hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
+   - **Olgu kilidi tutuyor mu?** Taslakta girdide olmayan sayı, ad, kurum, niyet ("aklımızda tam olarak bu vardı") ya da neden-sonuç var mı? Varsa çıkar ya da yer tutucuya çevir. Girdideki her sayı ve özel ad duruyor mu?
+3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kontrol et; cümle uzunluğu değişim katsayısını gerçekten hesapla. İkinci bir soru daha sor: **"Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?"** Cümle iskeleti hala kurulum-vuruş, çift kanat veya üçlemeyse kelimeler değişmiş olsa da kalıp duruyordur (bkz. §47). Soyut üç ismi üç fiile çevirmek de üçlemeyi korur.
+4. Bunları gideren, içinde hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Taslakta fark ettiğin ritim sorununu nihaide çöz; değişim katsayısı 0,35'in altındaysa metin bitmemiştir. Eklediğin her söylem parçacığını, devrik cümleyi ve bağlacı silme testinden geçir: Çıkarınca anlamdan ya da tondan bir şey eksilmiyorsa çıkar. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
 
-Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et.
+Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et. Nihai metinde yer tutucu bıraktıysan teslimde ayrıca söyle; yayından önce doldurulması gerekir.
 
 
 ## Tam Örnek
@@ -911,6 +1028,9 @@ Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikl
 - Dilbilim ve derlem kanıtı: TDK "Türkçenin Eğitimi-Öğretiminde Kuramsal ve Uygulamalı Çalışmalar 12" (2022) — 17 numaralı kuralın kaynağı: gönderim/belirginlik hiyerarşisi (Esmer; Givon 1983 çerçevesi) ve Türkçe sıklık derlemlerinde bağlaç dağılımı (ODTÜ Derlemi, Göz 2003, TS Corpus). Not: İnsan hatasının ek/yazım düzeyinde, yapay zeka izinin söylem düzeyinde toplandığına dair karşılaştırma verisi de buradan; örneklemi yabancı öğrenici olduğu için destekleyici kanıt sayılır, tek başına dayanak değil.
 - Edebi Türkçe okuması: Hüseyin Rahmi Gürpınar, "Sevda Peşinde" (TDK basımı) — 8-12 numaralı kuralların kaynağı. [TDK e-kitap sayfası](https://tdk.gov.tr/genel/e-kitaplar/) fiilen ücretsiz bir Gürpınar külliyatı; üslup çalışmak için özellikle Şıpsevdi (sicil çarpışması), Gulyabani (halk ağzı), Ben Deli miyim? (iç monolog) ve Efsuncu Baba (diyalog dokusu). Aynı sayfadaki [Eş Dizim Sözlüğü](https://tdk.gov.tr/wp-content/uploads/2019/12/01-T%C3%9CRK%C4%B0YE-T%C3%9CRK%C3%87ES%C4%B0NDE-ADLARLA-%C3%96N-ADLARIN-B%C4%B0RL%C4%B0KTEL%C4%B0K-KULLANIMI-VE-E%C5%9E-D%C4%B0Z%C4%B0M-S%C3%96ZL%C3%9C%C4%9E%C3%9C.pdf) hangi sıfatın hangi adla doğal eşleştiğini gösterir; çeviri kokusu şüphesinde başvur. Korpus arayanlara: [TurkishNLPGuide](https://github.com/nanelimon-organization/TurkishNLPGuide) derlemesi ve özellikle [Bilkent Turkish Writings](https://github.com/selimfirat/bilkent-turkish-writings-dataset) (2014-2018 arası dokuz bin öğrenci denemesi, tamamı yapay zeka öncesi). Çeviri korpuslarını (OPUS, Tatoeba) üslup referansı olarak kullanma; tam da kaçınılan çeviri kokusunu taşırlar.
 - Modern anlatı ve diyalog okuması: 2000'ler Türk edebiyatından bir roman ile Amerikan edebiyatından klasik bir romanın çevirisi — 18-25 numaralı kuralların kaynağı. İki korpus, Gürpınar'dan çıkarılan 8-12 numaralı kuralların (ikileme, duyguyu bedenle gösterme, miş'li aktarım, cümle sonu bağlaç) modern edebi Türkçede ve usta işi çeviride aynen yaşadığını bağımsız olarak doğruladı. Çeviri korpusu ayrıca §16 için pozitif kanıt: İyi insan çevirisi, örneklenen hiçbir bölümde tek bir kalıp çeviri metaforu ("goblen" ailesi) taşımıyor; çeviri kokusu çevirinin değil kötü çevirinin imzası.
+
+- [yucezerey/turkish-anti-ai-skill](https://github.com/yucezerey/turkish-anti-ai-skill) (MIT, Yüce Zerey, 2026): §49-§55'in, olgu kilidinin, Sicil Ayarı tablosunun, silme testinin, ikame tikinin ve `references/yazim-ve-terim.md` dosyasının çıkış noktası. Kurallar insanca'nın sesiyle yeniden yazıldı; TDK'de karşılığı olmayan maddeler ("ama öncesi virgül yasağı" gibi) ve kaynaksız sayılar alınmadı. Aynı paragrafın iki skill'le kör yeniden yazımı, insanca'nın ritim eşiğini taslakta görüp nihaide uygulamadığını gösterdi; Süreç'teki zorunlu değişim katsayısı kontrolü oradan geliyor.
+- Tezmakale AI Dedektör (KLX 2.0) sayfa, kod ve yanıt incelemesi (Kasım 2026): Kıvrık tırnak işareti (§32) ve dedektör puanlarının metin türüne göre ayarlı olduğu uyarısı (Tespit Rehberi).
 
 Kapsamlı kaynak envanteri (işlenmiş, sırada bekleyen ve elenen kaynaklar): bu skill'in yanındaki `references/kaynaklar.md` dosyası.
 
