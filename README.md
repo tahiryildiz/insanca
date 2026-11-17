@@ -8,11 +8,11 @@ ChatGPT'ye Türkçe bir yazı yazdırdın ve okuyunca sen bile "bunu yapay zeka 
 
 İnsanca bu sorunu çözmek için var. Bir agent skill'i olarak metni alıyor, yapay zeka kokusunu tek tek teşhis ediyor ve gerçek bir insanın kaleminden çıkmış gibi okunana kadar yeniden yazıyor. Tamamı düz Markdown olduğu için skill destekleyen her ortamda (Claude Code, OpenCode, Codex vb.) çalışıyor.
 
-İki parçadan oluşuyor: **55 kalıp** yapay zeka izini yakalıyor, **17 akış kuralı** da boşalan yere gerçek Türkçenin ritmini koyuyor. Çünkü kalıp temizlemek işin yarısı; "kapsamlı"yı silip yerine steril bir cümle bırakırsan metin yine kağıt tadı verir.
+İki parçadan oluşuyor: **56 kalıp** yapay zeka izini yakalıyor, **17 akış kuralı** da boşalan yere gerçek Türkçenin ritmini koyuyor. Çünkü kalıp temizlemek işin yarısı; "kapsamlı"yı silip yerine steril bir cümle bırakırsan metin yine kağıt tadı verir.
 
 ## Yapay zeka Türkçesi nasıl kokar?
 
-55 kalıbı altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; kalıp dizini [SKILL.md](SKILL.md) içinde, her kalıbın uzun önce/sonra örneği [references/kaliplar/](references/kaliplar/) klasöründe.
+56 kalıbı altı grupta topladım. Aşağıdaki tablolar hızlıca fikir vermek için; kalıp dizini [SKILL.md](SKILL.md) içinde, her kalıbın uzun önce/sonra örneği [references/kaliplar/](references/kaliplar/) klasöründe.
 
 ### 1. Ritim kokusu
 
@@ -129,6 +129,12 @@ Tamamı (miş'li geçmişle aktarım, devrikliğin karakter sesine tahsisi, duru
 
 İnsanlar bir metnin yapay zeka yazması olup olmadığını hissederek pek bilemiyor; araştırmalarda isabet oranı yazı tura seviyesinde çıkıyor. Dedektörler bu yüzden hissetmek yerine sayıyor. Ben de aynısını yaptım: GPTZero klonları, [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text), [DetectGPT](https://arxiv.org/abs/2301.11305) ve açık kaynak slop dedektörlerinin kaynak kodlarına bakıp ölçtükleri şeyleri skill'e taşıdım. İnsanca nihai metinde cümle uzunluğu çeşitliliğini, açılış kelimesi dağılımını, zarf-fiil kuyruğu payını, uzun tire ve noktalı virgül sayısını, üçleme yoğunluğunu, iki nokta ve "asıl" sayımını, ilk-son paragraf örtüşmesini kontrol ediyor.
 
+Modeller saymakta kötü olduğu için bu sayıları artık bir betik tutuyor. `scripts/olcum.py` için Python'un standart kütüphanesi yetiyor, ek paket kurmana gerek yok, betik internete de çıkmıyor. Metnin önceki ve sonraki halini yan yana görebilir, Ateşman okunabilirlik puanına da bakabilirsin. Betik metnin türünü (şiir, şartname, e-posta, öykü...) ve alanını (finans, sağlık, yazılım...) tahmin ediyor, o türün ve alanın rehberini de ekrana getiriyor. Python yoksa skill ölçümleri elle yapıyor. Betik ve tür, alan, jargon rehberleri [İnsanlık öldü mü?](https://github.com/MesutARIDORU/insanlik-oldu-mu) skill'inden MIT lisansıyla uyarlandı.
+
+```bash
+python3 scripts/olcum.py metin.txt
+```
+
 Bu araştırmadan iki önemli ders çıktı:
 
 - **Kelime telleri eskiyor, yapısal teller kalıyor.** "Delve" kelimesi damgalanınca modeller kullanmayı bıraktı; "kapsamlı" da muhtemelen aynı yoldan gidecek. Ama tekdüze ritim model nesli değişse de duruyor. Türkçe araştırması da bunu doğruluyor: İnce ayarlı BERT, Türkçe insan/AI metnini yüzde 97 isabetle ayırıyor ve sinyali kelimelerden değil ritimden alıyor.
@@ -149,7 +155,7 @@ Skill gerçek yapay zeka metinleri üzerinde geliştirildi, her turda kullanıc�
 
 Temizlik kadar önemli bir konu daha var: Sağlam metni katletmemek. Kusursuz dilbilgisi tek başına şüphe sebebi değil, editörden geçmiş olabilir. Akademik metindeki "-maktadır" da öyle, orada doğru üslup zaten o. Tek tük "kapsamlı" veya "ayrıca" görmek bir şey kanıtlamaz; işaret olan, bunların hep birlikte gelmesi. Teller eş ağırlıkta da değil: "Bir yapay zeka modeli olarak" ifadesi kesin kanıtken tek bir "kapsamlı" zayıf bir sinyal.
 
-Özne-yüklem uyumsuzluğu, mantık yanlışı gibi anlatım bozuklukları ise insan işidir; yapay zeka bu hataları nadiren yapar. İnsanca bunları yapay zeka teli saymaz, dil bilgisi hatası olarak ayrıca düzeltir. Alıntılara, başlıklara ve özel adlara hiç dokunmaz. İnsan işaretlerini de korur: Tuhaf ve spesifik detaylar, karışık duygular, ara sözler, devrik cümleler, noktalamaya sızmış duygu... Bunları görünce skill metne daha az dokunur, daha çok değil.
+Özne-yüklem uyumsuzluğu, mantık yanlışı gibi anlatım bozuklukları ise insan işidir; yapay zeka bu hataları nadiren yapar. İnsanca bunları yapay zeka teli saymaz, dil bilgisi hatası olarak ayrıca düzeltir. Alıntılara, başlıklara ve özel adlara hiç dokunmaz. Metnin türüne de bakıyor. Şiir verirsen yeniden yazmıyor, yalnız izleri gösteriyor. Şartnamedeki "-malıdır" orada bir yükümlülük bildirdiği için yerinde kalıyor. Hukuki metinde değişikliği uygulamadan önce sana soruyor. Romandaki satır başı konuşma çizgisini de uzun tire sanıp silmiyor. Bankanın e-postasındaki oran, hastanenin bilgilendirmesindeki doz, sözleşmedeki madde numarası olduğu gibi kalıyor. İnsan işaretlerini de korur: Tuhaf ve spesifik detaylar, karışık duygular, ara sözler, devrik cümleler, noktalamaya sızmış duygu... Bunları görünce skill metne daha az dokunur, daha çok değil.
 
 ## Nasıl çalışır
 
@@ -286,7 +292,7 @@ Kalıpları ve kuralları beş ayrı damardan derledim:
 
 ## English summary
 
-İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text and rebuilds the prose with the rhythm of real Turkish. It detects 55 patterns, including Turkish-specific signatures English guides miss (the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese, bureaucratic filler stacking, cataphoric colon definitions) and patterns reverse-engineered from open-source AI detectors, with measurable thresholds and an overcorrection guard. It then applies 17 flow rules distilled from close reading of real pre-AI Turkish prose: comma-chained verbs, mobile connectives, reduplication, reference tracking through Turkish pro-drop, emotion shown through the body, and a curated idiom reference sourced from Ömer Asım Aksoy's foundational work. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
+İnsanca ("humanly" in Turkish) is an agent skill that removes AI-writing tells from Turkish text and rebuilds the prose with the rhythm of real Turkish. It detects 56 patterns, including Turkish-specific signatures English guides miss (the "-maktadır" suffix monotony that turns sentence endings into a rhyme, translation-ese, bureaucratic filler stacking, cataphoric colon definitions) and patterns reverse-engineered from open-source AI detectors, with measurable thresholds and an overcorrection guard. It then applies 17 flow rules distilled from close reading of real pre-AI Turkish prose: comma-chained verbs, mobile connectives, reduplication, reference tracking through Turkish pro-drop, emotion shown through the body, and a curated idiom reference sourced from Ömer Asım Aksoy's foundational work. Install with `npx skills add tahiryildiz/insanca`, invoke with `/insanca`.
 
 ## Lisans
 

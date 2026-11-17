@@ -7,6 +7,11 @@ Bu dosya SKILL.md'deki Kalıp Dizini'nin ayrıntısıdır. Kalıp numaraları SK
 
 **Kural:** Nihai metinde uzun tire (—) ve orta tire (–) bulunmaz. Türkçe yazım geleneğinde uzun tire zaten neredeyse hiç kullanılmadığı için İngilizceden de güçlü bir yapay zeka imzasıdır; bunu tercih değil, kesin kural olarak uygula. Her birini sırasıyla şunlardan biriyle değiştir: nokta (yeni cümle), virgül (kısa ara), iki nokta (açıklama), parantez (gerçek bir ara söz) veya cümleyi yeniden kur. Boşluklu tireleri (` — `) ve çift kısa çizgiyi (` -- `) de yakala.
 
+**Tek istisna: konuşma çizgisi.** Öykü, roman ve anıda satır başına alınmış konuşmayı gösteren çizgi TDK'nin tanımladığı bir işarettir, yapay zeka izi değildir. Ona dokunma, diyaloğu tırnağa da çevirme. Kural yalnız düzyazının içindeki, ara söz ya da vurgu için kullanılan tireye uygulanır. `scripts/olcum.py` satır başı konuşma çizgisini saymaz, ayrıca "konuşma satırı" olarak raporlar.
+
+> — Yine mi geç kaldın? diye sordu annesi. ← kalır
+> Kapıyı açtı — içerisi karanlıktı. ← düzelir: "Kapıyı açtı, içerisi karanlıktı."
+
 **Önemli:** Tireyi kaldırırken cümlenin iki vuruşlu ritmini de boz. Tirenin yerine noktalı virgül koyup aynı "iddia — dramatik ek" kalıbını korumak teli gizlemez, taşır. Noktalı virgül bolluğu da başlı başına şüphe çeker.
 
 **Önce:**
@@ -15,7 +20,7 @@ Bu dosya SKILL.md'deki Kalıp Dizini'nin ayrıntısıdır. Kalıp numaraları SK
 **Sonra:**
 > Uygulama ücretsiz, en azından şimdilik. Bu modeli en çok yeni başlayanlar seviyor.
 
-Nihai metni teslim etmeden önce `—` ve `–` için tara. Tek bir tane bile varsa taslak bitmemiştir.
+Nihai metni teslim etmeden önce `—` ve `–` için tara. Satır başı konuşma çizgisi dışında tek bir tane bile varsa taslak bitmemiştir.
 
 
 ### 23. Kalın Vurgu Bolluğu

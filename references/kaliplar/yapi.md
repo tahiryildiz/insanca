@@ -1,4 +1,4 @@
-# Yapı ve çeviri kalıpları (§46-§55)
+# Yapı ve çeviri kalıpları (§46-§56)
 
 Bu dosya SKILL.md'deki Kalıp Dizini'nin ayrıntısıdır. Kalıp numaraları SKILL.md ile aynıdır; "bkz. §n" göndermeleri bu numaralara gider. "Sonra" örneklerindeki rakam, kurum ve sahneler gösterim içindir; gerçek işte kaynakta yoksa uydurma (SKILL.md, Görevin, madde 5).
 
@@ -96,6 +96,8 @@ Bu dosya SKILL.md'deki Kalıp Dizini'nin ayrıntısıdır. Kalıp numaraları SK
 
 **Sorun:** İki ayrı kayma. (a) Bir sistemin, kuralın ya da değişmez işleyişin tanımı "-yor"la yapılır; Türkçe genel doğruyu geniş zamanla söyler ("Redis veriyi bellekte tutuyor" değil, tanım cümlesinde "tutar"). (b) Görülmeyen, log'dan, rapordan ya da sonradan öğrenilen olay "-di"yle düz anlatılır; Türkçe bunu "-miş"le verir. Kural 12 ve 19'un açıklayıcı ve teknik metindeki karşılığı.
 
+**Sınır:** Geniş zamanın yeri (a)'daki gibi sistem tanımı ve değişmez kural. Okura ne yapabileceğini, ne alacağını, neyle karşılaşacağını anlatan cümlede geniş zamana kaçma; orada §56 geçerli. "Redis veriyi bellekte tutar" doğru, "Pro'da ücretsiz olur" kof.
+
 **Önce:**
 > Redis veriyi bellekte tutuyor ve diske arada bir yazıyor. Gece 03.00'te bellek sızıntısı oldu ve servis kapandı. Sabah log'lara bakınca fark ettik.
 
@@ -125,3 +127,20 @@ Bu dosya SKILL.md'deki Kalıp Dizini'nin ayrıntısıdır. Kalıp numaraları SK
 
 **Sonra:**
 > Ekibinizin işini hızlandırın. Gereken her şey tek yerde ve işinize göre ayarlanıyor, zaman da para da kazanırsınız. Raporu WhatsApp'tan gönderin.
+
+
+### 56. Kof Geniş Zaman: Okura Dönük Metinde Genel Doğru Pozu
+
+**Dikkat edilecek ifadeler:** ücretsiz olur, yeterli olur, mümkün olur, faydalı olur, daha iyi olur, işinize yarar, ...de çalışır, ...ile uyumludur. Bir de cümle sonlarında üst üste dizilen -ır/-ir/-ar/-er/-ur: yapar, gösterir, sağlar, sunar.
+
+**Sorun:** Model okura bir şey anlatırken cümleye genel doğru kılığı giydiriyor: "Pro'da ücretsiz olur." Bu cümlede özne de yok, okur da, eylem de. "Olmak" boş bir yüklem gibi duruyor. Okur kendini cümlenin içinde bulamıyor, ne yapabileceğini kendisi çıkarmak zorunda kalıyor. Geniş zaman üst üste dizilince ("çalışır, ölçer, verir, yazdırır") metne broşür sesi de geliyor. Bir arkadaşına bir şey anlatan biri bu kipi bu sıklıkla kullanmıyor. §48'deki koşaç kaçışının ve §51'deki kof yardımcı fiilin kipteki kardeşi.
+
+**Çare:** İki hamle yap. Okur cümlenin öznesi olabiliyorsa onu özne yap (sen ya da siz). Boş "olmak"ın yerine işin kendi fiilini koy: kullanmak, açmak, indirmek, ödemek. Kip olarak "-abilirsin", "-yor" ya da geçmiş zamanı seç. İddianın gücünü de koru. "Ücretsiz olur" bir olanak bildiriyor, "kullanabilirsin" de öyle. "Kullanıyorsun" ise olanağı olguya çeviriyor.
+
+**Dokunma:** Sistem tanımına ve değişmez kurala dokunma (§53: "Redis veriyi bellekte tutar"). Atasözü ve deyim, şartnamedeki gereklilik kipi ve akademik genelleme de kalsın. Hata geniş zamanın kendisi değil, okura dönük açıklamada kof kalması. `scripts/olcum.py` geniş zamanla biten cümlelerin payını ve "olur" sayısını ayrıca raporluyor.
+
+**Önce:**
+> Pro planda bu özellik ücretsiz olur. Uygulama iPhone ve iPad'de çalışır, verileri iCloud ile eşitler. Kurulum birkaç dakika sürer, kredi kartı da gerekmez.
+
+**Sonra:**
+> Pro plandaysan bu özelliği ücretsiz kullanabilirsin. Uygulamayı iPhone'da da iPad'de de açabilirsin, verilerin iCloud üzerinden eşitleniyor. Kurulumu birkaç dakikada bitirebilirsin, kredi kartı da istemiyoruz.

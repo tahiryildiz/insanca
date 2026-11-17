@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.14.0
+version: 1.15.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -11,10 +11,12 @@ description: |
   kokusu, kesik cümle yığını, bürokratik dolgu, boş doğrular, uydurma
   örnekler, terapist tonu, jenerik girizgah ve kapanışlar, uzun tire,
   yağcılık, belirsiz kaynak gösterme, sahte şiirsellik, "belki de" vecizesi,
-  sağa dallanan cümle, kof yardımcı fiiller, teknik terim ve ek uyumu,
-  ürün ve arayüz metnindeki çeviri kalıpları.
+  sağa dallanan cümle, kof yardımcı fiiller, kof geniş zaman ("ücretsiz
+  olur"), teknik terim ve ek uyumu,
+  ürün ve arayüz metnindeki çeviri kalıpları. Şiire, teknik şartnameye ve
+  hukuki metne türüne göre dokunur; sayısal denetimi betikle ölçer.
 license: MIT
-compatibility: any-agent
+compatibility: any-agent. Ölçüm betiği için Python 3 gerekir; yoksa ölçümler elle yapılır.
 allowed-tools:
   - Read
   - Write
@@ -40,7 +42,13 @@ Doğallaştırılacak bir metin verildiğinde:
 
 Taslak → denetim → final döngüsü ve teslim edilecek çıktı aşağıda Süreç ve Çıktı bölümünde tanımlı.
 
-**Çalışma biçimi.** Varsayılan iş yeniden yazmaktır. Kullanıcı yalnızca tespit isterse ("kontrol et", "yapay zeka izi var mı?") metni yeniden yazma; bulduğun telleri alıntılayarak ve kesin imza ile yumuşak sinyali ayırarak (bkz. Tespit Rehberi) listele. Sıfırdan yazı istenirse aynı kuralları ilk cümleden uygula, taslağı yine Süreç ve Çıktı'daki denetimden geçir.
+**Çalışma biçimi.** Dört iş var:
+- **Yeniden yazım** (varsayılan): İskelet yeniden kurulur, bilgi ve sıra mantığı korunur.
+- **Hafif dokunuş:** Kullanıcı "çok değiştirme", "sadece düzelt", "redakte et" derse, metin akademik ya da teknik şartnameyse ya da insan izleri güçlüyse yalnız işaretlediğin cümleleri düzelt. Paragraf düzeni, cümle sırası ve sicil kalır.
+- **Tespit:** Kullanıcı yalnızca tespit isterse ("kontrol et", "yapay zeka izi var mı?") metni yeniden yazma; bulduğun telleri alıntılayarak ve kesin imza ile yumuşak sinyali ayırarak (bkz. Tespit Rehberi) listele. Şiirde varsayılan da budur.
+- **Sıfırdan yazım:** Aynı kuralları ilk cümleden uygula, taslağı yine Süreç ve Çıktı'daki denetimden geçir.
+
+Kullanıcı işi söylemediyse metin türünün varsayılanını uygula (Sicil Ayarı tablosundaki son sütun). Hangi işi yaptığını teslimin başında tek satırla söyle; kullanıcı başkasını isterse ikinci turda değiştirirsin.
 
 **Temel ilke:** Kelime telleri bir yıl içinde eskir ("delve" nasıl damgalanıp terk edildiyse "kapsamlı" da damgalanır ve terk edilir); yapısal teller kalıcıdır. Bu yüzden tek tek kelimeleri değiştirmekle yetinme; ritmi, kurguyu ve mantık akışını da onar. Uzun tireyi noktalı virgülle değiştirip aynı iki vuruşlu cümle kalıbını korumak teli gizlemez, taşır.
 
@@ -66,15 +74,22 @@ Kullanıcı kendi yazısından bir örnek verirse, yeniden yazmadan önce onu in
 
 Ses örneği yoksa metnin sicilini belirle ve doz ayarını ona göre yap. Örnek varsa örnek bu tabloyu ezer.
 
-| Sicil | -maktadır / -dır | Devrik cümle | Söylem parçacığı (işte, zaten, hani) | Açılış |
-|---|---|---|---|---|
-| Blog, deneme, sosyal medya | Hiç | Serbest ama ölçülü | Serbest, silme testine tabi | Sahne, gözlem ya da doğrudan iddia |
-| Kurumsal, ürün, iş yazışması | Yalnız resmi tanımda | Yok | Az ("ise", "özellikle") | Ana mesaj ilk cümlede |
-| Teknik doküman | Hiç; genel kural geniş zamanla (§53) | Yok | Çok az | Problem ya da verilen karar |
-| Akademik, resmi, hukuki | Doğal sicil, ama her cümlede değil; geniş zamanla nöbetleşe | Yok | Yalnız "ise", "nitekim", "dolayısıyla" | Araştırma sorusu ya da olgusal çerçeve |
-| Anlatı, anı, hikaye | Hiç | Ritme ve sese göre (kural 11, 18) | Serbest | Atmosfer, ayrıntı, iç ses |
+| Sicil | -maktadır / -dır | Devrik cümle | Söylem parçacığı (işte, zaten, hani) | Açılış | Varsayılan iş |
+|---|---|---|---|---|---|
+| Blog, deneme, sosyal medya | Hiç | Serbest ama ölçülü | Serbest, silme testine tabi | Sahne, gözlem ya da doğrudan iddia | Yeniden yazım |
+| Pazarlama | Hiç | Yok | Az | Ürünün gerçek bir özelliği; satış çağrısı meşru | Yeniden yazım |
+| Kurumsal, ürün, iş yazışması | Yalnız resmi tanımda | Yok | Az ("ise", "özellikle") | Ana mesaj ilk cümlede; selamlama ve kapanış kalır | Yeniden yazım |
+| Haber | Aktarımda doğal ("açıkladı", "bildirildi") | Yok | Yok | En önemli bilgi ilk cümlede, yansız ses | Yeniden yazım |
+| Teknik doküman | Hiç; tanım geniş zamanla, okura dönük adım "-yor" ya da emir kipiyle (§53, §56) | Yok | Çok az | Problem ya da verilen karar | Yeniden yazım |
+| Teknik şartname | "-malıdır / -ecektir" gereklilik kipidir, dokunma; aynı ekle biten maddeler iz sayılmaz | Yok | Yok | Madde numarası; her madde tek, sınanabilir gereklilik | Hafif dokunuş |
+| Akademik, resmi | Doğal sicil, ama her cümlede değil; geniş zamanla nöbetleşe | Yok | Yalnız "ise", "nitekim", "dolayısıyla" | Araştırma sorusu ya da olgusal çerçeve | Hafif dokunuş |
+| Hukuki | Doğal sicil; terim ve kalıp ("işbu") kalır | Yok | Yok | Madde yapısı değişmez | Tespit ya da hafif dokunuş; değişikliği uygulamadan önce sor |
+| Anlatı, anı, hikaye | Hiç | Ritme ve sese göre (kural 11, 18) | Serbest | Atmosfer, ayrıntı, iç ses; satır başı konuşma çizgisi kalır | Hafif dokunuş ya da yeniden yazım (yazarın sesi güçlüyse hafif) |
+| Şiir | Yazarın tercihi | Yazarın tercihi | Yazarın tercihi | Dize kırılması, kıta, uyak, ölçü ve noktalama şiirin kendisidir | Tespit; yeniden yazım yalnız istenirse |
 
-Akademik metni blog sesine çevirmek de hatadır (bkz. §21): Orada "-maktadır"ın varlığı değil, her cümleyi aynı ekle bitirmek sorundur.
+Akademik metni blog sesine çevirmek de hatadır (bkz. §21): Orada "-maktadır"ın varlığı değil, her cümleyi aynı ekle bitirmek sorundur. Her türü nereden tanıyacağın, neye dokunmayacağın ve o türde yapay zekanın nasıl iz bıraktığı `references/turler.md` dosyasında. Akış kuralları şiirde, teknik şartnamede ve hukuki metinde uygulanmaz.
+
+**Alan.** Türün yanında metnin konusu olan alanı da belirle: yazılım, finans, sağlık, eğitim, hukuk, perakende, kamu, insan kaynakları, pazarlama. Alan okuru, terimleri ve değişirse zarar doğuracak bilgileri belirler: faiz oranı, doz ve kullanım sıklığı, madde numarası, cayma hakkı gibi yasal uyarılar harfi harfine kalır, iddianın gücü de korunur ("yardımcı olabilir" asla "tedavi eder" olmaz). Alan rehberi `references/alanlar.md`, kitleye göre terim kararı ("deploy" geliştiriciye kalır, genel okura "canlıya almak") ve plaza dili `references/jargon.md` dosyasında.
 
 
 ## KİŞİLİK VE RUH
@@ -144,7 +159,7 @@ Hangi kural nerede: 1-7 her türde (özellikle blog, deneme, köşe yazısı); 8
 
 ## KALIP DİZİNİ
 
-55 kalıbın her birinin tek satırlık özü ve tipik tetikleyicileri aşağıda. Metni bu dizine göre tara. **İşaretlediğin her kalıbın tam açıklamasını ve önce/sonra örneğini, dizinde adı geçen dosyadan oku**; emin olmadığın bir eşleşmede de oku. Numaralar sabittir, metin içindeki "bkz. §n" göndermeleri bu numaralara gider.
+56 kalıbın her birinin tek satırlık özü ve tipik tetikleyicileri aşağıda. Metni bu dizine göre tara. **İşaretlediğin her kalıbın tam açıklamasını ve önce/sonra örneğini, dizinde adı geçen dosyadan oku**; emin olmadığın bir eşleşmede de oku. Numaralar sabittir, metin içindeki "bkz. §n" göndermeleri bu numaralara gider.
 
 Dosyalardaki "Sonra" örnekleri kalıbın nasıl kırılacağını gösterir. İçlerindeki rakam, kurum ve sahneler yazarın elinde olduğu varsayılan bilgilerdir; gerçek işte kaynakta yoksa uydurma (bkz. Görevin, madde 5).
 
@@ -181,12 +196,13 @@ Dosyalardaki "Sonra" örnekleri kalıbın nasıl kırılacağını gösterir. İ
 50. **Refleks "ve".** "...dık ve sonra...", "...dı ve buna bağlı olarak..."; ulaç yerine bağlaç.
 51. **Kof yardımcı fiil.** gerçekleştirmek, sahip olmak, katkıda bulunmak, rol oynamak, "...de bulunmak", "ilk adım olarak".
 52. **Ad tamlaması zinciri.** Üç adı aşan isim yığını.
-53. **Kip seçimi.** Genel kural "-yor"la değil geniş zamanla; sonradan öğrenilen olay "-di"yle değil "-miş"le.
+53. **Kip seçimi.** Sistem tanımı ve değişmez kural "-yor"la değil geniş zamanla; okura dönük açıklama ise geniş zamanla değil (bkz. §56); sonradan öğrenilen olay "-di"yle değil "-miş"le.
 54. **Teknik terim.** Zorla çeviri ("uç nokta"), iki karşılık birden (server/sunucu), okunuşa aykırı ek ("cache'dan").
 55. **Ürün ve arayüz kalıpları.** "Başlamaya hazır mısınız?", "bir üst seviyeye taşıyın", "WhatsApp'ta gönder".
+56. **Kof geniş zaman.** "Pro'da ücretsiz olur", "çalışır, ölçer, verir" dizisi; okuru özne yap, işin fiilini kullan ("Pro'da ücretsiz kullanabilirsin").
 
 ### Üslup: `references/kaliplar/uslup.md`
-22. **Uzun tire.** Nihai metinde —, – ve -- sıfır; kesin kural.
+22. **Uzun tire.** Nihai metinde —, – ve -- sıfır; kesin kural. Tek istisna anlatıda satır başı konuşma çizgisi: TDK işaretidir, kalır.
 23. **Kalın vurgu bolluğu.**
 24. **Gereksiz maddeleme.** Kalın etiket + iki nokta listeleri, akıl yürütmenin maddelere bölünmesi.
 25. **Başlıkta her kelime büyük.** "Yükselişi Ve Geleceği".
@@ -220,13 +236,30 @@ Bütün sürecin baştan sona uygulandığı uzun örnek (Ayvalık gezi yazısı
 
 ## SAYISAL DENETİM
 
-Dedektörlerin ölçtüğü değerleri sen de kabaca ölç; his yanıltır, sayı yanıltmaz (insanlar yapay zeka metnini yazı tura isabetiyle ayırt edebiliyor). Nihai metinde şu eşikleri kontrol et:
+Dedektörlerin ölçtüğü değerleri sen de ölç; his yanıltır, sayı yanıltmaz (insanlar yapay zeka metnini yazı tura isabetiyle ayırt edebiliyor). Modeller saymakta kötüdür, bu yüzden Python çalıştırabiliyorsan sayıları `scripts/olcum.py` betiğine saydır. Metni dosyaya yazmadan standart girdiden ver, betik onu kısa bir adla saklar:
+
+```bash
+python3 <skill-dizini>/scripts/olcum.py - --save once --guide <<'METIN'
+[metnin kendisi, olduğu gibi]
+METIN
+```
+
+Raporun ilk satırı betiğin tür ve alan tahminidir; yüzeydeki ipuçlarından çıkar, son kararı sen verirsin. `--guide` tahmin edilen türün ve alanın rehberini de yazdırır; kararın farklıysa doğru rehberi adıyla al: `olcum.py --guide "Teknik şartname dili"`, `olcum.py --guide "Finans"`. Nihai metni yazınca önceki haliyle karşılaştır:
+
+```bash
+python3 <skill-dizini>/scripts/olcum.py - --save sonra --before once <<'METIN'
+[nihai metin]
+METIN
+```
+
+Rapor her ölçümü ✓ temiz, ~ dikkat, ! alarm diye işaretler ve önce → sonra değerlerini yan yana verir. Teslimde ölçüm sonuçlarını yalnız betik çalıştıysa ve sayıları betikten alarak yaz. Python yoksa aşağıdaki eşikleri elle, kabaca ölç; emin olmadığın sayıyı rapora yazma. Nihai metinde şu eşikleri kontrol et:
 
 - **Cümle uzunluğu çeşitliliği:** Kelime sayıları birbirine yakın cümleler üst üste geliyorsa boz. Kaba hedef: her paragrafta bir tane 8 kelime ve altı, bir tane 20 kelime ve üstü cümle. Sayıyla ölçmek için değişim katsayısına bak: cümlelerin kelime sayılarının standart sapması bölü ortalaması. Kabaca 0,35'in altı metronomdur, 0,40 ve üstü insan aralığına girer. Üç ve daha fazla cümleli metinde hesapla; elle yapılacak kadar basit (cümle boylarını yaz, ortalamayı al, sapmayı kabaca tahmin et).
 - **"-maktadır" yoğunluğu:** Blog, kurumsal ve teknik metinde hiç kalmasın. Akademik ve resmi metinde var olabilir ama her cümlede değil; kabaca 100 kelimede bir ikiyi geçiyorsa geniş zamanla nöbetleştir (bkz. Sicil Ayarı).
 - **Açılışlar:** Aynı kelimeyle başlayan cümle sayısını say; dörtte birden fazlası aynı kelimeyle açılıyorsa dağıt.
 - **Zarf-fiil kuyrukları:** "-arak/-erek sağlayarak/katkıda bulunarak" ile biten cümlelerin payı yüzde 15'i geçiyorsa kes (bkz. §3).
-- **Noktalama sayımı:** Uzun tire: 0 (bkz. §22). Noktalı virgül: metin başına bir iki taneden fazlaysa azalt. Şapkalı harf: 0 (bkz. §32).
+- **Geniş zaman payı:** Okura dönük metinde geniş zamanla biten cümleler yüzde 30'u geçiyorsa dikkat, 40'ı geçiyorsa alarm; tek bir kof "olur" bile bakmaya değer (bkz. §56). Sistem tanımı, kural metni ve şartnamede bu eşik geçerli değil.
+- **Noktalama sayımı:** Uzun tire: 0, satır başı konuşma çizgisi hariç (bkz. §22). Noktalı virgül: metin başına bir iki taneden fazlaysa azalt. Şapkalı harf: 0 (bkz. §32).
 - **Üçleme yoğunluğu:** "X, Y ve Z" kalıbı bin kelimede iki üçten fazlaysa seyrelt (bkz. §10).
 - **İki nokta ve "asıl" sayımı:** İki nokta üst üste bin kelimede bir ikiden fazlaysa ve arkasından tek cümlelik vuruş geliyorsa boz; "asıl" kelimesi üçten fazla geçiyorsa vurguyu tekrar ve devrikle yeniden kur (bkz. §46).
 - **Doğal Türkçe referansı:** Yazılı Türkçenin ortalaması cümle başına 9-11 kelime, kelime başına yaklaşık 2,6 hecedir (iki bağımsız okunabilirlik çalışması aynı değerleri verir). Ortalaman bunun çok üstündeyse metin bürokratikleşmiş, çok altındaysa kesikleşmiş demektir; ama ortalamayı tuttururken varyansı öldürme (bkz. §14).
@@ -284,22 +317,23 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
 
 ## Süreç ve Çıktı
 
-1. Metni dikkatle oku ve Kalıp Dizini'ne göre her kalıp örneğini tespit et. Dosya okuma: İşaretlediğin her kalıbın dosyasını aç (dizin hangi dosya olduğunu söyler). Yeniden ya da sıfırdan yazıyorsan `references/akis-kurallari.md` dosyasını oku. Her durumda `references/kaliplar/yapi.md` (§47 yapı nakli) ve `references/kaliplar/dedektor.md` (§45 aşırı düzeltme) dosyalarını oku: 3. ve 4. adımdaki öz denetim bunlara dayanır. Teknik, ürün ya da arayüz metninde (şirketin kendi ürününü anlatan blog yazısı dahil) ya da §32, §54 veya §55 işaretlendiyse `references/yazim-ve-terim.md` dosyasını da aç. `references/deyimler.md` yalnız deyim kullanacaksan; `references/tam-ornek.md` ve `references/kaynaklar.md` isteğe bağlı.
+1. Metni dikkatle oku. Türünü, alanını ve yapacağın işi belirle (bkz. Çalışma biçimi, Sicil Ayarı); Python varsa `scripts/olcum.py` ile ilk ölçümü al (bkz. Sayısal Denetim). Sonra Kalıp Dizini'ne göre her kalıp örneğini tespit et. Dosya okuma: Şiir, anlatı, teknik şartname, hukuki, haber ya da pazarlama metninde `references/turler.md` dosyasındaki türün bölümünü oku (betiğin `--guide` çıktısı bunu verir). Metin belirli bir alanın okuruna gidiyorsa (banka, hastane, okul, belediye, ilan, ürün sayfası) `references/alanlar.md`, teknik ya da iş metninde terim kararı vereceksen `references/jargon.md` dosyasını aç. İşaretlediğin her kalıbın dosyasını aç (dizin hangi dosya olduğunu söyler). Yeniden ya da sıfırdan yazıyorsan `references/akis-kurallari.md` dosyasını oku. Her durumda `references/kaliplar/yapi.md` (§47 yapı nakli) ve `references/kaliplar/dedektor.md` (§45 aşırı düzeltme) dosyalarını oku: 3. ve 4. adımdaki öz denetim bunlara dayanır. Teknik, ürün ya da arayüz metninde (şirketin kendi ürününü anlatan blog yazısı dahil) ya da §32, §54 veya §55 işaretlendiyse `references/yazim-ve-terim.md` dosyasını da aç. `references/deyimler.md` yalnız deyim kullanacaksan; `references/tam-ornek.md` ve `references/kaynaklar.md` isteğe bağlı.
 2. Bir **taslak yeniden yazım** çıkar. Şunları kontrol et:
    - Sesli okununca doğal akıyor mu, cümle uzunlukları değişiyor mu?
    - Kısa cümleler noktayla art arda mı dizilmiş? Türkçede kısa cümleler çoğu zaman virgülle bağlanır (bkz. §15); vurgu için ayrık bırakılan tek tük kısa cümle dışındakileri bağla.
-   - Şapkalı harf kalmış mı (bkz. §32), uzun tire kalmış mı (bkz. §22)?
+   - Şapkalı harf kalmış mı (bkz. §32), konuşma çizgisi dışında uzun tire kalmış mı (bkz. §22)?
+   - Türün dokunulmazları duruyor mu? Şartnamedeki gereklilik kipi, hukuki terim, alanın rakam, doz ve yasal uyarıları (bkz. Sicil Ayarı, Alan).
    - Somut detay ve yalın kuruluşlar tercih edilmiş mi, sicil doğru ve tutarlı mı?
    - **Mantık akışı görünür mü?** Yapay zeka metinlerinde cümleler tek tek düzgündür ama aralarındaki akıl yürütme köprüsü eksiktir; okur "buraya nasıl geldik?" diye sorar. Fikirler arasındaki bağı görünür kıl, ışınlanma varsa ara adımı yaz.
    - **Olgu kilidi tutuyor mu?** Taslakta girdide olmayan sayı, ad, kurum, niyet ("aklımızda tam olarak bu vardı") ya da neden-sonuç var mı? Varsa çıkar ya da yer tutucuya çevir. Girdideki her sayı ve özel ad duruyor mu?
-3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kontrol et; cümle uzunluğu değişim katsayısını gerçekten hesapla. İkinci bir soru daha sor: **"Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?"** Cümle iskeleti hala kurulum-vuruş, çift kanat veya üçlemeyse kelimeler değişmiş olsa da kalıp duruyordur (bkz. §47). Soyut üç ismi üç fiile çevirmek de üçlemeyi korur.
-4. Bunları gideren, içinde hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Taslakta fark ettiğin ritim sorununu nihaide çöz; değişim katsayısı 0,35'in altındaysa metin bitmemiştir. Eklediğin her söylem parçacığını, devrik cümleyi ve bağlacı silme testinden geçir: Çıkarınca anlamdan ya da tondan bir şey eksilmiyorsa çıkar. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
+3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kontrol et; cümle uzunluğu değişim katsayısını gerçekten hesapla (betik varsa taslağı `--before once` ile ölçtür). İkinci bir soru daha sor: **"Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?"** Cümle iskeleti hala kurulum-vuruş, çift kanat veya üçlemeyse kelimeler değişmiş olsa da kalıp duruyordur (bkz. §47). Soyut üç ismi üç fiile çevirmek de üçlemeyi korur.
+4. Bunları gideren, içinde konuşma çizgisi dışında hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Taslakta fark ettiğin ritim sorununu nihaide çöz; değişim katsayısı 0,35'in altındaysa metin bitmemiştir. Eklediğin her söylem parçacığını, devrik cümleyi ve bağlacı silme testinden geçir: Çıkarınca anlamdan ya da tondan bir şey eksilmiyorsa çıkar. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
 
 Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et. Nihai metinde yer tutucu bıraktıysan teslimde ayrıca söyle; yayından önce doldurulması gerekir.
 
 
 ## Kaynaklar
 
-Skill; Wikipedia'nın "Signs of AI writing" rehberine, Türkçe topluluk gözlemlerine, açık kaynak dedektörlerin tersine mühendisliğine, gerçek Türkçe düzyazı ve edebiyat okumalarına, TDK ve derlem çalışmalarına dayanır. Kaynakların tam listesi ve hangi kuralın hangisinden geldiği: `references/kaynaklar.md` (bölüm 0). Aynı dosya işlenmiş, sırada bekleyen ve elenen kaynakların envanterini de tutar.
+Skill; Wikipedia'nın "Signs of AI writing" rehberine, Türkçe topluluk gözlemlerine, açık kaynak dedektörlerin tersine mühendisliğine, gerçek Türkçe düzyazı ve edebiyat okumalarına, TDK ve derlem çalışmalarına dayanır. Kaynakların tam listesi ve hangi kuralın hangisinden geldiği: `references/kaynaklar.md` (bölüm 0). Aynı dosya işlenmiş, sırada bekleyen ve elenen kaynakların envanterini de tutar. Ölçüm betiği (`scripts/olcum.py`) ile tür, alan ve jargon rehberleri (`references/turler.md`, `alanlar.md`, `jargon.md`) MesutARIDORU'nun [İnsanlık öldü mü?](https://github.com/MesutARIDORU/insanlik-oldu-mu) skill'inden MIT lisansıyla uyarlandı.
 
 Wikipedia'dan temel içgörü: "Büyük dil modelleri bir sonraki kelimeyi istatistiksel olarak tahmin eder. Sonuç, en geniş durum yelpazesine uyan, istatistiksel olarak en olası metne yakınsar."
