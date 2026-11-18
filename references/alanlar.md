@@ -33,6 +33,7 @@ Her bölümde aynı başlıklar var:
 - Ekip içi notta aşırı çeviri: "çekme isteği", "konuşlandırma" (§54).
 - Kesinti açıklamasında failsiz edilgen: "Bir sorun yaşanmış olup giderilmiştir." Ne olduğu, ne kadar sürdüğü, kimi etkilediği yazmaz (§18).
 - Hata mesajında terapist sesi: "Bu durumun can sıkıcı olabileceğini anlıyoruz." (§35)
+- PR açıklamasında ve durum mesajında kanıtsız "testler geçiyor", "doğrulandı" (bkz. `turler.md`, Ekip içi yazışma dili).
 
 **Dokunma:** Kod, komut, sürüm numarası, hata kodu, API ve kütüphane adları, arayüz etiketleri, güvenlik duyurusundaki açık numarası (CVE) ve etkilenen sürüm aralığı, kesinti raporundaki saatler.
 

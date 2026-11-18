@@ -116,7 +116,7 @@ CHAT_LEFTOVERS = [
     "bir yapay zeka", "bir yapay zekâ", "dil modeli olarak", "umarım yardımcı olur",
     "umarım faydalı olur", "regenerate response", "başka sorunuz olursa",
     "yardımcı olabileceğim başka", "harika bir soru", "çok güzel bir soru",
-    "dilerseniz devam", "devam etmemi ister",
+    "dilerseniz devam", "devam etmemi ister", "generated with",
 ]
 
 # correspondence clichés: mostly word-for-word translations of English e-mail formulas
@@ -157,6 +157,17 @@ OFFICE_JARGON = [
 OVER_TRANSLATIONS = [
     "konuşlandır", "çekme isteği", "birleştirme isteği", "taahhüt et", "ara katman yazılımı",
     "istem mühendisliği", "ince ayarlama", "dal oluştur", "sürekli entegrasyon ve sürekli",
+    "uç nokta", "göç betiği",
+]
+
+# status claims in a team message: each one is either backed by output in the source or is a guess (fact lock)
+STATUS_CLAIMS = [
+    ("testler geçiyor", r"test\w* (başarıyla )?(geçiyor|geçti|geçmektedir)"),
+    ("test edildi", r"test edil(di|miştir)"),
+    ("deploy edildi", r"deploy['’]?\w* ?(edildi|oldu|landı)|canlıya alındı|yayına alındı"),
+    ("doğrulandı", r"doğrulan(dı|mıştır)|kontrol edil(di|miştir)"),
+    ("sorunsuz çalışıyor", r"(sorunsuz|düzgün|beklendiği gibi) çalış(ıyor|maktadır)"),
+    ("başarıyla tamamlandı", r"başarıyla (tamamlan|gerçekleş|uygulan)"),
 ]
 
 # aorist (geniş zaman) at the end of a sentence: yapar, gösterir, olur, olurlar, yaparsın, gerekmez (§56)
@@ -616,6 +627,8 @@ def measure(text):
     opening_cliches = [t for t in CLICHE_OPENINGS if re.search(r"(?<!\w)" + re.escape(t), first_sentences)]
     office = count_terms(OFFICE_JARGON, lower)
     over = count_terms(OVER_TRANSLATIONS, lower)
+    status = {label: len(re.findall(rx, raw_lower)) for label, rx in STATUS_CLAIMS}
+    status = {k: v for k, v in status.items() if v}
     self_answer = 0  # a question immediately followed by its own short answer
     for i in range(len(sentences) - 1):
         if sentences[i].rstrip().endswith("?"):
@@ -706,6 +719,7 @@ def measure(text):
         "cliche_opening": opening_cliches,
         "office_jargon": dict(office),
         "over_translations": dict(over),
+        "status_claims": status,
         "self_answer": self_answer,
         "cliche_closing": closing_cliches,
         "question_ending": question_ending,
@@ -731,6 +745,7 @@ GENRE_LABELS = {
     "spec": "Teknik şartname dili",
     "docs": "Teknik doküman dili",
     "corporate": "Kurumsal yazışma dili",
+    "team": "Ekip içi yazışma dili",
     "academic": "Akademik dil",
     "legal": "Hukuki dil",
     "news": "Haber dili",
@@ -741,7 +756,8 @@ GENRE_LABELS = {
 
 SECTOR_KEYWORDS = {
     "yazılım ve teknoloji": ["yazılım", "uygulama", "sunucu", "api", "deploy", "sürüm", "kod", "veri taban", "bulut",
-                             "kullanıcı arayüz", "arayüz", "sprint", "modül", "sistem", "platform", "node.js", "npm", "git"],
+                             "kullanıcı arayüz", "arayüz", "sprint", "modül", "sistem", "platform", "node.js", "npm", "git",
+                             "commit", "branch", "merge", "pr"],
     "finans": ["bütçe", "faiz", "kredi", "yatırım", "portföy", "hisse", "bilanço", "nakit", "fatura", "ödeme", "tl", "lira"],
     "sağlık": ["hasta", "tedavi", "klinik", "ilaç", "doktor", "hastane", "teşhis", "semptom", "sağlık"],
     "eğitim": ["öğrenci", "öğretmen", "ders", "okul", "müfredat", "sınav", "eğitim", "üniversite"],
@@ -753,7 +769,7 @@ SECTOR_KEYWORDS = {
 }
 # Keywords match at the start of a word, since Turkish adds suffixes at the end. Short abbreviations match only
 # as whole words (an apostrophe suffix is fine): otherwise "tl" is found in "işaretli" and "git" in "gitti".
-WHOLE_WORD_KEYWORDS = {"tl", "git", "api", "npm"}
+WHOLE_WORD_KEYWORDS = {"tl", "git", "api", "npm", "pr"}
 SECTOR_PATTERNS = {
     name: [re.compile(r"(?<!\w)" + re.escape(k) + (r"(?!\w)" if k in WHOLE_WORD_KEYWORDS else "")) for k in keys]
     for name, keys in SECTOR_KEYWORDS.items()
@@ -778,6 +794,13 @@ PERSON_SUFFIX_STOPWORDS = {
     "grafik", "müzik", "dinamik", "sistematik", "plastik", "romantik", "klasik", "fabrik", "lojistik", "analitik",
     "dağıtım", "adım", "yapım", "üretim", "satım", "yatırım", "kadim", "tutum", "kullanım", "bakım", "katılım",
 }
+# team messages: Slack, pull request descriptions, commit messages, issue comments
+COMMIT_PREFIX_RE = re.compile(r"^\s*(feat|fix|docs|refactor|chore|test|perf|build|ci|style|revert)(\([^)\n]+\))?!?: \S")
+# issue keys such as ODM-128; standards that look the same (AES-256, UTF-8) are left out
+ISSUE_KEY_RE = re.compile(r"(?<![\w-])(?!(?:AES|SHA|UTF|CVE|ISO|RSA|TLS|SSL|MD|MP|COVID|HTTP|IEEE|RFC|EN|TS|A|B)-)[A-Z][A-Z0-9]{1,9}-\d+(?![\w-])")
+PR_NUMBER_RE = re.compile(r"(?<!\w)#\d+(?!\w)|/pull/\d+|/merge_requests/\d+")
+TEAM_TERMS_RE = re.compile(r"(?<!\w)(pr|mr|commit|branch|merge|push|rebase|review|hotfix|staging|deploy|c[iı]|pipeline|revert)(?=['’]|(?!\w))")
+PR_HEADING_RE = re.compile(r"(?m)^#{1,4}\s*(özet|summary|ne değişti|değişiklikler|yapılanlar|test|testler|nasıl test edildi|test plan[ıi]?|notlar)\s*$")
 DATELINE_RE = re.compile(r"^[A-ZÇĞİÖŞÜ]{3,}[^\n]{0,40}\([^)]{2,40}\)\s*[-–—]")
 
 
@@ -882,6 +905,25 @@ def guess_profile(text):
         if w in lower:
             add("corporate", 0.7, "")
 
+    # team messages: commit prefix, issue keys, pull request numbers, git and review terms
+    team_terms = len(TEAM_TERMS_RE.findall(lower))
+    issue_keys = len(ISSUE_KEY_RE.findall(raw))
+    pr_numbers = len(PR_NUMBER_RE.findall(raw))
+    if COMMIT_PREFIX_RE.search(raw):
+        add("team", 4, "commit ön eki")
+    if issue_keys:
+        add("team", 1.5 + min(issue_keys, 3) * 0.25, "görev numarası")
+    if pr_numbers:
+        add("team", 1.5, "PR ya da issue numarası")
+    if team_terms:
+        add("team", min(team_terms, 5) * 0.7, "git ve inceleme terimleri")
+    if PR_HEADING_RE.search(tr_lower(raw)):
+        add("team", 2.5, "PR açıklaması başlıkları")
+    if team_terms and (issue_keys or pr_numbers) and re.search(r"(?<!\w)@\w+", raw):
+        add("team", 1.5, "ekip arkadaşına bahsetme")
+    if team_terms >= 2 and fs >= 1 and not a["headings"]:
+        add("team", 2, "birinci kişiden iş notu")
+
     # academic
     if CITATION_RE.search(raw):
         add("academic", 2.5, "kaynak gösterimi")
@@ -910,7 +952,8 @@ def guess_profile(text):
         add("social", 0.3, "")
 
     # social media
-    tags = len(re.findall(r"(?<!\w)#\w+", raw)) + len(re.findall(r"(?<!\w)@\w+", raw))
+    # "#482" is a pull request or issue number, not a hashtag
+    tags = len(re.findall(r"(?<!\w)#(?!\d+(?!\w))\w+", raw)) + len(re.findall(r"(?<!\w)@\w+", raw))
     if tags:
         add("social", 2 + min(tags, 4) * 0.5, "etiket ve bahsetmeler")
     if len(EMOJI_RE.findall(raw)) >= 2:
@@ -1047,6 +1090,10 @@ def alarms(m):
     n = total(m["office_jargon"])
     add("Plaza jargonu", f"{n} ({', '.join(m['office_jargon'])})" if n else "0",
         "info" if n else "ok", "kitleye göre karar ver, bkz. references/jargon.md")
+    n = total(m.get("status_claims", {}))
+    if n:
+        add("Durum cümlesi", f"{n} ({', '.join(m['status_claims'])})", "warn",
+            "olgu kilidi: çıktısı kaynakta yoksa yer tutucuya çevir (bkz. turler.md, Ekip içi yazışma dili)")
     n = total(m["over_translations"])
     add("Aşırı terim çevirisi", f"{n} ({', '.join(m['over_translations'])})" if n else "0",
         "warn" if n else "ok", "geliştirici kitlesi bu karşılıkları kullanmıyor olabilir")
