@@ -12,7 +12,7 @@ Teknik, kurumsal ya da bir alana özgü metni düzeltmeden önce bu dosyayı oku
    - Resmî ya da kamuya dönük metinde kurumun kendi terimlerine uyulur.
 2. **Bir kavrama tek ad.** Aynı metinde "deploy", "yayına alma" ve "dağıtım" dönüşümlü kullanılıyorsa iz budur (§54). Birini seç, sonuna kadar onu kullan.
 3. **Dokunulmayanlar.** Kod, komut, dosya ve klasör adları, ürün ve şirket adları, arayüzdeki düğme ve menü etiketleri, API ve kütüphane adları olduğu gibi kalır.
-4. **Ek getirme.** Yabancı terime Türkçe ek kesme işaretiyle gelir: PR'ı, API'ye, deploy'dan. Fiil yaparken yaygın biçim "etmek"tir: deploy etmek, merge etmek. "-lemek" eki konuşmada yaygındır ("deploy'lamak"), yazıda daha az görülür.
+4. **Ek getirme.** Yabancı terime Türkçe ek kesme işaretiyle gelir: PR'ı, API'ye, deploy'dan. Fiil yaparken yaygın biçim "etmek"tir: deploy etmek, merge etmek. "-lemek" eki konuşmada yaygındır ("deploy'lamak"), yazıda daha az görülür. Ekip içi mesaj yazıya dökülmüş konuşmadır, orada ikisi de doğaldır ("branch'i push'ladım", "merge'lendi"); yazar hangisini kullanıyorsa o kalır, aynı mesajda ikisi karışmaz.
 5. **Açıklama bir kez.** Genel okurun bilmeyebileceği bir terimi ilk geçtiği yerde bir kez aç, sonra açıklamasız kullan. Her terime parantez eklemek ayrı bir kalıptır (§31).
 6. **Uydurma.** Bir terimin Türkçesi yerleşmemişse yeni karşılık icat etme. İngilizcesini bırak ya da ne yaptığını anlat.
 
@@ -216,5 +216,10 @@ Aşağıdaki karşılıklar sözlüklerde ve bazı resmî belgelerde geçer, ama
 - ara katman yazılımı (middleware)
 - istem mühendisliği (prompt engineering)
 - sürekli entegrasyon ve sürekli dağıtım (CI/CD; ekiplerde kısaltma kullanılır)
+- dal, dalı itmek (branch, push; ekiplerde "branch'i push'lamak" ya da "push etmek")
+- uç nokta (endpoint)
+- gömme, parça (embedding, chunk)
+
+**Türetilmiş biçimler.** Model yalnız adı değil, addan türeyen sıfat ve fiili de çevirir, iz çoğu zaman orada kalır: "tracked" için "takipli dosya", "merged" için "birleştirilmiş dal", "seeded" için "tohumlanmış veri". Ekipte bunun iki doğal yolu var. Ya terim Türkçe ek alır ("commit'li", "merge'lendi", "seed'lenmiş veri") ya da olan düz Türkçeyle anlatılır ("git bu dosyayı takip ediyordu"). İkisinin arası, yani sözlükte olmayan bir Türkçe sıfat, kimsenin ağzından çıkmaz.
 
 **İstisna:** Bazı kurumlar resmî belgelerinde bu karşılıkları bilerek kullanır. Metin böyle bir kurumun belgesiyse ya da yazar bu terimleri tutarlı biçimde seçmişse kurumun terimine uy.

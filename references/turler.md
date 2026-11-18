@@ -73,6 +73,36 @@ Her metin türünün kendi doğru dili var. Şiirde dize kırılması yazarın k
 
 **Yazım dili:** İlk cümle amacı söyler. İstenen eylem ve son tarih tek ve açık bir cümlede durur. Sicil kurumun sicilidir. Ekip içi yazışmada "Merhaba" ve "deadline" doğaldır, müşteriye giden yazıda "Sayın" ve "son tarih" tercih edilir (bkz. `jargon.md`). Deyim ve devrik cümle kullanma.
 
+## Ekip içi yazışma dili
+
+**Tanıma:** Slack ya da Teams mesajı, PR açıklaması, commit mesajı, issue ve görev yorumu, gün sonu durum notu. Okur ekipten biridir: bağlamı bilir, yazanı tanır, mesajı iki iş arasında okur. Selamlama ve imza ya yoktur ya tek kelimedir. Metinde görev numarası (ODM-128), PR numarası (#482), @bahsetme, branch ve dosya adı geçer; commit mesajı çoğu zaman `fix:`, `feat:` gibi bir ön ekle açılır.
+
+**Dokunma:** Görev ve PR numaraları, commit özeti, branch ve dosya adları, hata mesajı, log satırı, komut, sürüm, bahsedilen kişiler. Ekibin yerleşik İngilizce terimleri (bkz. `jargon.md`) ve commit mesajında ekibin biçimi (ön ek, dil, emir kipi). Yazarın konuşma dili de kalır: küçük harfle başlayıp noktasız biten "bi bakayım, hallettim" türü kısa mesaj bu türde insan işaretidir, düzeltme.
+
+**Yapay zeka izi:**
+- Boy. Tek satırlık soruya üç paragraf cevap. Ölçü karşı tarafın son mesajıdır; cevap onun iki katını geçiyorsa büyük ihtimalle fazlası dolgudur.
+- Sohbet mesajında belge biçimi: başlık, kalın etiketli maddeler, numaralı adımlar, sonda "Özet" (§23, §24, §20). İnsan Slack'e rapor yazmaz, iki üç cümle yazar.
+- Her satırın başında durum emojisi: ✅ 🚀 ⚠️ (§26).
+- Telgraf ve büyük harf: "SORU KAPANDI + DEPLOY TAMAM", "fix → test → merge" ok zinciri. İnsan kendine böyle not alır, ekibe cümleyle yazar.
+- Gömülü haber. Asıl bulgu (hata, engel, karar bekleyen soru) üçüncü paragrafta, analiz ve bağlamın arkasında kalır. Mesajı yarıda bırakan okur haberi kaçırır.
+- Kanıtsız durum cümlesi: "testler geçiyor", "deploy edildi", "doğrulandı", "sorunsuz çalışıyor". Model işin planlanan halini olmuş gibi yazar. Ajanların açtığı PR'lar üzerine bir çalışmada açıklama ile kod arasındaki en sık tutarsızlık buydu: açıklamanın yapılmamış bir değişikliği yapılmış göstermesi (bkz. `kaynaklar.md`, Gong vd.).
+- Güvence ve süreç anlatımı: "titizlikle inceledim", "mevcut davranış korunarak", "kod kalitesi iyileştirildi", "okunabilirlik artırıldı". Ne değiştiğini söylemez. İnsan değişikliğin kendisini yazar: "boş gelen sub için kontrol eklendi".
+- Diff'i tekrar eden PR açıklaması: hangi dosyada ne değiştiği tek tek sayılır, neden değiştiği ve nasıl denendiği yazmaz.
+- Sohbet artığı ve araç imzası: "Umarım yardımcı olur", "Başka bir şey gerekirse haber ver", "Generated with ..." satırı (§33). İmza satırını tutup tutmamak ekibin kararıdır; yazar bilerek bırakmadıysa metnin okunmadan gönderildiğini gösterir.
+- Her inceleme cevabının övgüyle açılması: "Harika yakalamışsın!" (§34).
+- Uydurma Türkçe terim: "dalı ittim", "çekme isteği açtım", "takipli dosya" (§54, bkz. `jargon.md`).
+- Failsiz edilgen: "Gerekli düzeltmeler yapılmıştır." Kimin ne yaptığı belli değil (§18).
+
+**Yazım dili:** İlk cümle haberi ya da isteği söyler; bir hata, engel ya da karar bekleyen soru varsa mesaj onunla açılır. Cümleyle yaz, her cümle tek bilgi taşısın, fiil etken olsun: "dosya commit'lendi" yerine "dosyayı commit'ledim". PR açıklamasında dört soru cevaplanır: ne değişti, neden, nasıl denendi, ne dışarıda kaldı. Commit mesajında ilk satır kısa özet, gövde nedendir. Durum cümleleri olgu kilidine tabidir: kaynakta komut çıktısı ya da yazarın açık beyanı yoksa "testler geçti" yazma, "[testleri koştun mu?]" diye sor. Yazar koşamadıysa bunu söylemek de bilgidir: "yerelde koşamadım, CI'ı bekliyorum". Deyim, ikileme ve devrik süs ekleme; yazarın kendi konuşma dili varsa o kalır.
+
+**Önce:**
+> Merhaba! Ödeme servisindeki timeout sorununu detaylı şekilde inceledim. **Yapılanlar:** ✅ Retry mekanizması iyileştirildi ✅ Testler başarıyla geçiyor ✅ Mevcut davranış korunarak kod kalitesi artırıldı. Başka bir şey gerekirse haber vermen yeterli!
+
+**Sonra:**
+> Ödeme servisindeki timeout'u düzelttim, retry'da [ne değişti: süre mi, deneme sayısı mı?]. [Testleri koştun mu? Koştuysan buraya yaz.]
+
+**Ne değişti:** Selamlama, emoji listesi ve kapanış çıktı. "İyileştirildi" ve "kod kalitesi artırıldı" ne yapıldığını söylemiyordu, yerine soru geldi. "Testler geçiyor" kaynakta çıktısı olmadığı için yer tutucu oldu.
+
 ## Teknik şartname dili
 
 **Tanıma:** Numaralı maddeler, "-malıdır, -melidir, -ecektir" gereklilik kipi, ölçü birimleri, "en az, en fazla", sistem ve modül adları.
