@@ -1,0 +1,149 @@
+{
+  "aciklama": "scripts/olcum.py için açık test seti. Bütün örnekler bu iş için yazılmış genel cümlelerdir: gerçek müşteri metni, kişi ya da kurum adı yok. Gerçek metinlerden çıkan vakalar depoya girmez, ~/.claude/insanca-ozel/testler/ altında durur (bkz. scripts/test_olcum.py).",
+  "vakalar": [
+    { "tur": "ek", "metin": "2026'da", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "2000'de", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "4'te", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "3'te", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "40'ta", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "6'da", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "10.30'da", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "09.00'da", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "1990'lar", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "80'ler", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "%40'ı", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "1.250'yi", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "2,5'te", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "100'e", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "4'ü", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "3'üncü", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "KDV'ye", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "TBMM'ye", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "HTML'e", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "PDF'ye", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "NATO'ya", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "PR'ı", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "AWS'e", "beklenen": "temiz" },
+    {
+      "tur": "ek",
+      "metin": "SGK'da",
+      "beklenen": "temiz",
+      "not": "K iki türlü okunuyor (ke/ka): alarm yok"
+    },
+    { "tur": "ek", "metin": "SGK'de", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "CHP'ye", "beklenen": "temiz" },
+    { "tur": "ek", "metin": "2026'de", "beklenen": "hata" },
+    { "tur": "ek", "metin": "2000'da", "beklenen": "hata" },
+    { "tur": "ek", "metin": "4'de", "beklenen": "hata" },
+    { "tur": "ek", "metin": "3'de", "beklenen": "hata" },
+    { "tur": "ek", "metin": "40'da", "beklenen": "hata" },
+    { "tur": "ek", "metin": "10.30'de", "beklenen": "hata" },
+    { "tur": "ek", "metin": "1990'ler", "beklenen": "hata" },
+    { "tur": "ek", "metin": "%40'i", "beklenen": "hata" },
+    { "tur": "ek", "metin": "KDV'ya", "beklenen": "hata" },
+    { "tur": "ek", "metin": "TBMM'yı", "beklenen": "hata" },
+
+    { "tur": "genis_zaman", "kelime": "olur", "beklenen": true },
+    { "tur": "genis_zaman", "kelime": "yapar", "beklenen": true },
+    { "tur": "genis_zaman", "kelime": "gösterir", "beklenen": true },
+    { "tur": "genis_zaman", "kelime": "olurlar", "beklenen": true },
+    { "tur": "genis_zaman", "kelime": "yapmazlar", "beklenen": true },
+    { "tur": "genis_zaman", "kelime": "gerekmez", "beklenen": true },
+    { "tur": "genis_zaman", "kelime": "kitaplar", "beklenen": false },
+    { "tur": "genis_zaman", "kelime": "önemlidir", "beklenen": false },
+    { "tur": "genis_zaman", "kelime": "kullanabilirsin", "beklenen": false },
+    { "tur": "genis_zaman", "kelime": "olabilir", "beklenen": false },
+    { "tur": "genis_zaman", "kelime": "kadar", "beklenen": false },
+    { "tur": "genis_zaman", "kelime": "var", "beklenen": false },
+
+    {
+      "tur": "ceviri",
+      "metin": "Bu rapor geçen haftaki toplantının peşinden gidiyor.",
+      "beklenen": "yakalanir"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Hedeflerin Dördü Bu Soruya Dokunuyor",
+      "beklenen": "yakalanir"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Ayrıntılar e-posta zincirinde duruyor.",
+      "beklenen": "yakalanir"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Bu rakam müşteri anketinden geliyor.",
+      "beklenen": "yakalanir"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Asistana en yeni belgeyi esas almasını öğretiyoruz.",
+      "beklenen": "yakalanir"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Bunu taslak olarak, iç not olarak, kaynak olarak ve özet olarak tutuyoruz.",
+      "beklenen": "yakalanir"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Bu rakam müşteri anketinden alındı.",
+      "beklenen": "temiz"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Üç bölüm de bu soruyla ilgili.",
+      "beklenen": "temiz"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Ankara'dan geliyor. Eline dokundu. Kapıyı kapattı. Çocuklara okumayı öğretiyoruz.",
+      "beklenen": "temiz",
+      "not": "gerçek anlamlar alarm vermesin"
+    },
+    {
+      "tur": "ceviri",
+      "metin": "Asistana en yeni belgeyi esas almasını, çelişki görürse sizi uyarmasını söylüyoruz.",
+      "beklenen": "temiz"
+    },
+
+    {
+      "tur": "parca",
+      "metin": "# Hedeflerin Dördü Bu Soruya Dokunuyor\n\nYeni Panel\nTalepler tek ekranda\nYanıt süresi kısaldı\n\nPaneli cuma günü canlıya aldık. Talepler artık tek ekranda toplanıyor, öncelikleri panel kendisi belirliyor. Ekipler aynı talebi aynı ekranda gördüğü için birlikte çalışmak kolaylaştı.",
+      "beklenen_cumle": 3,
+      "beklenen_parca": 4,
+      "beklenen_ceviri": true
+    },
+
+    {
+      "tur": "olgu",
+      "once": "Günümüzde ekiplerin verimliliği kritik bir öneme sahiptir. Yeni panelimiz 3 Kasım'da Ankara ofisinde devreye alınmıştır. İlk hafta yanıt süresi 12 saatten 4 saate inmiştir. Ayrıntılar https://ornek.com/rapor adresindedir, kurulum için `npm run setup` komutu kullanılmalıdır.",
+      "sonra": "Yeni paneli 3 Kasım'da Ankara ofisinde devreye aldık. İlk hafta yanıt süresi 12 saatten 4 saate indi. Ayrıntıları https://ornek.com/rapor adresinde bulabilirsin, kurmak için `npm run setup` komutunu çalıştır.",
+      "beklenen": "temiz"
+    },
+    {
+      "tur": "olgu",
+      "once": "Günümüzde ekiplerin verimliliği kritik bir öneme sahiptir. Yeni panelimiz 3 Kasım'da Ankara ofisinde devreye alınmıştır. İlk hafta yanıt süresi 12 saatten 4 saate inmiştir. Ayrıntılar https://ornek.com/rapor adresindedir, kurulum için `npm run setup` komutu kullanılmalıdır.",
+      "sonra": "Ankara ofisinde yeni paneli 3 Kasım'da devreye aldık. Yanıt süresi ilk hafta 12 saatten 4 saate indi. Kurmak için `npm run setup` komutunu çalıştır, ayrıntılar https://ornek.com/rapor adresinde.",
+      "beklenen": "temiz",
+      "not": "cümle başına geçen özel ad kayıp sayılmasın"
+    },
+    {
+      "tur": "olgu",
+      "once": "Günümüzde ekiplerin verimliliği kritik bir öneme sahiptir. Yeni panelimiz 3 Kasım'da Ankara ofisinde devreye alınmıştır. İlk hafta yanıt süresi 12 saatten 4 saate inmiştir. Ayrıntılar https://ornek.com/rapor adresindedir, kurulum için `npm run setup` komutu kullanılmalıdır.",
+      "sonra": "Yeni paneli 3 Kasım'da İzmir ofisinde devreye aldık. Selin Hanım'ın ekibi ilk hafta yanıt süresini 12 saatten 4 güne, müşteri memnuniyetini de %40 artırdı.",
+      "beklenen_eklenen": {
+        "sayı": ["%40"],
+        "birimli değer": ["4 gün"],
+        "özel ad": ["Selin", "İzmir"]
+      },
+      "beklenen_kaybolan": {
+        "birimli değer": ["4 saat"],
+        "bağlantı": ["https://ornek.com/rapor"],
+        "kod": ["`npm run setup`"],
+        "özel ad": ["Ankara"]
+      }
+    }
+  ]
+}

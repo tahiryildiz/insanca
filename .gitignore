@@ -1,0 +1,5 @@
+# Gerçek müşteri ve kişi metinleri bu depoya girmez: özel test vakaları ~/.claude/insanca-ozel/testler/ altında durur.
+# Yanlışlıkla depo içine konursa diye ikinci bir kilit:
+tests/ozel/
+*.ozel.json
+__pycache__/

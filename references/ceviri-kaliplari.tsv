@@ -1,0 +1,13 @@
+# insanca · çeviri kalıpları (scripts/olcum.py "Çeviri kalıbı" satırı bu dosyayı okur)
+# Sütunlar sekmeyle ayrılır: etiket <TAB> düzenli ifade (küçük harfe çevrilmiş metinde aranır) <TAB> örnek
+# Liste güvenlik ağıdır, Süreç'teki çeviri testinin yerini tutmaz.
+# Yeni kalıp eklerken örneği sen yaz: gerçek müşteri metni, kişi ya da kurum adı koyma; bu dosya açık kaynak.
+# Eklediğin her kalıp için tests/ altına bir yakalanan ve bir temiz örnek de koy, sonra python3 scripts/test_olcum.py çalıştır.
+peşinden gitmek (follow)	peşinden\s+gid|peşinden\s+git	Bu rapor geçen haftaki toplantının peşinden gidiyor.
+-e dokunmak (touch on)	(?:[ae]|y[ae])\s+dokun(?:uyor|uyorlar|ur|urlar|an)\b	Üç bölüm de bu soruya dokunuyor.
+-den gelmek, kaynak anlamında (come from)	\w+n[dt][ae]n\s+gel(?:iyor|ir|di|miş|mektedir)\b	Bu rakam müşteri anketinden geliyor.
+açığı kapatmak (close the gap)	açı[ğk]\w*\s+kapat	Bu açığı kapatmak için yeni bir ekip kurduk.
+bunu kapatmak (cover this)	bunu\s+kapatmak\s+için	Bunu kapatmak için dışarıdan destek lazım.
+e-posta zinciri (email thread)	e-?posta\s+zincir	Ayrıntılar e-posta zincirinde duruyor.
+sizin düzeninizde/biçiminizde yazar (in your format)	(?:düzeniniz|biçiminiz|formatınız)(?:de|le|la|e|a)\s+yaz	Asistan notları okur, sizin biçiminizde yazar.
+model sağlayıcısı (jargon)	model\s+sağlayıcı|sağlayıcıya\s+bağlı	Maliyet model sağlayıcısına göre değişir.

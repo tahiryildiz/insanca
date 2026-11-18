@@ -280,6 +280,16 @@ Ne değişti: Orijinalin iskeleti "X değil, Y" kalıbıydı (tam metinde 12 kez
 
 Ne değişti: "-maktadır" kafiyesi, önem şişirmesi ("dönüm noktası"), "-arak/-ıp ışık tutmakta... gözler önüne sermekte" kuyrukları, belirsiz "uzmanlar" ve turizm broşürü kapanışı gitti. Sicil bozulmadı; metin hala ansiklopedik, birinci tekil yok, sadece bilgi netleşti ve kapanışa yeni somut bilgi geldi.
 
+## Geliştirme
+
+Ölçüm betiğine dokunduktan sonra test setini çalıştır:
+
+```bash
+python3 scripts/test_olcum.py
+```
+
+Açık vakalar `tests/` klasöründe ve `references/ceviri-kaliplari.tsv` dosyasının örnek sütununda duruyor. İkisi de bu iş için yazılmış genel cümlelerden oluşuyor. Gerçek müşteri metinlerinden çıkan vakalar depoya girmiyor: betik onları varsa `~/.claude/insanca-ozel/testler/` klasöründen okuyor ve bu klasör yalnız senin bilgisayarında kalıyor.
+
 ## Kaynaklar
 
 Kalıpları ve kuralları beş ayrı damardan derledim:

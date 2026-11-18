@@ -200,8 +200,10 @@ ONES = ["", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "do
 TENS = ["", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"]
 SCALES = ["", "bin", "milyon", "milyar", "trilyon"]
 # all-consonant abbreviations are read letter by letter; in Turkish (be, ce, de...) and in English (bi, si, di...)
-# these final letters carry a front vowel, so the suffix vowel must be front: KDV'ye, SGK'ye, HTML'e
-FRONT_FINAL_LETTERS = set("BCÇDFGĞHJKLMNPSŞTVZ")
+# these final letters carry a front vowel, so the suffix vowel must be front: KDV'ye, TBMM'ye, HTML'e.
+# K and H are left out: TDK reads them ke/he (TDK'ye), but ka/ha is just as alive (SGK'ya, CHP'ye/CHP'ya),
+# so either harmony can be right and only consistency within a text matters.
+FRONT_FINAL_LETTERS = set("BCÇDFGĞJLMNPSŞTVZ")
 NUMBER_SUFFIX_RE = re.compile(r"(?<![\w.,])(%?)(\d+(?:[.,]\d+)*)['’]([a-zçğıöşü]+)")
 ABBREVIATION_SUFFIX_RE = re.compile(r"(?<![\w])([A-ZÇĞİÖŞÜ]{2,6})['’]([a-zçğıöşü]+)")
 
@@ -269,6 +271,54 @@ def suffix_errors(text):
     return found
 
 
+# ---------------------------------------------------------------- translated phrasing: a safety net for the çeviri testi
+# Real cases from a Turkish deck that passed every other check (Kasım 2026). The list is a net, not the test:
+# new calques show up without ever being on it.
+
+TRANSLATION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "references", "ceviri-kaliplari.tsv")
+
+
+def load_translation_patterns(path=TRANSLATION_FILE):
+    """(label, compiled regex, example) rows from references/ceviri-kaliplari.tsv; empty if the file is missing."""
+    rows = []
+    try:
+        with open(path, encoding="utf-8") as f:
+            for n, line in enumerate(f, 1):
+                line = line.rstrip("\n")
+                if not line.strip() or line.startswith("#"):
+                    continue
+                cols = line.split("\t")
+                if len(cols) < 2:
+                    sys.exit(f"{path}:{n}: en az iki sütun gerekir (etiket, düzenli ifade)")
+                rows.append((cols[0], re.compile(cols[1]), cols[2] if len(cols) > 2 else ""))
+    except OSError:
+        return []
+    return rows
+
+
+TRANSLATION_RES = [(label, rx) for label, rx, _ in load_translation_patterns()]
+TEACH_TARGET_RE = re.compile(r"(?<!\w)(?:model|asistan|yapay zek|yazılım|sistem|ajan|bot|araç)\w*")
+TEACH_RE = re.compile(r"(?<!\w)öğret(?:iyoruz|iyorsunuz|iyor|ir|tik|eceğiz|mek|meniz)")
+
+
+def translation_hits(text):
+    """Known calques from English, as 'label: snippet' strings, plus a heavy-"olarak" warning."""
+    lower = tr_lower(text)
+    hits = []
+    for label, rx in TRANSLATION_RES:
+        for m in rx.finditer(lower):
+            start = lower.rfind(" ", 0, max(0, m.start() - 1)) + 1
+            hits.append(f"{label}: \"{lower[start:m.end() + 12].strip()}\"")
+    for sentence in parse(text)["units"]:
+        s = tr_lower(sentence)
+        if TEACH_RE.search(s) and TEACH_TARGET_RE.search(s):
+            hits.append(f"yazılıma öğretmek (teach): \"{sentence.strip()[:60]}\"")
+    olarak = len(re.findall(r"(?<!\w)olarak(?!\w)", lower))
+    if olarak > 3:
+        hits.append(f"\"olarak\" yığılması (as): {olarak} kez")
+    return hits
+
+
 # ---------------------------------------------------------------- fact lock: before -> after comparison (olgu kilidi)
 # Inspired by MeaningPreservationGate in KemalG-u/karincaai-algoritma-ornekleri (MIT). A rewrite reorders sentences, so
 # values are compared as multisets, not in order; negation is left out on purpose because §9 removes "değil" by design.
@@ -296,7 +346,7 @@ def _proper_nouns(text, every_capital=False):
     """Capitalised words that do not open a sentence, without their apostrophe suffix.
     every_capital=True returns every capitalised word, openers included: the pool a name is looked up in."""
     names = []
-    for sentence in parse(text)["sentences"]:
+    for sentence in parse(text)["units"]:
         tokens = sentence.split()
         for i, token in enumerate(tokens):
             token = token.strip("\"“”‘'(),.;:!?«»*_")
@@ -415,7 +465,7 @@ def parse(text):
     frame_words = sum(len(words(line)) for b in blocks for line, _ in b) - sum(len(words(line)) for b in kept for line, _ in b)
     blocks = kept
 
-    paragraphs, sentences, paragraph_sentences = [], [], []
+    paragraphs, sentences, paragraph_sentences, fragments = [], [], [], []
     for b in blocks:
         if any(m for _, m in b) or len(b) > 1 and all(len(words(s)) < 12 for s, _ in b):
             parts = [s for s, _ in b]  # list or dialogue: every line is its own unit
@@ -424,6 +474,12 @@ def parse(text):
         paragraphs.append(" ".join(parts))
         ps = []
         for part in parts:
+            # slide titles, buttons, table cells and labels: short, no closing punctuation. They would distort the
+            # rhythm measures, so they stay out of `sentences` but remain in `plain` for the calque, suffix and
+            # fact-lock checks, which must see every line (a deck that passed with clean rhythm still read translated).
+            if len(words(part)) <= 12 and not re.search(r"[.!?…:][\"”’»)]*$", part.strip()):
+                fragments.append(part)
+                continue
             ps.extend(split_sentences(part))
         paragraph_sentences.append(ps)
         sentences.extend(ps)
@@ -432,6 +488,8 @@ def parse(text):
         "raw": raw,
         "plain": "\n\n".join(paragraphs),
         "headings": headings,
+        "fragments": fragments,
+        "units": sentences + fragments + headings,
         "paragraphs": paragraphs,
         "paragraph_sentences": paragraph_sentences,
         "sentences": sentences,
@@ -566,7 +624,9 @@ def measure(text):
     dir_family = sum(1 for w in last_words if re.search(r"[dt][ıiuü]r(l[ae]r)?$", w))
     aorist = sum(1 for w in last_words if is_aorist(w))
     olur = len(re.findall(r"(?<!\w)olur(?:lar)?(?!\w)", tr_lower(plain)))
-    suffix_problems = suffix_errors(plain)
+    check_text = plain + "\n\n" + "\n\n".join(a["headings"])  # headings and slide lines are checked too
+    suffix_problems = suffix_errors(check_text)
+    calques = translation_hits(check_text)
     endings = Counter(w[-3:] for w in last_words if len(w) >= 3)
     rhyme_suffix, rhyme_n = (endings.most_common(1)[0] if endings else ("", 0))
 
@@ -662,6 +722,7 @@ def measure(text):
         "words": n_words,
         "sentences": len(sentences),
         "paragraphs": len(paragraphs),
+        "fragments": len(a["fragments"]) + len(a["headings"]),
         "mean_sentence": round(mean, 1),
         "sentence_cv": round(cv, 2),
         "shortest": min(lengths),
@@ -682,6 +743,7 @@ def measure(text):
         "aorist_share": round(aorist / n_sentences, 2),
         "olur": olur,
         "suffix_errors": suffix_problems,
+        "translation_hits": calques,
         "em_dash": em_dash,
         "dialogue_lines": a["dialogue_lines"],
         "semicolons": semicolons,
@@ -969,6 +1031,8 @@ def alarms(m):
     def add(label, value, status, note=""):
         rows.append((label, value, status, note))
 
+    if m.get("fragments"):
+        add("Başlık ve kısa satır", f"{m['fragments']} (ritim dışı; çeviri, ek ve olgu denetiminde)", "info")
     if m["sentences"] >= 3:
         cv = m["sentence_cv"]
         add("Cümle boyu çeşitliliği", f"{cv:.2f}".replace(".", ","),
@@ -982,6 +1046,10 @@ def alarms(m):
     errors = m.get("suffix_errors", [])
     add("Ek uyumu (rakam, kısaltma)", "; ".join(errors[:4]) + (" ..." if len(errors) > 4 else "") if errors else "0",
         "alarm" if errors else "ok", "ek okunuşa göre gelir: 2026'da, 4'te, KDV'ye (bkz. yazim-ve-terim.md)")
+    calques = m.get("translation_hits", [])
+    add("Çeviri kalıbı (güvenlik ağı)", "; ".join(calques[:4]) + (" ..." if len(calques) > 4 else "") if calques else "0",
+        "warn" if calques else "ok",
+        "liste güvenlik ağı, çeviri testinin yerini tutmaz; listede olmayan kalıplar da çıkıyor (Süreç, 4. adım)")
     if m["sentences"] >= 6:
         add("Eş boy cümle dizisi", f"{m['equal_length_run']} cümle",
             "alarm" if m["equal_length_run"] >= 5 else "warn" if m["equal_length_run"] == 4 else "ok",

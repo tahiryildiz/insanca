@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.16.0
+version: 1.17.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -259,7 +259,7 @@ Rapor her ölçümü ✓ temiz, ~ dikkat, ! alarm diye işaretler ve önce → s
 - **Açılışlar:** Aynı kelimeyle başlayan cümle sayısını say; dörtte birden fazlası aynı kelimeyle açılıyorsa dağıt.
 - **Zarf-fiil kuyrukları:** "-arak/-erek sağlayarak/katkıda bulunarak" ile biten cümlelerin payı yüzde 15'i geçiyorsa kes (bkz. §3).
 - **Geniş zaman payı:** Okura dönük metinde geniş zamanla biten cümleler yüzde 30'u geçiyorsa dikkat, 40'ı geçiyorsa alarm; tek bir kof "olur" bile bakmaya değer (bkz. §56). Sistem tanımı, kural metni ve şartnamede bu eşik geçerli değil.
-- **Ek uyumu:** Rakama ve harfle okunan kısaltmaya gelen ek, okunuşa uyuyor mu: 2026'da (yirmi altı), 4'te (dört), 40'ta (kırk), 10.30'da (otuz), KDV'ye (ka-de-ve). Tek bir hata bile alarm. Betik ünlü uyumunu ve d/t seçimini denetliyor; kaynaştırma harfini (6'sı) ve İngilizce terimin okunuşunu (cache'i) denetlemiyor, onlar sende.
+- **Ek uyumu:** Rakama ve harfle okunan kısaltmaya gelen ek, okunuşa uyuyor mu: 2026'da (yirmi altı), 4'te (dört), 40'ta (kırk), 10.30'da (otuz), KDV'ye (ka-de-ve). Tek bir hata bile alarm. Betik ünlü uyumunu ve d/t seçimini denetliyor; kaynaştırma harfini (6'sı) ve İngilizce terimin okunuşunu (cache'i) denetlemiyor, onlar sende. K ve H ile biten kısaltmaları da atlıyor: TDK bu harfleri "ke, he" okuyor (TDK'ye, SGK'de), gündelik dilde "ka, ha" da yaşıyor (SGK'da, SGK'ya). Resmî metinde TDK'ye uy, öbür metinde yazarın okunuşuna; iki biçimi aynı metinde karıştırma.
 - **Noktalama sayımı:** Uzun tire: 0, satır başı konuşma çizgisi hariç (bkz. §22). Noktalı virgül: metin başına bir iki taneden fazlaysa azalt. Şapkalı harf: 0 (bkz. §32).
 - **Üçleme yoğunluğu:** "X, Y ve Z" kalıbı bin kelimede iki üçten fazlaysa seyrelt (bkz. §10).
 - **İki nokta ve "asıl" sayımı:** İki nokta üst üste bin kelimede bir ikiden fazlaysa ve arkasından tek cümlelik vuruş geliyorsa boz; "asıl" kelimesi üçten fazla geçiyorsa vurguyu tekrar ve devrikle yeniden kur (bkz. §46).
@@ -270,6 +270,8 @@ Rapor her ölçümü ✓ temiz, ~ dikkat, ! alarm diye işaretler ve önce → s
 - **Paragraf boyları:** Hepsi aynı yükseklikteyse birleştir veya böl (bkz. §14).
 
 Sayıları tutturmak için metni bozma; eşikler alarm zilidir, hedef değil. Eşik aşımı yoksa ve metin sesli okununca doğal akıyorsa bitmiştir.
+
+**Betik temiz rapor verdi diye metin bitmiş sayılmaz.** Betik kelime listelerini ve sayıları ölçüyor, anlamı İngilizceden çevrilmiş bir cümleyi göremiyor. "Bu sunum o e-postanın peşinden gidiyor" (follows), "Dördü bu soruya dokunuyor" (touches on), "Kaynak olarak gösterir" (as a source) gibi cümlelerin hiçbiri betiğin kelime ve sayı ölçümlerine takılmıyor; "Çeviri kalıbı" satırı yalnız bilinen birkaç kalıbı tanıyor. Bunları güvenilir biçimde ancak çeviri testi (Süreç ve Çıktı, 4. adım) yakalıyor.
 
 
 ## TESPİT REHBERİ
@@ -318,7 +320,7 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
 
 ## Süreç ve Çıktı
 
-1. Metni dikkatle oku. Türünü, alanını ve yapacağın işi belirle (bkz. Çalışma biçimi, Sicil Ayarı); Python varsa `scripts/olcum.py` ile ilk ölçümü al (bkz. Sayısal Denetim). Sonra Kalıp Dizini'ne göre her kalıp örneğini tespit et. Dosya okuma: Şiir, anlatı, teknik şartname, hukuki, haber ya da pazarlama metninde `references/turler.md` dosyasındaki türün bölümünü oku (betiğin `--guide` çıktısı bunu verir). Metin belirli bir alanın okuruna gidiyorsa (banka, hastane, okul, belediye, ilan, ürün sayfası) `references/alanlar.md`, teknik ya da iş metninde terim kararı vereceksen `references/jargon.md` dosyasını aç. İşaretlediğin her kalıbın dosyasını aç (dizin hangi dosya olduğunu söyler). Yeniden ya da sıfırdan yazıyorsan `references/akis-kurallari.md` dosyasını oku. Her durumda `references/kaliplar/yapi.md` (§47 yapı nakli) ve `references/kaliplar/dedektor.md` (§45 aşırı düzeltme) dosyalarını oku: 3. ve 4. adımdaki öz denetim bunlara dayanır. Teknik, ürün ya da arayüz metninde (şirketin kendi ürününü anlatan blog yazısı dahil) ya da §32, §54 veya §55 işaretlendiyse `references/yazim-ve-terim.md` dosyasını da aç. `references/deyimler.md` yalnız deyim kullanacaksan; `references/tam-ornek.md` ve `references/kaynaklar.md` isteğe bağlı.
+1. Metni dikkatle oku. Türünü, alanını ve yapacağın işi belirle (bkz. Çalışma biçimi, Sicil Ayarı); Python varsa `scripts/olcum.py` ile ilk ölçümü al (bkz. Sayısal Denetim). Sonra Kalıp Dizini'ne göre her kalıp örneğini tespit et. Dosya okuma: Şiir, anlatı, teknik şartname, hukuki, haber ya da pazarlama metninde `references/turler.md` dosyasındaki türün bölümünü oku (betiğin `--guide` çıktısı bunu verir). Metin belirli bir alanın okuruna gidiyorsa (banka, hastane, okul, belediye, ilan, ürün sayfası) `references/alanlar.md`, teknik ya da iş metninde terim kararı vereceksen `references/jargon.md` dosyasını aç. İşaretlediğin her kalıbın dosyasını aç (dizin hangi dosya olduğunu söyler). Yeniden ya da sıfırdan yazıyorsan `references/akis-kurallari.md` dosyasını oku. Her durumda `references/kaliplar/yapi.md` (§47 yapı nakli) ve `references/kaliplar/dedektor.md` (§45 aşırı düzeltme) dosyalarını oku: 3. ve 5. adımdaki öz denetim bunlara dayanır. Teknik, ürün ya da arayüz metninde (şirketin kendi ürününü anlatan blog yazısı dahil) ya da §32, §54 veya §55 işaretlendiyse `references/yazim-ve-terim.md` dosyasını da aç. `references/deyimler.md` yalnız deyim kullanacaksan; `references/tam-ornek.md` ve `references/kaynaklar.md` isteğe bağlı.
 2. Bir **taslak yeniden yazım** çıkar. Şunları kontrol et:
    - Sesli okununca doğal akıyor mu, cümle uzunlukları değişiyor mu?
    - Kısa cümleler noktayla art arda mı dizilmiş? Türkçede kısa cümleler çoğu zaman virgülle bağlanır (bkz. §15); vurgu için ayrık bırakılan tek tük kısa cümle dışındakileri bağla.
@@ -328,9 +330,16 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
    - **Mantık akışı görünür mü?** Yapay zeka metinlerinde cümleler tek tek düzgündür ama aralarındaki akıl yürütme köprüsü eksiktir; okur "buraya nasıl geldik?" diye sorar. Fikirler arasındaki bağı görünür kıl, ışınlanma varsa ara adımı yaz.
    - **Olgu kilidi tutuyor mu?** Taslakta girdide olmayan sayı, ad, kurum, niyet ("aklımızda tam olarak bu vardı") ya da neden-sonuç var mı? Varsa çıkar ya da yer tutucuya çevir. Girdideki her sayı ve özel ad duruyor mu? Betik varsa taslağı `--before once` ile ölçtür ve Olgu kilidi bölümüne bak; niyet ve neden-sonuç bağını betik göremiyor, onları sen denetle.
 3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kontrol et; cümle uzunluğu değişim katsayısını gerçekten hesapla (betik varsa taslağı `--before once` ile ölçtür). İkinci bir soru daha sor: **"Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?"** Cümle iskeleti hala kurulum-vuruş, çift kanat veya üçlemeyse kelimeler değişmiş olsa da kalıp duruyordur (bkz. §47). Soyut üç ismi üç fiile çevirmek de üçlemeyi korur.
-4. Bunları gideren, içinde konuşma çizgisi dışında hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Taslakta fark ettiğin ritim sorununu nihaide çöz; değişim katsayısı 0,35'in altındaysa metin bitmemiştir. Eklediğin her söylem parçacığını, devrik cümleyi ve bağlacı silme testinden geçir: Çıkarınca anlamdan ya da tondan bir şey eksilmiyorsa çıkar. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
+4. **Çeviri testi.** Metni cümle cümle oku. Başlık, buton, tablo hücresi, kart etiketi ve konuşmacı notu da buna dahil. Her cümle için şunu sor: Türkçe konuşan biri bunu ağzıyla böyle söyler mi? Söylemiyorsa kelimeleri değiştirmekle yetinme, düşünceyi Türkçe olarak baştan kur (bkz. §16). Özellikle şunlara bak:
+   - İngilizce fiil metaforları: peşinden gitmek (follow), dokunmak (touch on), -den gelmek (come from), açığı kapatmak (close the gap), modele öğretmek (teach).
+   - "As" karşılığı "olarak": kaynak olarak, taslak olarak.
+   - Öznesi kaybolmuş ulaçlar: "Riskler sözleşmeyi okurken yakalansın" (sözleşmeyi kim okuyor?).
+   - Okura açıklanmamış jargon: Gem, model sağlayıcısı (bkz. `references/jargon.md`).
+   - Yarım kalmış başlıklar ve tablo hücreleri.
+   Betiğin "Çeviri kalıbı" satırı bu listenin birkaç örneğini tanıyor; güvenlik ağı olarak bak, testin yerine koyma. Testte betiğin bilmediği yeni bir kalıp bulursan `references/ceviri-kaliplari.tsv` dosyasına ekle; örnek sütununa müşteri metnini değil, aynı kalıbı taşıyan kendi yazdığın genel bir cümleyi koy, çünkü dosya açık kaynak. Teslimde bu testte değiştirdiğin cümleleri önce ve sonra halleriyle listele. Liste boşsa neden boş olduğunu tek cümleyle yaz.
+5. Bunları gideren, içinde konuşma çizgisi dışında hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Çeviri testinde düzelttiğin cümleleri koru; nihaide yeni yazdığın ya da değiştirdiğin her cümleyi de aynı testten geçir. Taslakta fark ettiğin ritim sorununu nihaide çöz; değişim katsayısı 0,35'in altındaysa metin bitmemiştir. Eklediğin her söylem parçacığını, devrik cümleyi ve bağlacı silme testinden geçir: Çıkarınca anlamdan ya da tondan bir şey eksilmiyorsa çıkar. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
 
-Taslağı, kısa "hala yapay" maddelerini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et. Nihai metinde yer tutucu bıraktıysan teslimde ayrıca söyle; yayından önce doldurulması gerekir.
+Taslağı, kısa "hala yapay" maddelerini, çeviri testi listesini, nihai metni ve (istenirse) değişikliklerin kısa özetini teslim et. Nihai metinde yer tutucu bıraktıysan teslimde ayrıca söyle; yayından önce doldurulması gerekir.
 
 
 ## Kaynaklar
