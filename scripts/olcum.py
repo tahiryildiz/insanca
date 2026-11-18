@@ -189,6 +189,176 @@ def is_aorist(word):
     return bool(AORIST_END_RE.search(word))
 
 
+# ---------------------------------------------------------------- suffix harmony after an apostrophe (§32, §54)
+# A suffix follows how the number or abbreviation is read aloud: 2026'da (yirmi altı), 4'te (dört), KDV'ye (ka-de-ve).
+# The idea of computing harmony instead of keeping a table comes from KarıncaAI (Oluk Studio); this code is insanca's own.
+
+FRONT_VOWELS, BACK_VOWELS = set("eiöü"), set("aıou")
+ROUNDED_VOWELS = set("oöuü")
+HARD_CONSONANTS = set("fstkçşhp")
+ONES = ["", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"]
+TENS = ["", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"]
+SCALES = ["", "bin", "milyon", "milyar", "trilyon"]
+# all-consonant abbreviations are read letter by letter; in Turkish (be, ce, de...) and in English (bi, si, di...)
+# these final letters carry a front vowel, so the suffix vowel must be front: KDV'ye, SGK'ye, HTML'e
+FRONT_FINAL_LETTERS = set("BCÇDFGĞHJKLMNPSŞTVZ")
+NUMBER_SUFFIX_RE = re.compile(r"(?<![\w.,])(%?)(\d+(?:[.,]\d+)*)['’]([a-zçğıöşü]+)")
+ABBREVIATION_SUFFIX_RE = re.compile(r"(?<![\w])([A-ZÇĞİÖŞÜ]{2,6})['’]([a-zçğıöşü]+)")
+
+
+def spoken_last_word(number):
+    """The last word heard when a Turkish reader says this number: 2026 -> altı, 2000 -> bin, 10.30 -> otuz."""
+    if re.fullmatch(r"\d{1,2}\.\d{2}", number):          # clock time 10.30, 09.00
+        hour, minute = number.split(".")
+        number = minute if int(minute) else hour
+    elif "," in number:                                    # decimal 2,5 -> beş
+        number = number.split(",")[-1]
+    number = number.replace(".", "")                       # thousands separator 1.250
+    if not number.isdigit():
+        return None
+    n = int(number)
+    if n == 0:
+        return "sıfır"
+    group = 0
+    while n % 1000 == 0:
+        n //= 1000
+        group += 1
+    if group:
+        return SCALES[group] if group < len(SCALES) else None
+    last3 = n % 1000
+    if last3 % 10:
+        return ONES[last3 % 10]
+    if (last3 // 10) % 10:
+        return TENS[(last3 // 10) % 10]
+    return "yüz"
+
+
+def harmony_problem(word, suffix):
+    """Why this suffix does not fit the spoken word, or None. Checks frontness, rounding and d/t, nothing else."""
+    vowels = [c for c in word if c in FRONT_VOWELS | BACK_VOWELS]
+    suffix_vowels = [c for c in suffix if c in FRONT_VOWELS | BACK_VOWELS]
+    if not vowels or not suffix_vowels:
+        return None
+    last, first = vowels[-1], suffix_vowels[0]
+    if (last in FRONT_VOWELS) != (first in FRONT_VOWELS):
+        return "kalın/ince uyumu"
+    if first in "ıiuü" and (last in ROUNDED_VOWELS) != (first in "uü"):
+        return "düz/yuvarlak uyumu"
+    if suffix[0] in "dt" and len(suffix) > 1 and suffix[1] in FRONT_VOWELS | BACK_VOWELS:
+        wanted = "t" if word[-1] in HARD_CONSONANTS else "d"
+        if suffix[0] != wanted:
+            return "sert ünsüz (d/t)"
+    return None
+
+
+def suffix_errors(text):
+    """Apostrophe suffixes that do not match how the number or abbreviation is read, as 'token (reason)' strings."""
+    found = []
+    for m in NUMBER_SUFFIX_RE.finditer(text):
+        word = spoken_last_word(m.group(2))
+        problem = word and harmony_problem(word, m.group(3))
+        if problem:
+            found.append(f"{m.group(0)} ({word}: {problem})")
+    for m in ABBREVIATION_SUFFIX_RE.finditer(text):
+        abbr, suffix = m.group(1), m.group(2)
+        if re.search(r"[AEIİOÖUÜ]", abbr) or abbr[-1] not in FRONT_FINAL_LETTERS:
+            continue                                       # read as a word (NATO) or ambiguous final letter (PR, AWS)
+        first = next((c for c in suffix if c in FRONT_VOWELS | BACK_VOWELS), None)
+        if first in BACK_VOWELS:
+            found.append(f"{m.group(0)} (harfle okunuyor, son ünlü ince: kalın/ince uyumu)")
+    return found
+
+
+# ---------------------------------------------------------------- fact lock: before -> after comparison (olgu kilidi)
+# Inspired by MeaningPreservationGate in KemalG-u/karincaai-algoritma-ornekleri (MIT). A rewrite reorders sentences, so
+# values are compared as multisets, not in order; negation is left out on purpose because §9 removes "değil" by design.
+
+FACT_NUMBER_RE = re.compile(r"(?<![\w.,])%?\d+(?:[.,]\d+)*%?")
+FACT_UNITS = sorted(("mg g kg gram kilogram miligram ml lt litre km m cm mm metre saat dakika saniye sn ms gün hafta ay "
+                     "yıl tl lira kuruş dolar euro avro mb gb tb kişi adet").split(), key=len, reverse=True)
+# number + the word after it; the unit is decided in _unit_key so that "4 saate" and "4 güne" keep their suffixes
+FACT_UNIT_RE = re.compile(r"(?<![\w.,])(\d+(?:[.,]\d+)*)\s*([A-Za-zÇĞİÖŞÜçğıöşü]+)")
+
+
+def _unit_key(m):
+    word = tr_lower(m.group(2))
+    for unit in FACT_UNITS:
+        # short units (m, g, ay, tl) only as the whole word; longer ones may carry a suffix (saate, güne, kişiye)
+        if word == unit or (len(unit) >= 3 and word.startswith(unit)):
+            return f"{m.group(1)} {unit}"
+    return None
+FACT_URL_RE = re.compile(r"https?://[^\s)>\]]+")
+FACT_CODE_RE = re.compile(r"`[^`\n]+`")
+PROPER_RE = re.compile(r"^[A-ZÇĞİÖŞÜ][\wçğıöşüÇĞİÖŞÜ.&-]*")
+
+
+def _proper_nouns(text, every_capital=False):
+    """Capitalised words that do not open a sentence, without their apostrophe suffix.
+    every_capital=True returns every capitalised word, openers included: the pool a name is looked up in."""
+    names = []
+    for sentence in parse(text)["sentences"]:
+        tokens = sentence.split()
+        for i, token in enumerate(tokens):
+            token = token.strip("\"“”‘'(),.;:!?«»*_")
+            if not PROPER_RE.match(token):
+                continue
+            if i == 0 and not every_capital:
+                # a sentence opener counts only when it looks like a name: Ankara'da, or Zeynep Hanım
+                following = tokens[1].strip("\"“”‘'(),.;:!?«»*_") if len(tokens) > 1 else ""
+                if not (re.search(r"['’]", token) or PROPER_RE.match(following)):
+                    continue
+            if i > 0 and tokens[i - 1].endswith((":", "—", "–")):
+                continue
+            names.append(re.split(r"['’]", token)[0])
+    return names
+
+
+def _same_name(a, b):
+    a, b = tr_lower(a), tr_lower(b)
+    stem = min(len(a), len(b), max(4, min(len(a), len(b)) - 3))
+    return a[:stem] == b[:stem]
+
+
+def fact_lock(before_text, after_text):
+    """Values that were lost or added between two versions. Lists, ready to print."""
+    def bag(rx, text, key=lambda m: m.group(0)):
+        return Counter(k for k in (key(m) for m in rx.finditer(text)) if k)
+
+    def diff(a, b):
+        return sorted((a - b).elements()), sorted((b - a).elements())
+
+    result = {}
+    for label, rx, key in (("sayı", FACT_NUMBER_RE, lambda m: m.group(0)),
+                           ("birimli değer", FACT_UNIT_RE, _unit_key),
+                           ("bağlantı", FACT_URL_RE, lambda m: m.group(0)),
+                           ("kod", FACT_CODE_RE, lambda m: m.group(0))):
+        lost, added = diff(bag(rx, before_text, key), bag(rx, after_text, key))
+        result[label] = {"kaybolan": lost, "eklenen": added}
+    before_names, after_names = _proper_nouns(before_text), _proper_nouns(after_text)
+    before_pool, after_pool = _proper_nouns(before_text, True), _proper_nouns(after_text, True)
+    result["özel ad"] = {
+        "kaybolan": sorted({n for n in before_names if not any(_same_name(n, x) for x in after_pool)}),
+        "eklenen": sorted({n for n in after_names if not any(_same_name(n, x) for x in before_pool)}),
+    }
+    return result
+
+
+def fact_lock_lines(lock):
+    lines = ["Olgu kilidi (önce → sonra; kaynakta olmayan bilgi eklendi mi, bilgi düştü mü):"]
+    clean = True
+    for label, d in lock.items():
+        for kind, mark in (("eklenen", "!"), ("kaybolan", "~")):
+            if d[kind]:
+                clean = False
+                lines.append(f"{mark} {kind} {label}: {', '.join(d[kind][:8])}" + (" ..." if len(d[kind]) > 8 else ""))
+    if clean:
+        lines.append("✓ sayı, birimli değer, bağlantı, kod ve özel adlar aynı")
+    else:
+        lines.append("  [eklenen: kaynakta yoksa uydurmadır, çıkar ya da yer tutucu yap · kaybolan: bilerek mi düştü,"
+                     " bak · yazıyla rakam arasındaki geçiş (üç → 3) de burada görünür]")
+    return lines
+
+
 CONTRAST = ["ama", "ancak", "fakat", "lakin", "oysa", "yine de"]
 ADDITION = ["ve", "ayrıca", "hem", "üstelik"]
 
@@ -396,6 +566,7 @@ def measure(text):
     dir_family = sum(1 for w in last_words if re.search(r"[dt][ıiuü]r(l[ae]r)?$", w))
     aorist = sum(1 for w in last_words if is_aorist(w))
     olur = len(re.findall(r"(?<!\w)olur(?:lar)?(?!\w)", tr_lower(plain)))
+    suffix_problems = suffix_errors(plain)
     endings = Counter(w[-3:] for w in last_words if len(w) >= 3)
     rhyme_suffix, rhyme_n = (endings.most_common(1)[0] if endings else ("", 0))
 
@@ -510,6 +681,7 @@ def measure(text):
         "converb_tail_share": round(converb_tail / n_sentences, 2),
         "aorist_share": round(aorist / n_sentences, 2),
         "olur": olur,
+        "suffix_errors": suffix_problems,
         "em_dash": em_dash,
         "dialogue_lines": a["dialogue_lines"],
         "semicolons": semicolons,
@@ -807,6 +979,9 @@ def alarms(m):
             "§56: okura dönük metinde kof genel doğru; tanım, kural ve şartnamede doğal")
     add("\"olur\"", str(m["olur"]), "alarm" if m["olur"] >= 2 else "warn" if m["olur"] == 1 else "ok",
         "§56: \"ücretsiz olur\" yerine okuru özne yap, işin fiilini kullan")
+    errors = m.get("suffix_errors", [])
+    add("Ek uyumu (rakam, kısaltma)", "; ".join(errors[:4]) + (" ..." if len(errors) > 4 else "") if errors else "0",
+        "alarm" if errors else "ok", "ek okunuşa göre gelir: 2026'da, 4'te, KDV'ye (bkz. yazim-ve-terim.md)")
     if m["sentences"] >= 6:
         add("Eş boy cümle dizisi", f"{m['equal_length_run']} cümle",
             "alarm" if m["equal_length_run"] >= 5 else "warn" if m["equal_length_run"] == 4 else "ok",
@@ -904,7 +1079,7 @@ def alarms(m):
 MARKS = {"ok": "✓", "warn": "~", "alarm": "!", "info": "·"}
 
 
-def report(m, before=None, profile=None):
+def report(m, before=None, profile=None, lock=None):
     lines = []
     lines.append("insanca · sayısal denetim")
     if profile:
@@ -936,6 +1111,9 @@ def report(m, before=None, profile=None):
         lines.append(f"Alarm: {old_alarm} → {n_alarm} · Dikkat: {n_warn}")
     else:
         lines.append(f"Alarm: {n_alarm} · Dikkat: {n_warn}")
+    if lock is not None:
+        lines.append("")
+        lines.extend(fact_lock_lines(lock))
     return "\n".join(lines)
 
 
@@ -1038,16 +1216,19 @@ def main(argv=None):
         print(json.dumps(profile, ensure_ascii=False, indent=1) if args.json else profile_line(profile))
         return
     m = measure(text)
-    b = measure(read(args.before)) if args.before else None
+    before_text = read(args.before) if args.before else None
+    b = measure(before_text) if before_text is not None else None
+    lock = fact_lock(before_text, text) if before_text is not None else None
     if args.json:
         out = {"after" if b else "measurement": m}
         if b:
             out["before"] = b
+            out["fact_lock"] = lock
         out["profile"] = profile
         out["alarms"] = [{"label": l, "value": v, "status": s} for l, v, s, _ in alarms(m)]
         print(json.dumps(out, ensure_ascii=False, indent=1))
     else:
-        print(report(m, b, profile))
+        print(report(m, b, profile, lock))
     if args.guide is not None:
         if args.guide:
             guides = [named_guide(args.guide)]

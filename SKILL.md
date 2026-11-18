@@ -1,6 +1,6 @@
 ---
 name: insanca
-version: 1.15.0
+version: 1.16.0
 description: |
   Türkçe metinlerdeki yapay zeka yazım izlerini tespit edip doğal, akıcı,
   insan elinden çıkmış gibi okunan Türkçeye çevirir. Türkçe bir metni
@@ -252,13 +252,14 @@ python3 <skill-dizini>/scripts/olcum.py - --save sonra --before once <<'METIN'
 METIN
 ```
 
-Rapor her ölçümü ✓ temiz, ~ dikkat, ! alarm diye işaretler ve önce → sonra değerlerini yan yana verir. Teslimde ölçüm sonuçlarını yalnız betik çalıştıysa ve sayıları betikten alarak yaz. Python yoksa aşağıdaki eşikleri elle, kabaca ölç; emin olmadığın sayıyı rapora yazma. Nihai metinde şu eşikleri kontrol et:
+Rapor her ölçümü ✓ temiz, ~ dikkat, ! alarm diye işaretler ve önce → sonra değerlerini yan yana verir. `--before` ile çalışınca sonuna bir **Olgu kilidi** bölümü ekler: kaynakta olmayıp nihai metne giren sayı, birimli değer ("4 saat" → "4 gün") ve özel ad "!" ile, kaynakta olup düşen sayı, bağlantı, kod parçası ve özel ad "~" ile görünür. Eklenen her değer ya kaynakta vardır ya da uydurmadır; uydurmaysa çıkar ya da yer tutucuya çevir. Düşen değerin bilerek mi çıkarıldığına bak. Teslimde ölçüm sonuçlarını yalnız betik çalıştıysa ve sayıları betikten alarak yaz. Python yoksa aşağıdaki eşikleri elle, kabaca ölç; emin olmadığın sayıyı rapora yazma. Nihai metinde şu eşikleri kontrol et:
 
 - **Cümle uzunluğu çeşitliliği:** Kelime sayıları birbirine yakın cümleler üst üste geliyorsa boz. Kaba hedef: her paragrafta bir tane 8 kelime ve altı, bir tane 20 kelime ve üstü cümle. Sayıyla ölçmek için değişim katsayısına bak: cümlelerin kelime sayılarının standart sapması bölü ortalaması. Kabaca 0,35'in altı metronomdur, 0,40 ve üstü insan aralığına girer. Üç ve daha fazla cümleli metinde hesapla; elle yapılacak kadar basit (cümle boylarını yaz, ortalamayı al, sapmayı kabaca tahmin et).
 - **"-maktadır" yoğunluğu:** Blog, kurumsal ve teknik metinde hiç kalmasın. Akademik ve resmi metinde var olabilir ama her cümlede değil; kabaca 100 kelimede bir ikiyi geçiyorsa geniş zamanla nöbetleştir (bkz. Sicil Ayarı).
 - **Açılışlar:** Aynı kelimeyle başlayan cümle sayısını say; dörtte birden fazlası aynı kelimeyle açılıyorsa dağıt.
 - **Zarf-fiil kuyrukları:** "-arak/-erek sağlayarak/katkıda bulunarak" ile biten cümlelerin payı yüzde 15'i geçiyorsa kes (bkz. §3).
 - **Geniş zaman payı:** Okura dönük metinde geniş zamanla biten cümleler yüzde 30'u geçiyorsa dikkat, 40'ı geçiyorsa alarm; tek bir kof "olur" bile bakmaya değer (bkz. §56). Sistem tanımı, kural metni ve şartnamede bu eşik geçerli değil.
+- **Ek uyumu:** Rakama ve harfle okunan kısaltmaya gelen ek, okunuşa uyuyor mu: 2026'da (yirmi altı), 4'te (dört), 40'ta (kırk), 10.30'da (otuz), KDV'ye (ka-de-ve). Tek bir hata bile alarm. Betik ünlü uyumunu ve d/t seçimini denetliyor; kaynaştırma harfini (6'sı) ve İngilizce terimin okunuşunu (cache'i) denetlemiyor, onlar sende.
 - **Noktalama sayımı:** Uzun tire: 0, satır başı konuşma çizgisi hariç (bkz. §22). Noktalı virgül: metin başına bir iki taneden fazlaysa azalt. Şapkalı harf: 0 (bkz. §32).
 - **Üçleme yoğunluğu:** "X, Y ve Z" kalıbı bin kelimede iki üçten fazlaysa seyrelt (bkz. §10).
 - **İki nokta ve "asıl" sayımı:** İki nokta üst üste bin kelimede bir ikiden fazlaysa ve arkasından tek cümlelik vuruş geliyorsa boz; "asıl" kelimesi üçten fazla geçiyorsa vurguyu tekrar ve devrikle yeniden kur (bkz. §46).
@@ -325,7 +326,7 @@ Bunları görünce metne dokunmamaya meyilli ol; gerçek bir insanın yazdığı
    - Türün dokunulmazları duruyor mu? Şartnamedeki gereklilik kipi, hukuki terim, alanın rakam, doz ve yasal uyarıları (bkz. Sicil Ayarı, Alan).
    - Somut detay ve yalın kuruluşlar tercih edilmiş mi, sicil doğru ve tutarlı mı?
    - **Mantık akışı görünür mü?** Yapay zeka metinlerinde cümleler tek tek düzgündür ama aralarındaki akıl yürütme köprüsü eksiktir; okur "buraya nasıl geldik?" diye sorar. Fikirler arasındaki bağı görünür kıl, ışınlanma varsa ara adımı yaz.
-   - **Olgu kilidi tutuyor mu?** Taslakta girdide olmayan sayı, ad, kurum, niyet ("aklımızda tam olarak bu vardı") ya da neden-sonuç var mı? Varsa çıkar ya da yer tutucuya çevir. Girdideki her sayı ve özel ad duruyor mu?
+   - **Olgu kilidi tutuyor mu?** Taslakta girdide olmayan sayı, ad, kurum, niyet ("aklımızda tam olarak bu vardı") ya da neden-sonuç var mı? Varsa çıkar ya da yer tutucuya çevir. Girdideki her sayı ve özel ad duruyor mu? Betik varsa taslağı `--before once` ile ölçtür ve Olgu kilidi bölümüne bak; niyet ve neden-sonuç bağını betik göremiyor, onları sen denetle.
 3. Şunu sor: **"Aşağıdaki metni hala bariz yapay zeka yapan ne?"** Kalan tellere kısaca cevap ver ve Sayısal Denetim eşiklerini kontrol et; cümle uzunluğu değişim katsayısını gerçekten hesapla (betik varsa taslağı `--before once` ile ölçtür). İkinci bir soru daha sor: **"Kalıpları kaldırdım mı, yoksa yeniden mi giydirdim?"** Cümle iskeleti hala kurulum-vuruş, çift kanat veya üçlemeyse kelimeler değişmiş olsa da kalıp duruyordur (bkz. §47). Soyut üç ismi üç fiile çevirmek de üçlemeyi korur.
 4. Bunları gideren, içinde konuşma çizgisi dışında hiç uzun/orta tire bulunmayan (bkz. §22) bir **nihai yeniden yazım** üret. Taslakta fark ettiğin ritim sorununu nihaide çöz; değişim katsayısı 0,35'in altındaysa metin bitmemiştir. Eklediğin her söylem parçacığını, devrik cümleyi ve bağlacı silme testinden geçir: Çıkarınca anlamdan ya da tondan bir şey eksilmiyorsa çıkar. Aşırı düzeltmeye kaçma (bkz. §45): bir iki pürüz yeter.
 
